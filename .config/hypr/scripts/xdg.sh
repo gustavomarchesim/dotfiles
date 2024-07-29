@@ -25,7 +25,7 @@ fi
 # Espera 2 segundos, para garantir que o xdg-desktop-portal-hyprland iniciou corretamente
 sleep 2
 
-# Inicia o xdg-desktop-portal-hyprland
+# Inicia o xdg-desktop-portal-gtk
 if command -v /usr/lib/xdg-desktop-portal-gtk &> /dev/null
 then
     /usr/lib/xdg-desktop-portal-gtk &
