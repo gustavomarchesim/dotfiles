@@ -56,6 +56,7 @@ alias ls='eza --icons'
 alias c='clear'
 alias cleanup='kitty --app-id dotfiles-floating ~/scripts/limpeza.sh'
 alias lg='lazygit'
+alias lzd='lazydocker'
 alias vim='nvim'
 
 # Shell integrations

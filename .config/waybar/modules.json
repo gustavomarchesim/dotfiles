@@ -9,7 +9,7 @@
     "show-passive-items": true
   },
   "clock": {
-    "format": "<span color='#8fbcbb'> </span> {:L%H:%M }",
+    "format": "<span color='#8fbcbb'> </span> {:L%a, %d/%m, %H:%M}",
     "interval": 60,
     "rotate": 0,
     "tooltip-format": "<tt>{calendar}</tt>",
@@ -196,31 +196,31 @@
     "on-click": "kitty --class dotfiles-floating ~/dotfiles/scripts/installupdates.sh"
   },
   "network": {
-    "format": "{ifname}",
-    "format-wifi": "{essid} ({signalStrength}%) ",
+    "format": "{ifname} ",
+    "format-wifi": "{essid} ({signalStrength}%)  ",
     "format-ethernet": "Conectado ",
-    "format-disconnected": "Desconectado ",
+    "format-disconnected": "Desconectado  ",
     "tooltip-format": "{ifname}",
-    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-    "tooltip-format-ethernet": "{ifname} ",
-    "tooltip-format-disconnected": "Disconnected",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)  ",
+    "tooltip-format-ethernet": "{ifname}  ",
+    "tooltip-format-disconnected": "Disconnected ",
     "max-length": 50,
     "on-click": "nm-connection-editor"
   },
   "custom/notifications": {
-    "format": "{icon} {}",
+    "format": " {}",
     "format-icons": {
-      "email-notification": "<span foreground='white'><sup></sup></span>",
-      "chat-notification": "󱋊<span foreground='white'><sup></sup></span>",
-      "warning-notification": "󱨪<span foreground='yellow'><sup></sup></span>",
-      "error-notification": "󱨪<span foreground='red'><sup></sup></span>",
-      "network-notification": "󱂇<span foreground='white'><sup></sup></span>",
-      "battery-notification": "󰁺<span foreground='white'><sup></sup></span>",
-      "update-notification": "󰚰<span foreground='white'><sup></sup></span>",
-      "music-notification": "󰝚<span foreground='white'><sup></sup></span>",
-      "volume-notification": "󰕿<span foreground='white'><sup></sup></span>",
-      "notification": "<span foreground='white'><sup></sup></span>",
-      "none": ""
+      "email-notification": " <span foreground='white'><sup></sup></span>",
+      "chat-notification": "󱋊 <span foreground='white'><sup></sup></span>",
+      "warning-notification": "󱨪 <span foreground='yellow'><sup></sup></span>",
+      "error-notification": "󱨪 <span foreground='red'><sup></sup></span>",
+      "network-notification": "󱂇 <span foreground='white'><sup></sup></span>",
+      "battery-notification": "󰁺 <span foreground='white'><sup></sup></span>",
+      "update-notification": "󰚰 <span foreground='white'><sup></sup></span>",
+      "music-notification": "󰝚 <span foreground='white'><sup></sup></span>",
+      "volume-notification": "󰕿 <span foreground='white'><sup></sup></span>",
+      "notification": " <span foreground='white'><sup></sup></span>",
+      "none": " "
     },
     "return-type": "json",
     "exec-if": "which dunstctl",
