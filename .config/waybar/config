@@ -4,16 +4,14 @@
     "include": [
         "~/.config/waybar/modules.json"
     ],
-    "height": 35,
-    "margin-top": 5,
-    "margin-left": 5,
-    "margin-right": 5,
+    "height": 20,
     "layer": "top",
     "position": "top",
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
     "modules-left": [
+        "custom/updates",
         "group/hardware",
         "custom/spotify"
     ],
@@ -21,13 +19,11 @@
         "hyprland/workspaces"
     ],
     "modules-right": [
-        "custom/updates",
-        "battery",
-        "group/system",
+        "power-profiles-daemon",
         "pulseaudio#microphone",
-        "network",
+        "pulseaudio",
+        "clock",
         "tray",
-        "custom/notifications",
         "custom/power"
     ]
 }

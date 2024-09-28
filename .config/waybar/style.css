@@ -8,10 +8,8 @@
 }
 
 window#waybar {
-    background-color: rgba(14, 16, 20, 0.5);
-    transition-property: background-color;
-    transition-duration: .5s;
-    border-radius: 5px;
+    background-color: rgb(50, 49, 49);
+
 }
 
 window#waybar.hidden {
@@ -35,15 +33,14 @@ button {
 
 
 #workspaces button {
-    background-color: #3b4252;
-    border-radius: 5px;
-    margin: 5px 3px;
+    background-color: #3F3F3F;
+    border-radius: 2px;
+    margin: 5px 1px;
     transition: color 200ms ease-in-out;
-    color: #ffffff;
 }
 
 #workspaces button.active {
-    background: @color5;
+    background: whitesmoke;
     transition-property: background;
     transition-duration: .5s;
 }
@@ -60,6 +57,7 @@ button {
     background-color: #64727D;
     border-bottom: 3px solid #ffffff;
 }
+
 
 #clock,
 #battery,
@@ -83,16 +81,14 @@ button {
 #custom-updates,
 #custom-notifications,
 #custom-spotify {
-    padding: 0 9px;
+    padding: 0 8px;
     color: #fff;
-    background-color: #3b4252;
-    border-radius: 5px;
-    margin: 5px 3px;
+
 }
 
 #window,
 #workspaces {
-    margin: 0 4px;
+    margin: 0 8px;
 }
 
 .modules-left>widget:first-child>#workspaces {
@@ -126,6 +122,7 @@ label:focus {
 
 #pulseaudio.microphone.source-muted {
     background-color: #bf616a;
+    border-radius: 2px;
 }
 
 #temperature.critical {
