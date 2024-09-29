@@ -2,4 +2,4 @@
 
 My personal dotfiles
 
-![alt text](/assets/image1.png)
+![alt text](/assets/image1.jpeg)
