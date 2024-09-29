@@ -9,7 +9,7 @@
     "show-passive-items": true
   },
   "clock": {
-    "format": "{:L%H:%M}",
+    "format": "{:L%H:%M} |",
     "interval": 60,
     "rotate": 0,
     "tooltip-format": "<tt>{calendar}</tt>",
@@ -155,14 +155,7 @@
   },
   "group/hardware": {
     "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 300,
-      "children-class": "not-memory",
-      "transition-left-to-right": true
-    },
     "modules": [
-      "battery",
-      "bluetooth",
       "cpu",
       "memory",
       "temperature"
