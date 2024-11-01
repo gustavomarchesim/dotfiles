@@ -1,0 +1,6 @@
+# Ignorar arquivos de backup
+*~
+*.bak
+
+# Ignorar diretórios de instalação
+paru/

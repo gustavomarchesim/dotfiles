@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# Verifica se o Spotify está ativo
+spotify_status=$(playerctl -l | grep -i spotify)
+
+if [ -z "$spotify_status" ]; then
+    echo -e " Spotify Offline!\nSpotify Offline.\noffline"
+    exit 0
+fi
+
+# Obtém o status do player do Spotify
+player_status=$(playerctl -p spotify status 2> /dev/null)
+
+if [ "$player_status" = "Playing" ]; then
+    artist=$(playerctl -p spotify metadata artist 2> /dev/null)
+    title=$(playerctl -p spotify metadata title 2> /dev/null)
+
+    # Verifica se obteve os metadados
+    if [ -z "$artist" ] || [ -z "$title" ]; then
+        echo -e " Sem informação\nSem informação disponível.\noffline"
+    else
+        echo -e " $artist - $title\nPlaying: $artist - $title\nplaying"
+    fi
+elif [ "$player_status" = "Paused" ]; then
+    artist=$(playerctl -p spotify metadata artist 2> /dev/null)
+    title=$(playerctl -p spotify metadata title 2> /dev/null)
+
+    # Verifica se obteve os metadados
+    if [ -z "$artist" ] || [ -z "$title" ]; then
+        echo -e " Sem informação\nSem informação disponível.\noffline"
+    else
+        echo -e " $artist - $title\nPaused: $artist - $title\npaused"
+    fi
+else
+    echo -e " Spotify Offline!\nSpotify Offline.\noffline"
+fi

@@ -1,0 +1,307 @@
+/** ********** Fonts ********** **/
+* {
+    font-family: "JetBrains Mono", "Symbols Nerd Font", Iosevka, archcraft, sans-serif;
+    font-size: 14px;
+}
+
+/** ********** Waybar Window ********** **/
+window#waybar {
+    background-color: #20262C;
+	color: #f1fcf9;
+    border-bottom: 2px solid #2a323b;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.5;
+}
+
+/** ********** Custom ********** **/
+
+#custom-menu {
+	background-color: #2a323b;
+	color: #b4a1db;
+	font-size: 18px;
+	border-radius: 0px 14px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	padding: 2px 8px 2px 8px;
+}
+
+#custom-themes {
+    background-color: #b4a1db;
+}
+
+#custom-power {
+	background-color: #db86ba;
+	font-size: 16px;
+}
+
+#custom-power, #custom-themes {
+	color: #20262C;
+	border-radius: 10px;
+	margin: 6px 6px 6px 0px;
+	padding: 2px 8px 2px 8px;
+}
+
+/** ********** Idle Inhibitor ********** **/
+#idle_inhibitor {
+	background-color: #74dd91;
+	color: #20262C;
+	border-radius: 10px;
+	margin: 6px 0px 6px 6px;
+	padding: 4px 6px;
+}
+#idle_inhibitor.deactivated {
+	background-color: #db86ba;
+}
+
+/** ********** Tray ********** **/
+#tray {
+	background-color: #2a323b;
+	border-radius: 10px;
+	margin: 6px 0px 6px 6px;
+	padding: 4px 6px;
+}
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+#tray > .active {
+}
+
+/** ********** MPD ********** **/
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+#mpd {
+	color: #f1fcf9;
+	font-size: 12px;
+	font-weight: bold;
+}
+#mpd.disconnected {
+	color: #db86ba;
+}
+#mpd.stopped {
+	color: #db86ba;
+}
+#mpd.playing {
+	color: #9ee9ea;
+}
+#mpd.paused {
+}
+
+#mpd.2 {
+	border-radius: 10px 0px 0px 10px;
+	margin: 6px 0px 6px 6px;
+	padding: 4px 6px 4px 10px;
+}
+#mpd.3 {
+	margin: 6px 0px 6px 0px;
+	padding: 4px;
+}
+#mpd.4 {
+	border-radius: 0px 10px 10px 0px;
+	margin: 6px 6px 6px 0px;
+	padding: 4px 10px 4px 6px;
+}
+#mpd.2,#mpd.3,#mpd.4 {
+	background-color: #2a323b;
+	font-size: 14px;
+}
+
+/** ********** Spotify ********** **/
+#custom-spotify {
+	background-color: #2a323b;
+	color: #f1fcf9;
+	border-radius: 10px;
+	margin: 6px 0px 6px 6px;
+	padding: 4px 8px;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+#custom-spotify.paused {
+	color: #f1fcf9;
+}
+
+#custom-spotify.playing {
+    background: linear-gradient(90deg, #b4a1db 25%, #db86ba 50%, #e49186 75%, #9ee9ea 100%); 
+    background-size: 300% 300%;
+    animation: gradient 10s ease infinite;
+    color: #20262C;
+}
+
+#custom-spotify.offline {
+	color: #db86ba;
+}
+
+/** ********** CPU ********** **/
+#cpu {
+	color: #db86ba;
+}
+
+/** ********** Memory ********** **/
+#memory {
+	color: #74dd91;
+}
+
+/** ********** Disk ********** **/
+#disk {
+	color: #e49186;
+}
+
+/** ********** Pulseaudio ********** **/
+#pulseaudio {
+	color: #75dbe1;
+}
+#pulseaudio.bluetooth {
+	color: #9ee9ea;
+}
+#pulseaudio.muted {
+	color: #db86ba;
+}
+
+#pulseaudio.2 {
+}
+#pulseaudio.2.bluetooth {
+}
+#pulseaudio.2.muted {
+}
+
+/** ********** Backlight ********** **/
+#backlight {
+	color: #b4a1db;
+}
+
+/** ********** Battery ********** **/
+#battery {
+	color: #9ee9ea;
+}
+#battery.charging {
+}
+#battery.plugged {
+}
+@keyframes blink {
+    to {
+        color: #f1fcf9;
+    }
+}
+#battery.critical:not(.charging) {
+	background-color: #353f4a;
+}
+#battery.2.critical:not(.charging) {
+	background-color: #2a323b;
+    color: #db86ba;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/** ********** Network ********** **/
+#network {
+	color: #e49186;
+}
+#network.disconnected,#network.disabled {
+	color: #db86ba;
+}
+#network.linked {
+}
+#network.ethernet {
+}
+#network.wifi {
+}
+
+/** ********** Bluetooth ********** **/
+#bluetooth {
+	color: #74dd91;
+}
+#bluetooth.disabled {
+	color: #db86ba;
+}
+#bluetooth.off {
+	color: #db86ba;
+}
+#bluetooth.on {
+}
+#bluetooth.connected {
+}
+#bluetooth.discoverable {
+}
+#bluetooth.discovering {
+}
+#bluetooth.pairable {
+}
+
+/** ********** Clock ********** **/
+#clock {
+	color: #75dbe1;
+}
+
+/** ********** WLR Desktop ********** **/
+#workspaces {
+	background-color: #20262C;
+	border-radius: 10px;
+	margin-left: 6px;
+	margin-bottom: 2px;
+	padding: 0px;
+}
+#workspaces button {
+	color: #f1fcf9;
+}
+#workspaces button.active {
+	color: #db86ba;
+}
+#workspaces button.urgent {
+	color: #74dd91;
+}
+#workspaces button.hidden {
+	color: #e49186;
+}
+
+/** ********** Common style ********** **/
+#backlight, 
+#battery,
+#clock,
+#cpu,
+#disk,
+#memory,
+#pulseaudio,
+#network,
+#bluetooth {
+	background-color: #353f4a;
+	border-radius: 10px 0px 0px 10px;
+	margin: 6px 0px 6px 0px;
+	padding: 4px 6px;
+}
+
+#backlight.2, 
+#battery.2,
+#clock.2,
+#cpu.2,
+#disk.2,
+#memory.2,
+#pulseaudio.2,
+#network.2,
+#bluetooth.2 {
+	background-color: #2a323b;
+	color: #f1fcf9;
+	font-size: 12px;
+	font-weight: bold;
+	border-radius: 0px 10px 10px 0px;
+	margin: 6px 6px 6px 0px;
+	padding: 5px 6px 4px 6px;
+}

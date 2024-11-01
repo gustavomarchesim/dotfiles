@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+## launch waybar with alt config
+
+CONFIG="/home/gdam/.config/waybar/config"
+STYLE="/home/gdam/.config/waybar/style.css"
+
+if [[ ! `pidof waybar` ]]; then
+	waybar --bar main-bar --log-level error --config ${CONFIG} --style ${STYLE}
+fi
