@@ -27,6 +27,6 @@ Sinta-se à vontade para explorar e adaptar essas configurações conforme sua n
 3. Execute o script de instalação:
 
 	```bash
+         chmod +x install.sh
 	./install.sh
-	
 	```
