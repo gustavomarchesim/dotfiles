@@ -4,3 +4,7 @@
 
 # Ignorar diretórios de instalação
 paru/
+
+# Ignorar nohup
+.config/hypr/scripts/nohup.out
+
