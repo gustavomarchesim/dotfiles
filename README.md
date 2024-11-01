@@ -15,7 +15,7 @@ Sinta-se à vontade para explorar e adaptar essas configurações conforme sua n
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/SEU_USUARIO/dotfiles.git ~/dotfiles
+   git clone https://github.com/gustavomarchesim/dotfiles.git
    
    ```
 2. Navegue até o diretório:
