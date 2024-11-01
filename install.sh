@@ -74,6 +74,7 @@ install_dependencies
 
 # Cria os diretórios de configuração, se não existirem
 mkdir -p ~/.config
+mkdir -p ~/.local/share
 
 # Usa o Stow para criar links simbólicos
 echo "Criando links simbólicos com o Stow..."
@@ -81,6 +82,13 @@ echo "Criando links simbólicos com o Stow..."
 # Stow as configurações de .config
 if [ -d ".config" ]; then
     stow -v --target=$HOME/.config .config
+else
+    echo "Diretório .config não encontrado."
+fi
+
+# Stow as configurações de .local
+if [ -d ".local" ]; then
+    stow -v --target=$HOME/.local .local
 else
     echo "Diretório .config não encontrado."
 fi
