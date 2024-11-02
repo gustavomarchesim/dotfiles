@@ -2,7 +2,6 @@
 
 ## Simple Script To Pick Color Quickly.
 
-#color=$(grim -g "`slurp -b 00000000 -p`" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n1 | cut -d' ' -f4)
 color=`$(which hyprpicker)`
 image=/tmp/${color}.png
 

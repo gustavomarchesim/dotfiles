@@ -59,6 +59,7 @@ dependencies=(
     "hyprpicker"
     "hyprshot"
     "zsh"
+    "yad"
     "mako"
     "rofi-wayland"
     "rofi-emoji"

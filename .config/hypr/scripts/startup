@@ -27,5 +27,8 @@ fi
 # Start network manager applet
 nm-applet --indicator &
 
+# Start Hyprpaper
+hyprpaper
+
 # Start mpd
 exec mpd &
