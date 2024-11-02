@@ -1,14 +1,11 @@
 #!/usr/bin/env bash
 
-## Copyright (C) 2020-2024 Aditya Shakya <adi1090x@gmail.com>
-
 # Get Colors
 DIR="$HOME/.config"
 background="`cat $DIR/rofi/shared/colors.rasi | grep 'background:' | cut -d':' -f2 | tr -d ' '\;`"
 accent="`cat $DIR/rofi/shared/colors.rasi | grep 'selected:' | cut -d':' -f2 | tr -d ' '\;`"
 
 # Import Current Theme
-DIR="$HOME/.config"
 RASI="$DIR/rofi/screenshot.rasi"
 
 # Theme Elements
@@ -48,7 +45,7 @@ run_rofi() {
 # Screenshot
 time=`date +%Y-%m-%d-%H-%M-%S`
 dir="`xdg-user-dir PICTURES`/Screenshots"
-file="Screenshot_${time}_${geometry}.png"
+file="Screenshot_${time}.png"
 
 # Directory
 if [[ ! -d "$dir" ]]; then
@@ -77,33 +74,31 @@ countdown () {
 	done
 }
 
-# take shots
+# take shots using hyprshot
 shotnow () {
-	cd ${dir} && sleep 0.5 && grim - | tee "$file" | wl-copy
+	cd ${dir} && hyprshot -m output -o "$dir" -f "$file" && wl-copy < "$dir/$file"
 	notify_view
 }
 
 shot5 () {
 	countdown '5'
-	sleep 1 && cd ${dir} && grim - | tee "$file" | wl-copy
+	sleep 1 && cd ${dir} && hyprshot -m output -o "$dir" -f "$file" && wl-copy < "$dir/$file"
 	notify_view
 }
 
 shot10 () {
 	countdown '10'
-	sleep 1 && cd ${dir} && grim - | tee "$file" | wl-copy
+	sleep 1 && cd ${dir} && hyprshot -m output -o "$dir" -f "$file" && wl-copy < "$dir/$file"
 	notify_view
 }
 
 shotwin () {
-	w_pos=`hyprctl activewindow | grep 'at:' | cut -d':' -f2 | tr -d ' ' | tail -n1`
-	w_size=`hyprctl activewindow | grep 'size:' | cut -d':' -f2 | tr -d ' ' | tail -n1 | sed s/,/x/g`
-	cd ${dir} && sleep 0.3 && grim -g "$w_pos $w_size" - | tee "$file" | wl-copy
+	cd ${dir} && hyprshot -m window -o "$dir" -f "$file" && wl-copy < "$dir/$file"
 	notify_view
 }
 
 shotarea () {
-	cd ${dir} && grim -g "$(slurp -b ${background:1}CC -c ${accent:1}ff -s ${accent:1}0D -w 2 && sleep 0.3)" - | tee "$file" | wl-copy
+	cd ${dir} && hyprshot -m region -o "$dir" -f "$file" && wl-copy < "$dir/$file"
 	notify_view
 }
 
