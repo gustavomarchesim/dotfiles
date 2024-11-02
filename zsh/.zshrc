@@ -115,6 +115,7 @@ alias vim='nvim'
 alias c='clear'
 alias please='sudo'
 alias update='sudo pacman -Syu'
+alias edit='micro'
 
 # History shortcuts
 alias h='history | fzf'
