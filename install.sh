@@ -90,7 +90,7 @@ fi
 if [ -d ".local" ]; then
     stow -v --target=$HOME/.local .local
 else
-    echo "Diretório .config não encontrado."
+    echo "Diretório .local não encontrado."
 fi
 
 # Stow as outras configurações na raiz do usuário

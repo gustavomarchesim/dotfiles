@@ -12,10 +12,10 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-
 # ==========================
 # Zinit and Plugins
 # ==========================
+
 
 # Set the directory to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -120,6 +120,7 @@ alias update='sudo pacman -Syu'
 alias h='history | fzf'
 
 # Git shortcuts
+alias gap='git add .'
 alias gs='git status'
 alias gd='git diff'
 alias gp='git pull'
