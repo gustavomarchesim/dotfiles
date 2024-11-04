@@ -120,14 +120,6 @@ alias edit='micro'
 # History shortcuts
 alias h='history | fzf'
 
-# Git shortcuts
-alias gap='git add .'
-alias gs='git status'
-alias gd='git diff'
-alias gp='git pull'
-alias gcm='git commit -m'
-
-
 # ==========================
 # Shell Integrations
 # ==========================
