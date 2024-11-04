@@ -6,9 +6,9 @@
 
 /** ********** Waybar Window ********** **/
 window#waybar {
-    background-color: #20262C;
-	color: #f1fcf9;
-    border-bottom: 2px solid #2a323b;
+    background-color: #20262C; /* Cor principal escura */
+    color: #f1fcf9;            /* Texto Primário */
+    border-bottom: 2px solid #2a323b; /* Surface */
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -20,17 +20,14 @@ window#waybar.hidden {
 /** ********** Custom ********** **/
 
 #custom-menu {
-	background-color: #2a323b;
-	color: #b4a1db;
+	background-color: #2a323b; /* Surface */
+	color: #b4a1db;            /* Accent 1 */
 	font-size: 18px;
 	border-radius: 0px 14px 0px 0px;
 	margin: 0px 0px 0px 0px;
 	padding: 2px 8px 2px 8px;
 }
 
-#custom-themes {
-    background-color: #b4a1db;
-}
 
 #custom-power {
 	background-color: #db86ba;
@@ -46,19 +43,19 @@ window#waybar.hidden {
 
 /** ********** Idle Inhibitor ********** **/
 #idle_inhibitor {
-	background-color: #74dd91;
+	background-color: #74dd91; /* Sucesso */
 	color: #20262C;
 	border-radius: 10px;
 	margin: 6px 0px 6px 6px;
 	padding: 4px 6px;
 }
 #idle_inhibitor.deactivated {
-	background-color: #db86ba;
+	background-color: #db86ba; /* Accent 2 */;
 }
 
 /** ********** Tray ********** **/
 #tray {
-	background-color: #2a323b;
+	background-color: #2a323b; /* Surface  */
 	border-radius: 10px;
 	margin: 6px 0px 6px 6px;
 	padding: 4px 6px;
@@ -72,59 +69,11 @@ window#waybar.hidden {
 #tray > .active {
 }
 
-/** ********** MPD ********** **/
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
-
-#mpd {
-	color: #f1fcf9;
-	font-size: 12px;
-	font-weight: bold;
-}
-#mpd.disconnected {
-	color: #db86ba;
-}
-#mpd.stopped {
-	color: #db86ba;
-}
-#mpd.playing {
-	color: #9ee9ea;
-}
-#mpd.paused {
-}
-
-#mpd.2 {
-	border-radius: 10px 0px 0px 10px;
-	margin: 6px 0px 6px 6px;
-	padding: 4px 6px 4px 10px;
-}
-#mpd.3 {
-	margin: 6px 0px 6px 0px;
-	padding: 4px;
-}
-#mpd.4 {
-	border-radius: 0px 10px 10px 0px;
-	margin: 6px 6px 6px 0px;
-	padding: 4px 10px 4px 6px;
-}
-#mpd.2,#mpd.3,#mpd.4 {
-	background-color: #2a323b;
-	font-size: 14px;
-}
 
 /** ********** Spotify ********** **/
 #custom-spotify {
-	background-color: #2a323b;
-	color: #f1fcf9;
+	background-color: #2a323b; /* Surface */
+	color: #f1fcf9;            /* Texto Primário */
 	border-radius: 10px;
 	margin: 6px 0px 6px 6px;
 	padding: 4px 8px;
@@ -137,14 +86,14 @@ window#waybar.hidden {
 }
 
 #custom-spotify.playing {
-    background: linear-gradient(90deg, #b4a1db 25%, #db86ba 50%, #e49186 75%, #9ee9ea 100%); 
+	background: linear-gradient(90deg, #b4a1db 25%, #db86ba 50%, #e49186 75%, #9ee9ea 100%);
     background-size: 300% 300%;
     animation: gradient 10s ease infinite;
     color: #20262C;
 }
 
 #custom-spotify.offline {
-	color: #db86ba;
+	color: #db86ba; /* Accent 2 */
 }
 
 /** ********** CPU ********** **/
