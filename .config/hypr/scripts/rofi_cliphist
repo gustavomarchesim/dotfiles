@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Caminho do Tema Atual
+DIR="$HOME/.config"
+RASI="$DIR/rofi/cliphist.rasi"
+
+# Executa o cliphist com o rofi
+cliphist list | rofi -dmenu -theme "${RASI}" | cliphist decode | wl-copy
