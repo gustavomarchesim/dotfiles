@@ -107,4 +107,22 @@ else
     echo ".zshrc não encontrado."
 fi
 
+# Criar link simbólico para .p10k.zsh
+echo "Criando link simbólico para .p10k.zsh..."
+if [ -f "p10k/.p10k.zsh" ]; then
+    ln -sf "$(pwd)/p10k/.p10k.zsh" "$HOME/.p10k.zsh"
+    echo ".p10k.zsh linkado com sucesso."
+else
+    echo ".p10k.zsh não encontrado."
+fi
+
+# Criar link simbólico para .gitconfig
+echo "Criando link simbólico para .gitconfig..."
+if [ -f "git/.gitconfig" ]; then
+    ln -sf "$(pwd)/git/.gitconfig" "$HOME/.gitconfig"
+    echo ".gitconfig linkado com sucesso."
+else
+    echo ".gitconfig não encontrado."
+fi
+
 echo "Instalação concluída! As dotfiles foram configuradas."
