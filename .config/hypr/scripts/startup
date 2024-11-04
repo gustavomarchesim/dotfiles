@@ -24,11 +24,14 @@ fi
 # Lauch statusbar (waybar)
 ~/.config/hypr/scripts/statusbar &
 
+# Launch wallpapers
+~/.config/hypr/scripts/wallpaper.sh &
+
 # Start network manager applet
 nm-applet --indicator &
 
-# Start Hyprpaper
-hyprpaper
+# Start hypridle
+hypridle &
 
 # Start mpd
 exec mpd &

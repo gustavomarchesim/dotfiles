@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
-## Set GTK Themes, Icons, Cursor and Fonts
+## Pegar configurações diretamente do arquivo do nwg-look
 
-THEME='Manhattan'
-ICONS='Luv-Folders-Dark'
-FONT='Noto Sans 9'
-CURSOR='Qogirr-Dark'
+CONFIG_FILE="$HOME/dotfiles/.local/share/nwg-look/gsettings"
+
+# Extrair as configurações específicas
+THEME=$(grep '^gtk-theme=' "$CONFIG_FILE" | cut -d'=' -f2)
+ICONS=$(grep '^icon-theme=' "$CONFIG_FILE" | cut -d'=' -f2)
+FONT=$(grep '^font-name=' "$CONFIG_FILE" | cut -d'=' -f2)
+CURSOR=$(grep '^cursor-theme=' "$CONFIG_FILE" | cut -d'=' -f2)
 
 SCHEMA='gsettings set org.gnome.desktop.interface'
 
