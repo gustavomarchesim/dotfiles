@@ -1,5 +1,3 @@
-// Copyr
-//
 // Waybar modules configuration
 {
 	// waybar-backlight
@@ -164,8 +162,7 @@
            
 	// waybar-spotify
     "custom/spotify": {
-    	"exec-if": "which spotify",
-        "exec": "$HOME/.config/hypr/waybar/spotify",
+        "exec": "$HOME/.config/waybar/spotify",
         "interval": 1,
         "format": "{}",
         "tooltip": true,
