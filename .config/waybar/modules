@@ -175,52 +175,6 @@
 		"smooth-scrolling-threshold": 1
     },
 
-	// waybar-mpd
-    "mpd": {
-        "interval": 2,
-        "unknown-tag": "N/A",
-        "format": "{artist} - {title} | 祥 {elapsedTime:%M:%S}",
-        "format-disconnected": "Disconnected",
-        "format-paused": "{artist} - {title}",
-        "format-stopped": "Stopped",
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)",
-		// Commands to execute on events
-        "on-click": "mpc toggle",
-        "on-scroll-up": "mpc seek +00:00:01",
-        "on-scroll-down": "mpc seek -00:00:01",
-        "smooth-scrolling-threshold": 1,
-    },
-    "mpd#2": {
-        "format": "玲",
-        "format-disconnected": "玲",
-        "format-paused": "玲",
-        "format-stopped": "玲",
-		// Commands to execute on events
-        "on-click": "mpc prev",
-    },
-    "mpd#3": {
-        "interval": 1,
-        "format": "{stateIcon}",
-        "format-disconnected": "",
-        "format-paused": "{stateIcon}",
-        "format-stopped": "",
-        "state-icons": {
-            "paused": "",
-            "playing": ""
-        },
-		// Commands to execute on events
-        "on-click": "mpc toggle",
-    },
-    "mpd#4": {
-        "format": "怜",
-        "format-disconnected": "怜",
-        "format-paused": "怜",
-        "format-stopped": "怜",
-		// Commands to execute on events
-        "on-click": "mpc next",
-    },
-
 	// waybar-network
     "network": {
 		"interval": 5,
@@ -299,7 +253,7 @@
              "1": "",
              "2": "",
              "3": "",
-             "4": "",
+             "4": "",
              "5": "",
              "6": "漣",
              "7": "",
