@@ -29,9 +29,3 @@ fi
 
 # Start network manager applet
 nm-applet --indicator &
-
-# Start hypridle
-hypridle &
-
-# Start mpd
-exec mpd &
