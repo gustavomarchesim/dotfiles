@@ -1,1 +1,1 @@
-/home/gdam/dotfiles/.config/hypr/wallpapers/wallpaper.png
+/home/gdam/dotfiles/.config/hypr/wallpapers/wallpaper3.png
