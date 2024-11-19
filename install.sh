@@ -72,12 +72,28 @@ dependencies=(
     "seahorse"      # Gerenciador de senhas e chaves
     "wlogout"       # Logout para Wayland
     "nwg-look"      # Modificações visuais para o NWG (Noti e outras)
+    "tmux"          # Multiplexador de Terminal
+    "yazi"          # Gerenciador de arquivos com base em Rust
 )
-
-
 
 # Chama a função para instalar as dependências
 install_dependencies
+
+# Função para instalar o TPM
+install_tmux_plugin_manager(){
+  echo "Instalando o TPM"
+  diretorio="$HOME/.config/tmux/plugins/tpm"
+
+  if [ -d "$diretorio" ]; then
+    echo "A pasta existe, pulando instalação"
+  else
+    echo "O TPM não foi encontrado. Clonando o repositório..."
+    git clone https://github.com/tmux-plugins/tpm "$diretorio"
+    echo "TPM instalado com sucesso!"
+  fi
+}
+# Chama a função para instalar o TPM
+install_tmux_plugin_manager
 
 # Cria os diretórios de configuração, se não existirem
 mkdir -p ~/.config
