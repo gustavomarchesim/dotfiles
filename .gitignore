@@ -9,6 +9,6 @@ paru/
 .config/hypr/scripts/nohup.out
 
 #Ignora cache de wallpaper
-$HOME/.config/hypr/last_wallpaper.txt
-$HOME/.config/hypr/hyprpaper.conf
+.config/hypr/last_wallpaper.txt
+.config/hypr/hyprpaper.conf
 
