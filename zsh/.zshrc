@@ -129,6 +129,7 @@ alias h='history | fzf'
 alias t='tmux'
 alias tks='tmux kill-session -t'
 alias tls='tmux list-sessions'
+alias tas='tmux attach-session -t'
 # ==========================
 # Shell Integrations
 # ==========================
