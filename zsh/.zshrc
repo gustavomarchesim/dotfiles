@@ -3,7 +3,6 @@
 # ==========================
 export EDITOR=nvim
 
-
 # ==========================
 # Powerlevel10k Configuration
 # ==========================
@@ -128,6 +127,8 @@ alias h='history | fzf'
 
 # Tmux shortcuts
 alias t='tmux'
+alias tks='tmux kill-session -t'
+alias tls='tmux list-sessions'
 # ==========================
 # Shell Integrations
 # ==========================
