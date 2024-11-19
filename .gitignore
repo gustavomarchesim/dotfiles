@@ -9,5 +9,6 @@ paru/
 .config/hypr/scripts/nohup.out
 
 #Ignora cache de wallpaper
-/home/gdam/dotfiles/.config/hypr/last_wallpaper.txt
+$HOME/.config/hypr/last_wallpaper.txt
+$HOME/.config/hypr/hyprpaper.conf
 
