@@ -10,5 +10,5 @@ paru/
 
 #Ignora cache de wallpaper
 .config/hypr/last_wallpaper.txt
-.config/hypr/hyprpaper.conf
+
 
