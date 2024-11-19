@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Kill existing portal processes
+killall -e xdg-desktop-portal-hyprland
+killall -e xdg-desktop-portal-gtk
+killall -e xdg-desktop-portal-wlr
+killall -e xdg-desktop-portal-gnome
+killall xdg-desktop-portal
+
+# Wait for processes to terminate
+sleep 1
+
+# Define an array of portal services to restart
+declare -a portals=("xdg-desktop-portal-hyprland" "xdg-desktop-portal")
+
+# Restart each portal if the command is available
+for portal in "${portals[@]}"; do
+    if command -v "/usr/lib/$portal" &> /dev/null; then
+        "/usr/lib/$portal" &
+    elif command -v "/usr/libexec/$portal" &> /dev/null; then
+        "/usr/libexec/$portal" &
+    fi
+    sleep 2
+done
