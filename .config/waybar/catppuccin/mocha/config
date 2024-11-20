@@ -1,5 +1,6 @@
 {
   "include": "~/dotfiles/.config/waybar/catppuccin/mocha/modules",
+  "output": "eDP-1",
   "name": "main-bar",
   "id": "main-bar",
   "layer": "top",
