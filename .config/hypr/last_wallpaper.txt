@@ -1,1 +1,1 @@
-/home/gdam/dotfiles/.config/hypr/wallpapers/flatppuccin_4k_macchiato.png
+/home/gdam/dotfiles/.config/hypr/wallpapers/gradient-synth-cat.png
