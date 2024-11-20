@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-## launch waybar with alt config
-
 CONFIG="/home/gdam/.config/waybar/config"
 STYLE="/home/gdam/.config/waybar/style.css"
 
