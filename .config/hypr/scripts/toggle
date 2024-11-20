@@ -1,5 +1,8 @@
 #!/bin/bash
 
+CONFIG="/home/gdam/.config/waybar/catppuccin/mocha/config"
+STYLE="/home/gdam/.config/waybar/catppuccin/mocha/style.css"
+
 # Verifica se o Waybar está rodando
 if pgrep -x "waybar" > /dev/null
 then
@@ -7,5 +10,5 @@ then
     killall -q waybar
 else
     # Se não estiver rodando, inicia o Waybar
-    waybar &
+    waybar --bar main-bar --log-level error --config ${CONFIG} --style ${STYLE}
 fi

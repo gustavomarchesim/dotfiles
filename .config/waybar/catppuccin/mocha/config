@@ -1,5 +1,5 @@
 {
-  "include": "~/dotfiles/.config/waybar/modules",
+  "include": "~/dotfiles/.config/waybar/catppuccin/mocha/modules",
   "name": "main-bar",
   "id": "main-bar",
   "layer": "top",
