@@ -7,9 +7,9 @@
 
 /** ********** Waybar Window ********** **/
 window#waybar {
-  background-color: #20262c; /* Cor principal escura */
-  color: #f1fcf9; /* Texto Primário */
-  border-bottom: 2px solid #2a323b; /* Surface */
+  background-color: #1e1d2d; /* Cor principal escura */
+  color: #cdd6f4; /* Texto Primário */
+  border-bottom: 2px solid #313244; /* Surface */
   transition-property: background-color;
   transition-duration: 0.5s;
 }
@@ -21,8 +21,8 @@ window#waybar.hidden {
 /** ********** Custom ********** **/
 
 #custom-menu {
-  background-color: #2a323b; /* Surface */
-  color: #b4a1db; /* Accent 1 */
+  background-color: #313244; /*Surface */
+  color: #b4befe; /* Accent 1 */
   font-size: 18px;
   border-radius: 0px 14px 0px 0px;
   margin: 0px 0px 0px 0px;
@@ -30,33 +30,21 @@ window#waybar.hidden {
 }
 
 #custom-power {
-  background-color: #db86ba;
+  background-color: #f38ba8;
   font-size: 16px;
 }
 
 #custom-power,
 #custom-themes {
-  color: #20262c;
+  color: #1e1d2d;
   border-radius: 10px;
   margin: 6px 6px 6px 0px;
   padding: 2px 8px 2px 8px;
 }
 
-/** ********** Idle Inhibitor ********** **/
-#idle_inhibitor {
-  background-color: #74dd91; /* Sucesso */
-  color: #20262c;
-  border-radius: 10px;
-  margin: 6px 0px 6px 6px;
-  padding: 4px 6px;
-}
-#idle_inhibitor.deactivated {
-  background-color: #db86ba; /* Accent 2 */
-}
-
 /** ********** Tray ********** **/
 #tray {
-  background-color: #2a323b; /* Surface  */
+  background-color: #313244; /* Surface  */
   border-radius: 10px;
   margin: 6px 0px 6px 6px;
   padding: 4px 6px;
@@ -67,182 +55,82 @@ window#waybar.hidden {
 #tray > .needs-attention {
   -gtk-icon-effect: highlight;
 }
-#tray > .active {
-}
-
-/** ********** Spotify ********** **/
-#custom-spotify {
-  background-color: #2a323b; /* Surface */
-  color: #f1fcf9; /* Texto Primário */
-  border-radius: 10px;
-  margin: 6px 0px 6px 6px;
-  padding: 4px 8px;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-#custom-spotify.paused {
-  color: #f1fcf9;
-}
-
-#custom-spotify.playing {
-  background: linear-gradient(
-    90deg,
-    #b4a1db 25%,
-    #db86ba 50%,
-    #e49186 75%,
-    #9ee9ea 100%
-  );
-  background-size: 300% 300%;
-  animation: gradient 10s ease infinite;
-  color: #20262c;
-}
-
-#custom-spotify.offline {
-  color: #db86ba; /* Accent 2 */
-}
 
 /** ********** CPU ********** **/
 #cpu {
-  color: #db86ba;
+  color: #eba0ac;
 }
 
 /** ********** Memory ********** **/
 #memory {
-  color: #74dd91;
+  color: #a6e3a1;
 }
 
 /** ********** Disk ********** **/
 #disk {
-  color: #e49186;
+  color: #fab387;
 }
 
 /** ********** Pulseaudio ********** **/
 #pulseaudio {
-  color: #75dbe1;
+  color: #74c7ec;
 }
 #pulseaudio.bluetooth {
-  color: #9ee9ea;
+  color: #94e2d5;
 }
 #pulseaudio.muted {
-  color: #db86ba;
-}
-
-#pulseaudio.2 {
-}
-#pulseaudio.2.bluetooth {
-}
-#pulseaudio.2.muted {
-}
-
-/** ********** Backlight ********** **/
-#backlight {
-  color: #b4a1db;
+  color: #eba0ac;
 }
 
 /** ********** Battery ********** **/
 #battery {
-  color: #9ee9ea;
+  color: #94e2d5;
 }
-#battery.charging {
-}
-#battery.plugged {
-}
+
 @keyframes blink {
   to {
     color: #f1fcf9;
   }
 }
-#battery.critical:not(.charging) {
-  background-color: #353f4a;
-}
-#battery.2.critical:not(.charging) {
-  background-color: #2a323b;
-  color: #db86ba;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
 
 /** ********** Network ********** **/
 #network {
-  color: #e49186;
+  color: #fab387;
 }
 #network.disconnected,
 #network.disabled {
-  color: #db86ba;
-}
-#network.linked {
-}
-#network.ethernet {
-}
-#network.wifi {
+  color: #eba0ac;
 }
 
 /** ********** Bluetooth ********** **/
 #bluetooth {
-  color: #74dd91;
+  color: #a6e3a1;
 }
 #bluetooth.disabled {
-  color: #db86ba;
+  color: #eba0ac;
 }
 #bluetooth.off {
-  color: #db86ba;
-}
-#bluetooth.on {
-}
-#bluetooth.connected {
-}
-#bluetooth.discoverable {
-}
-#bluetooth.discovering {
-}
-#bluetooth.pairable {
+  color: #eba0ac;
 }
 
 /** ********** Clock ********** **/
 #clock {
-  color: #75dbe1;
+  color: #89b4fa;
 }
 
 /** ********** WLR Desktop ********** **/
 #workspaces {
-  background-color: #20262c;
+  background-color: #1e1d2d;
   border-radius: 10px;
   margin-left: 6px;
   margin-bottom: 2px;
   padding: 0px;
 }
 #workspaces button {
-  color: #f1fcf9;
+  color: #cdd6f4;
 }
 #workspaces button.active {
-  color: #db86ba;
-}
-#workspaces button.urgent {
-  color: #74dd91;
-}
-#workspaces button.hidden {
-  color: #e49186;
-}
-
-/** ********** Updates ********** **/
-@keyframes blink-update {
-  to {
-    background-color: dodgerblue;
-  }
-}
-
-#custom-pacman {
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-#custom-pacman.pending-updates {
-  animation-name: blink-update;
-  animation-duration: 3s;
+  color: #f9e2af;
 }
 
 /** ********** Common style ********** **/
@@ -256,7 +144,7 @@ window#waybar.hidden {
 #network,
 #bluetooth,
 #updates {
-  background-color: #353f4a;
+  background-color: #45475a;
   border-radius: 10px 0px 0px 10px;
   margin: 6px 0px 6px 0px;
   padding: 4px 6px;
@@ -272,8 +160,8 @@ window#waybar.hidden {
 #network.2,
 #bluetooth.2,
 #updates.2 {
-  background-color: #2a323b;
-  color: #f1fcf9;
+  background-color: #313244;
+  color: #cdd6f4;
   font-size: 12px;
   font-weight: bold;
   border-radius: 0px 10px 10px 0px;

@@ -6,7 +6,7 @@
   "exclusive": true,
   "passthrough": false,
   "position": "top",
-  "height": 34,
+  "height": 30,
   "width": "",
   "spacing": 0,
   "margin": 0,
@@ -19,9 +19,7 @@
   "modules-left": [
     "custom/menu",
     "hyprland/workspaces",
-    "idle_inhibitor",
-    "tray",
-    "custom/spotify"
+    "tray"
   ],
   "modules-center": [
     "cpu",
