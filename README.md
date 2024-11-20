@@ -29,4 +29,8 @@ Sinta-se à vontade para explorar e adaptar essas configurações conforme sua n
 	```bash
     chmod +x install.sh
    ./install.sh
+
 	```
+
+## Showcase
+![alt text](/assets/imagem.png)
