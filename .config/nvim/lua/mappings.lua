@@ -12,5 +12,8 @@ map("n", "<C-j>", ":TmuxNavigateDown<CR>", { silent = true })
 map("n", "<C-k>", ":TmuxNavigateUp<CR>", { silent = true })
 map("n", "<C-l>", ":TmuxNavigateRight<CR>", { silent = true })
 map("n", "<C-\\>", ":TmuxNavigatePrevious<CR>", { silent = true })
+map("n", "<leader>lt", function()
+  require("live-server-nvim").toggle()
+end, { desc = "Toggle Live Server" })
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
