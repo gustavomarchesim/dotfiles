@@ -1,4 +1,5 @@
 /** ********** Fonts ********** **/
+
 * {
   font-family: "JetBrains Mono", "Symbols Nerd Font", Iosevka, archcraft,
     sans-serif;
@@ -7,6 +8,7 @@
 }
 
 /** ********** Waybar Window ********** **/
+
 window#waybar {
   background-color: #1e1d2d; /* Cor principal escura */
   color: #cdd6f4; /* Texto Primário */
@@ -33,10 +35,6 @@ window#waybar.hidden {
 #custom-power {
   background-color: #f38ba8;
   font-size: 16px;
-}
-
-#custom-power,
-#custom-themes {
   color: #1e1d2d;
   border-radius: 10px;
   margin: 6px 6px 6px 0px;
@@ -44,6 +42,7 @@ window#waybar.hidden {
 }
 
 /** ********** Tray ********** **/
+
 #tray {
   background-color: #313244; /* Surface  */
   border-radius: 10px;
@@ -58,21 +57,25 @@ window#waybar.hidden {
 }
 
 /** ********** CPU ********** **/
+
 #cpu {
   color: #eba0ac;
 }
 
 /** ********** Memory ********** **/
+
 #memory {
   color: #a6e3a1;
 }
 
 /** ********** Disk ********** **/
+
 #disk {
   color: #fab387;
 }
 
 /** ********** Pulseaudio ********** **/
+
 #pulseaudio {
   color: #74c7ec;
 }
@@ -84,6 +87,7 @@ window#waybar.hidden {
 }
 
 /** ********** Battery ********** **/
+
 #battery {
   color: #94e2d5;
 }
@@ -95,6 +99,7 @@ window#waybar.hidden {
 }
 
 /** ********** Network ********** **/
+
 #network {
   color: #fab387;
 }
@@ -104,6 +109,7 @@ window#waybar.hidden {
 }
 
 /** ********** Bluetooth ********** **/
+
 #bluetooth {
   color: #a6e3a1;
 }
@@ -115,11 +121,13 @@ window#waybar.hidden {
 }
 
 /** ********** Clock ********** **/
+
 #clock {
   color: #89b4fa;
 }
 
 /** ********** WLR Desktop ********** **/
+
 #workspaces {
   background-color: #1e1d2d;
   border-radius: 10px;
@@ -135,6 +143,7 @@ window#waybar.hidden {
 }
 
 /** ********** Common style ********** **/
+
 #backlight,
 #battery,
 #clock,
