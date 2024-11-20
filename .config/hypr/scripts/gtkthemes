@@ -8,14 +8,14 @@ CONFIG_FILE="$HOME/dotfiles/.local/share/nwg-look/gsettings"
 THEME=$(grep '^gtk-theme=' "$CONFIG_FILE" | cut -d'=' -f2)
 ICONS=$(grep '^icon-theme=' "$CONFIG_FILE" | cut -d'=' -f2)
 FONT=$(grep '^font-name=' "$CONFIG_FILE" | cut -d'=' -f2)
-CURSOR=$(grep '^cursor-theme=' "$CONFIG_FILE" | cut -d'=' -f2)
+# CURSOR=$(grep '^cursor-theme=' "$CONFIG_FILE" | cut -d'=' -f2)
 
 SCHEMA='gsettings set org.gnome.desktop.interface'
 
 apply_themes () {
 	${SCHEMA} gtk-theme "$THEME"
 	${SCHEMA} icon-theme "$ICONS"
-	${SCHEMA} cursor-theme "$CURSOR"
+  # ${SCHEMA} cursor-theme "$CURSOR"
 	${SCHEMA} font-name "$FONT"
 }
 
