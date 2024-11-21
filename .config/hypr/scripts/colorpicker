@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-## Simple Script To Pick Color Quickly.
-
 color=`$(which hyprpicker)`
 image=/tmp/${color}.png
 
@@ -16,5 +14,4 @@ main() {
 	fi
 }
 
-# Run the script
 main
