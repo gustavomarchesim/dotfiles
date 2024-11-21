@@ -38,20 +38,11 @@ source "${ZINIT_HOME}/zinit.zsh"
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # Load Zsh plugins
-zinit light zsh-users/zsh-syntax-highlighting
+zinit light Aloxaf/fzf-tab
+zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-zinit light Aloxaf/fzf-tab
-
-# Load additional snippets
-zinit snippet OMZL::git.zsh
-zinit snippet OMZP::git
-zinit snippet OMZP::sudo
-zinit snippet OMZP::archlinux
-zinit snippet OMZP::aws
-zinit snippet OMZP::kubectl
-zinit snippet OMZP::kubectx
-zinit snippet OMZP::command-not-found
+zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -59,6 +50,14 @@ autoload -Uz compinit && compinit
 # Enable cd replay quietly
 zinit cdreplay -q
 
+# ==========================
+#  Zstyle Configuration
+# ==========================
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # ==========================
 # History Configuration
@@ -76,40 +75,20 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-
-# ==========================
-# Keybindings
-# ==========================
-
-bindkey -e
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-bindkey '^[w' kill-region
-
-
-# ==========================
-# Completion Styling
-# ==========================
-
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-
-
 # ==========================
 # Aliases
 # ==========================
 
 # File and directory shortcuts
-alias ls='eza --long --all --no-permissions --no-filesize --no-user --no-time --git'
+alias ls='eza --long --all --no-permissions --no-filesize --no-user --no-time --git --color=always'
 alias ll='ls -lh'
 alias la='ls -la'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias cd..='cd ..'
-alias up='cd ..'
+alias ~='cd ~'
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
 
 # Text and command preview
 alias cat='bat --paging never --theme DarkNeon --style plain'
@@ -117,19 +96,20 @@ alias fzfp='fzf --preview "bat --style numbers --color always {}"'
 
 # System shortcuts
 alias vim='nvim'
+alias vi='nvim'
 alias c='clear'
-alias please='sudo'
-alias update='sudo pacman -Syu'
-alias edit='micro'
 
 # History shortcuts
 alias h='history | fzf'
 
 # Tmux shortcuts
-alias t='tmux'
+alias tx='tmux'
 alias tks='tmux kill-session -t'
 alias tls='tmux list-sessions'
 alias tas='tmux attach-session -t'
+alias tns='tmux new-session -s'
+alias tks-all="tmux kill-server"
+
 # ==========================
 # Shell Integrations
 # ==========================
