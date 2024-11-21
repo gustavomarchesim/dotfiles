@@ -1,9 +1,4 @@
 # ==========================
-# Default Editor
-# ==========================
-export EDITOR=nvim
-
-# ==========================
 # Powerlevel10k Configuration
 # ==========================
 
@@ -42,7 +37,7 @@ zinit light Aloxaf/fzf-tab
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
+#zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
 
 # Load completions
 autoload -Uz compinit && compinit

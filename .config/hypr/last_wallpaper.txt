@@ -1,1 +1,1 @@
-/home/gdam/dotfiles/.config/hypr/wallpapers/gradient-synth-cat.png
+/home/gdam/dotfiles/.config/hypr/wallpapers/tetris.png
