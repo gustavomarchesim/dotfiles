@@ -1,0 +1,11 @@
+[[manager.prepend_keymap]]
+on   = "T"
+run  = "plugin --sync hide-preview"
+desc = "Hide or show preview"
+
+# Atalho para abrir o Neovim com a tecla Enter
+[[manager.prepend_keymap]]
+on   = "Enter"
+run  = "nvim {file}"
+when = "is_file"
+desc = "Open file with Neovim"
