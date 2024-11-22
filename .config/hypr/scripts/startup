@@ -22,9 +22,6 @@ pidof xfce-polkit &> /dev/null || /usr/lib/xfce-polkit/xfce-polkit &
 # Launch statusbar (waybar)
 ~/.config/hypr/scripts/statusbar &
 
-# Launch wallpapers
-~/.config/hypr/scripts/wallpaper.sh &
-
 # Launch XDG
 ~/.config/hypr/scripts/xdg &
 

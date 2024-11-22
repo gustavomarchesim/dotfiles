@@ -1,118 +1,161 @@
 {
-    "height": 24,
-    "spacing": 2,
-    "modules-left": [
-        "hyprland/workspaces",
-        "tray"
-    ],
-    "modules-center": [
-        "cpu",
-        "memory",
-        "disk"
-    ],
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 36,  // Waybar height (to be removed for auto height)
+    // "width": 1896, // Waybar width
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "spacing": 6, // Gaps between modules (4px)
+    "fixed-center": true,
+    // Choose the order of the modules
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["hyprland/window"],
     "modules-right": [
+        "custom/updates",
         "pulseaudio",
+        "network",
         "bluetooth",
-        "custom/exit",
+        "battery",
+        "tray",
         "clock"
     ],
-    "disk": {
-        "interval": 30,
-        "format": " {free}"
+
+    // Modules configuration
+    "keyboard-state": {
+        "numlock": false,
+        "capslock": true,
+        "format": {
+            "numlock": "󰎠",
+            "capslock": "󰪛"
+        }
     },
-    "custom/exit": {
-        "format": "",
-        "on-click": "wlogout",
-        "tooltip-format": "Power Menu"
-    },
-    "tray": {
-        "spacing": 10
-    },
-    "clock": {
-        "interval": 60,
-        "format": " {:%d/%m |  %H:%M}",
-        "tooltip-format": "<tt><small>{calendar}</small></tt>"
-    },
-    "cpu": {
-        "format": "󰍛 {usage}%",
-        "interval": 1,
-        "on-click-right": "htop"
-    },
-    "memory": {
-        "interval": 5,
-        "format": " {percentage}%"
-    },
-    "temperature": {
-        "interval": 10,
-        "tooltip": true,
-        "hwmon-path": [
-            "/sys/class/hwmon/hwmon4/temp1_input",
-            "/sys/class/thermal/thermal_zone0/temp"
-        ],
-        "critical-threshold": 82,
-        "format-critical": "{icon} {temperatureC}°C",
-        "format": "{icon} {temperatureC}°C",
-        "format-alt": "{icon} {temperatureF}°F",
-        "format-icons": [
-            ""
-        ]
-    },
-    "pulseaudio": {
-        "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon} ",
-        "format-muted": "",
+    "hyprland/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": true,
+        "on-click": "activate",
+        "format": "{icon}",
         "format-icons": {
-            "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
-            "headphones": "",
-            "handsfree": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": [
-                "",
-                ""
-            ]
+            "1": "󰖟",
+            "2": "󰆍",
+            "3": "󱋣",
+            "4": "󰨞",
+            "5": "󱇣",
+            "6": "󰖳",
+            "7": "󰷈",
+            "8": "󰆦",
+            "9": "󰎼",
+            "10": "󰽽",
+            "urgent": "󱈸"
         },
-        "scroll-step": 1,
-        "on-click": "pavucontrol"
+        "on-scroll-up": "hyprctl dispatch workspace e-1",
+        "on-scroll-down": "hyprctl dispatch workspace e+1",
+        "cursor": false
     },
-    "bluetooth": {
-        "format": " {status}",
-        "format-connected": " {device_alias}",
-        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
-        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-        "on-click": "blueman-manager"
+    "tray": { // "icon-size": 21,
+        "spacing": 6,
+        "icon-size": 16,
+        "cursor": false
     },
-      "hyprland/workspaces": {
-        "persistent-workspaces": {
-            "*": [
-                1,
-                2,
-                3,
-                4,
-                5
-            ]
+    "clock": {        
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}",
+        "cursor": false,
+        "timezone": "America/Toronto",
+        "calendar": {
+            "format": {
+                "today": "<span color='#ac4142'><b><u>{}</u></b></span>",
+            },
         }
     },
     "battery": {
-        "bat": "BAT0",
-        "interval": 60,
-        "states": {
+        "states": { // "good": 95,
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
+        "format": "{icon}",
+        "format-charging": "󰂄",
+        "format-plugged": "󰚥",
+        "format-alt": "{capacity}%",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
         "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
+            "󰁺",
+            "󰁼",
+            "󰁾",
+            "󰂁",
+            "󰁹"
         ],
-        "max-length": 25
+        "tooltip-format": "Current charge: {capacity}%\nTime to empty: {time}",
+        "tooltip-format-charging": "Current charge: {capacity}%\nTime to charge: {time}",
+        "cursor": false
     },
-  }
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{icon}",
+        "format-ethernet": "󰈁",
+        "tooltip-format": "{ifname}",
+        "tooltip-format-wifi": "Network {essid}\nGateway {gwaddr}\nIP {ipaddr}\nFrequency {frequency} GHz\nSignal {signaldBm} dBm ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ifname}",
+        "tooltip-format-disconnected": "Disconnected",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "󰈂",
+        "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ],
+        "on-click": "kitty -1 --class 'nmtui' -e nmtui",
+        "cursor": false
+    },
+    "bluetooth": {
+        // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+        "format": "󰂯",
+        "format-disabled": "", // an empty format will hide the module
+        "format-connected": " {num_connections} connected",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "blueberry",
+        "cursor": false
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon}",
+        "format-bluetooth": "󰗾",
+        "format-bluetooth-muted": "󰗿",
+        "format-muted": "󰝟",
+        "format-source": "󰍬",
+        "format-source-muted": "󰍭",
+        "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "",
+            "headset": "󰋎",
+            "phone": "󰏲",
+            "portable": "",
+            "car": "",
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "pactl set-sink-mute 0 toggle",
+        "max-volume": "100",
+        "on-scroll-up": "pactl set-sink-mute 0 false ; pamixer -d 5",
+        "on-scroll-down": "pactl set-sink-mute 0 false ; pamixer -i 5",
+        "smooth-scrolling-threshold": "0",
+        "tooltip-format": "Volume: {volume}%",
+        "cursor": false
+    },
+    "custom/updates": {
+        "format": "{icon}",
+        "return-type": "json",
+        "format-icons": {
+            "has-updates": "󰣇",
+            "updated": ""
+        },
+        "exec-if": "which waybar-module-pacman-updates",
+        "exec": "waybar-module-pacman-updates",
+        "cursor": false
+    }
+}
