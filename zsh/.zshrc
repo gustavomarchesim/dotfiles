@@ -111,7 +111,6 @@ alias tks-all="tmux kill-server"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
-
 # Yazi function
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
