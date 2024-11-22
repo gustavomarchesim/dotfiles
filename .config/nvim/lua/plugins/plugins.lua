@@ -17,6 +17,9 @@ return {
     },
   },
   {
+    "tpope/vim-fugitive",
+  },
+  {
     "ngtuonghy/live-server-nvim",
     event = "VeryLazy",
     build = ":LiveServerInstall",

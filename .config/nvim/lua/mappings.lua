@@ -22,3 +22,6 @@ map("n", "<left>", '<cmd>echo "Use h para se mover!"<CR>')
 map("n", "<right>", '<cmd>echo "Use l para se mover!"<CR>')
 map("n", "<up>", '<cmd>echo "Use k  para se mover!!!"<CR>')
 map("n", "<down>", '<cmd>echo "Use j para se mover!!"<CR>')
+
+map("n", "<leader>gp", ":Gitsigns preview_hunk<CR>")
+map("n", "<leader>gc", ":Gitsigns toggle_current_line_blame<CR>")
