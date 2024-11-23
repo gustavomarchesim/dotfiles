@@ -2,7 +2,7 @@
 
 ## Pegar configurações diretamente do arquivo do nwg-look
 
-CONFIG_FILE="$HOME/dotfiles/.local/share/nwg-look/gsettings"
+CONFIG_FILE="$HOME/.local/share/nwg-look/gsettings"
 
 # Extrair as configurações específicas
 THEME=$(grep '^gtk-theme=' "$CONFIG_FILE" | cut -d'=' -f2)
