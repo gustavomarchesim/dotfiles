@@ -1,14 +1,16 @@
-#!/bin/bash
+#!/bin/bash 
 
-CONFIG="/home/gdam/.config/waybar/tokyonight/config"
-STYLE="/home/gdam/.config/waybar/tokyonight/style.css"
+CURRENT_THEME_FILE="$HOME/.config/waybar/themes/active.txt"
 
-# Verifica se o Waybar está rodando
+THEME=$(cat "$CURRENT_THEME_FILE")
+
+CONFIG="$HOME/.config/waybar/themes/${THEME}/config" 
+STYLE="$HOME/.config/waybar/themes/${THEME}/style.css"
+
+
 if pgrep -x "waybar" > /dev/null
 then
-    # Se estiver rodando, envia o sinal SIGTERM para encerrar o Waybar
     killall -q waybar
 else
-    # Se não estiver rodando, inicia o Waybar
-    waybar --bar main-bar --log-level error --config ${CONFIG} --style ${STYLE}
+   waybar --bar main-bar --log-level error --config "$CONFIG" --style "$STYLE" &
 fi

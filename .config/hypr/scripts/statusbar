@@ -1,8 +1,35 @@
+
 #!/usr/bin/env bash
 
-CONFIG="/home/gdam/.config/waybar/config"
-STYLE="/home/gdam/.config/waybar/style.css"
+CURRENT_THEME_FILE="$HOME/.config/waybar/themes/active.txt"
 
-if [[ ! `pidof waybar` ]]; then
-	waybar --bar main-bar --log-level error --config ${CONFIG} --style ${STYLE}
+if [[ ! -f "$CURRENT_THEME_FILE" ]]; then
+    echo "Arquivo active.txt não encontrado!" 
+    exit 1
 fi
+
+THEME=$(cat "$CURRENT_THEME_FILE")
+
+if [[ -z "$THEME" ]]; then
+    echo "Nenhum tema encontrado no arquivo active.txt!"
+    exit 1
+fi
+
+CONFIG="$HOME/.config/waybar/themes/$THEME/config"
+STYLE="$HOME/.config/waybar/themes/$THEME/style.css"
+
+echo "Caminho do arquivo de configuração: $CONFIG"
+echo "Caminho do arquivo de estilo: $STYLE"
+
+if [[ ! -f "$CONFIG" || ! -f "$STYLE" ]]; then
+    echo "Arquivos de tema não encontrados: $CONFIG ou $STYLE"
+    exit 1
+fi
+
+if [[ -z $(pidof waybar) ]]; then
+    waybar --bar main-bar --log-level error --config "$CONFIG" --style "$STYLE" &
+    echo "Waybar iniciado com o tema: $THEME"
+else
+    echo "Waybar já está rodando."
+fi
+

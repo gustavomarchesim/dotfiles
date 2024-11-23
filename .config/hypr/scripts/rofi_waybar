@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Caminho do Tema Atual
+DIR="$HOME/.config"
+RASI="$DIR/rofi/waybar.rasi"
+
+rofi -show theme -theme "${RASI}"
