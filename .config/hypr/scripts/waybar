@@ -1,46 +1,35 @@
 #!/usr/bin/env bash
 
-# Diretório onde estão armazenados os temas do Waybar
 THEMES_DIR="$HOME/.config/waybar/themes"
-CURRENT_THEME_FILE="$THEMES_DIR/active.txt"  # Caminho do arquivo onde o nome do tema será salvo
-
+CURRENT_THEME_FILE="$THEMES_DIR/active.txt"  
 if [[ -z "$@" ]]; then
-    # Lista os temas disponíveis, mostrando apenas os nomes das pastas
     find "$THEMES_DIR" -maxdepth 1 -mindepth 1 -type d | sed "s|$THEMES_DIR/||"
 else
-    # Tema selecionado
-    THEME=$(basename "$@")  # Extrai apenas o nome do tema, sem o caminho completo
+    THEME=$(basename "$@") 
 
     CONFIG="$THEMES_DIR/$THEME/config"
     STYLE="$THEMES_DIR/$THEME/style.css"
 
-    # Verifica se o tema existe e os arquivos necessários estão presentes
     if [[ -d "$THEMES_DIR/$THEME" && -f "$CONFIG" && -f "$STYLE" ]]; then
-        # Salva apenas o nome do tema no arquivo active.txt
         echo "$THEME" > "$CURRENT_THEME_FILE"
         
-        # Verifica se o arquivo foi criado corretamente
         if [[ -f "$CURRENT_THEME_FILE" ]]; then
             notify-send "Waybar Theme Saved" "The theme '$THEME' has been saved to $CURRENT_THEME_FILE."
         else
             notify-send "Error" "Failed to save the theme to $CURRENT_THEME_FILE." -u critical
         fi
 
-        # Fecha o Waybar se estiver rodando
         if pgrep -x "waybar" > /dev/null; then
             killall -q waybar
         fi
 
-        # Reinicia o Waybar com o novo tema
         waybar --bar main-bar --log-level error --config "$CONFIG" --style "$STYLE" &
         notify-send "Waybar Theme Updated" "Theme changed to <i>$THEME</i>" -u normal
     else
-        # Alerta se o tema for inválido
         notify-send "Waybar Theme Error" "The theme '$THEME' is invalid or incomplete." -u critical
         exit 1
     fi
 
-    # Fecha o Rofi após a seleção
     pkill -x rofi
 fi
 
