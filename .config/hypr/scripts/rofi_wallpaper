@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Caminho do Tema Atual
+DIR="$HOME/.config"
+RASI="$DIR/rofi/wallpaper_switcher.rasi"
+
+rofi -show wallpaper -theme "${RASI}"
+
