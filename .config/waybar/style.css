@@ -1,0 +1,105 @@
+/* General Styles */
+* {
+  font-family: JetBrains Mono;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Waybar Window */
+window#waybar {
+  background-color: rgba(39, 39, 39, 0.9);
+  color: #c3c3c3;
+}
+
+window#waybar.hidden {
+  opacity: 0;
+}
+
+window#waybar.termite {
+  background-color: #3f3f3f;
+}
+
+window#waybar.chromium {
+  background-color: #000000;
+  border: none;
+}
+
+/* Button Styles */
+button {
+  box-shadow: inset 0 -3px transparent;
+  border: none;
+}
+
+button:hover {
+  background: inherit;
+}
+
+/* Tooltip */
+tooltip {
+  color: #272727;
+  background-color: #8ab4f8;
+  text-shadow: none;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* Workspaces Section */
+#workspaces {
+  background: transparent;
+  padding: 6px;
+}
+
+#workspaces button {
+  padding: 2px 4px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #c3c3c3;
+  border-radius: 0;
+}
+
+#workspaces button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+#workspaces button.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+/* Clock Section */
+
+#clock {
+  background: rgba(255, 255, 255, 0.1);
+  margin: 6px 0;
+  padding: 6px;
+}
+
+#tray {
+  background: rgba(255, 255, 255, 0.1);
+  margin: 6px 0;
+  margin-right: 6px;
+  padding: 0 6px;
+}
+
+#cpu {
+  background: rgba(255, 255, 255, 0.1);
+  margin: 6px 0;
+  padding: 0 5px;
+}
+
+#memory {
+  background: rgba(255, 255, 255, 0.1);
+  margin: 6px 0;
+  padding: 0 5px;
+}
+
+#pulseaudio {
+  background: rgba(255, 255, 255, 0.1);
+  margin: 6px 0;
+  padding: 0 6px;
+}
+
+#custom-updates {
+  background: rgba(255, 255, 255, 0.1);
+  margin: 6px 0;
+  padding: 0 6px;
+}

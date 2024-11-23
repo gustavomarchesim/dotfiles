@@ -1,0 +1,107 @@
+{
+    "layer": "top",
+    "position": "top",
+    "heigth": 24,
+    "margin-top": 5,
+    "margin-left": 5,
+    "margin-right": 5,
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "spacing": 6,    
+    "fixed-center": true,
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": [
+        "cpu",
+        "memory",
+        "pulseaudio",
+        "custom/updates",
+        "tray",
+    ],
+
+    // Modules configuration
+  "cpu": {
+  	"interval": 10,
+  	"format": " {usage}%",
+  	"max-length": 10
+  },
+  "memory": {
+  	"interval": 30,
+  	"format": " {}%",
+  	"max-length": 10
+  },
+    "hyprland/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": true,
+        "on-click": "activate",
+        "on-scroll-up": "hyprctl dispatch workspace e-1",
+        "on-scroll-down": "hyprctl dispatch workspace e+1",
+        "cursor": false
+    },
+    "tray": { 
+        "spacing": 6,
+        "icon-size": 16,
+        "cursor": false
+    },
+    "clock": {
+        "format": " {:L%H:%M}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "format-alt": " {:%d-%m-%Y}",
+        "cursor": false,
+        "timezone": "America/Sao_Paulo",
+        "calendar": {
+            "format": {
+                "today": "<span color='#ac4142'><b><u>{}</u></b></span>",
+            },
+        }
+    },
+    "bluetooth": {
+        // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+        "format": "󰂯",
+        "format-disabled": "", // an empty format will hide the module
+        "format-connected": " {device_alias} {device_battery_percentage}%",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "blueberry",
+        "cursor": false
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon}{volume}%",
+        "format-bluetooth": "󰗾  {volume}%",
+        "format-bluetooth-muted": "󰗿",
+        "format-muted": "󰝟",
+        "format-source": "󰍬",
+        "format-source-muted": "󰍭",
+        "format-icons": {
+            "headphone": "󰋋 ",
+            "hands-free": " ",
+            "headset": "󰋎 ",
+            "phone": "󰏲 ",
+            "portable": " ",
+            "car": " ",
+            "default": ["󰕿 ", "󰖀 ", "󰕾 "]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "pactl set-sink-mute 0 toggle",
+        "max-volume": "100",
+        "on-scroll-up": "pactl set-sink-mute 0 false ; pamixer -d 5",
+        "on-scroll-down": "pactl set-sink-mute 0 false ; pamixer -i 5",
+        "smooth-scrolling-threshold": "0",
+        "tooltip-format": "Volume: {volume}%",
+        "cursor": false
+    },
+    "custom/updates": {
+        "format": "{} {icon}",
+        "return-type": "json",
+        "format-icons": {
+            "has-updates":"󱑤 ",
+            "updated": " "
+        },
+        "exec-if": "which waybar-module-pacman-updates",
+        "exec": "waybar-module-pacman-updates",
+        "cursor": false
+    }
+}
