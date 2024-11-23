@@ -5,10 +5,5 @@
 # Ignorar diretórios de instalação
 paru/
 
-# Ignorar nohup
-.config/hypr/scripts/nohup.out
-
-#Ignora cache de wallpaper
-.config/hypr/last_wallpaper.txt
-
-
+~/dotfiles/.config/hypr/wallpapers/active
+.config/hypr/wallpapers/active
