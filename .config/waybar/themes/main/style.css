@@ -65,41 +65,21 @@ tooltip {
   color: #ffffff;
 }
 
-/* Clock Section */
+/* Commom Section */
 
-#clock {
+#clock,
+#tray,
+#cpu,
+#memory,
+#pulseaudio,
+#custom-updates,
+#bluetooth,
+#window {
   background: rgba(255, 255, 255, 0.1);
   margin: 6px 0;
-  padding: 6px;
+  padding: 0 6px;
 }
 
 #tray {
-  background: rgba(255, 255, 255, 0.1);
-  margin: 6px 0;
   margin-right: 6px;
-  padding: 0 6px;
-}
-
-#cpu {
-  background: rgba(255, 255, 255, 0.1);
-  margin: 6px 0;
-  padding: 0 5px;
-}
-
-#memory {
-  background: rgba(255, 255, 255, 0.1);
-  margin: 6px 0;
-  padding: 0 5px;
-}
-
-#pulseaudio {
-  background: rgba(255, 255, 255, 0.1);
-  margin: 6px 0;
-  padding: 0 6px;
-}
-
-#custom-updates {
-  background: rgba(255, 255, 255, 0.1);
-  margin: 6px 0;
-  padding: 0 6px;
 }
