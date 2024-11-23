@@ -15,6 +15,7 @@
     "hyprland/window"
   ],
   "modules-center": [
+  "network",
     "clock",
     "custom/updates"
   ],
@@ -31,6 +32,17 @@
     "rewrite": {
       "(.*) — Mozilla Firefox": "  $1"
     }
+  },
+  "network": {
+  	"format": "{ifname}",
+    "format-ethernet": "󰱔 ",
+  	"format-ethernet-disconnected": "󰱟 ",   	
+    "format-disconnected": "",
+  	"tooltip-format": "{ifname}",
+  	"tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+  	"tooltip-format-ethernet": "",
+  	"tooltip-format-disconnected": "Disconnected",
+  	"max-length": 50
   },
   "cpu": {
     "interval": 10,
@@ -52,7 +64,7 @@
   },
   "tray": {
     "spacing": 6,
-    "icon-size": 16,
+    "icon-size": 14,
     "cursor": false
   },
   "clock": {

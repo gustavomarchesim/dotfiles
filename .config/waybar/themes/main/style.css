@@ -74,7 +74,8 @@ tooltip {
 #pulseaudio,
 #custom-updates,
 #bluetooth,
-#window {
+#window,
+#network {
   background: rgba(255, 255, 255, 0.1);
   margin: 6px 0;
   padding: 0 6px;
@@ -82,4 +83,9 @@ tooltip {
 
 #tray {
   margin-right: 6px;
+}
+
+#network {
+  font-size: 18px;
+  padding-right: 4px;
 }
