@@ -5,5 +5,4 @@
 # Ignorar diretórios de instalação
 paru/
 
-~/dotfiles/.config/hypr/wallpapers/active
 .config/hypr/wallpapers/active
