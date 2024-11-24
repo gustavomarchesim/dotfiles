@@ -8,3 +8,4 @@ paru/
 .config/hypr/wallpapers/active
 .config/waybar/themes/active.txt
 .local/share/nwg-look
+Session.vim
