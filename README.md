@@ -35,7 +35,7 @@ Feel free to explore and adapt these settings to your needs. I assume you alread
 3. Run the Installation script:
 
 	```bash
-    chmod +x install.sh
+    chmod +x install.sh
    ./install.sh
 
 	```
@@ -45,7 +45,7 @@ Feel free to explore and adapt these settings to your needs. I assume you alread
 ![alt text](/assets/showcase1.jpeg)
 
 ![alt text](/assets/showcase2.jpeg)
-
+
 ![alt text](/assets/showcase3.jpeg)
 
 ![alt text](/assets/showcase4.jpeg)
