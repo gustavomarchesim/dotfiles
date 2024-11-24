@@ -1,0 +1,130 @@
+{
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "top",
+  "height": 50,
+  "tooltip": false,
+  "modules-left": ["hyprland/workspaces", "custom/music"],
+  "modules-center": [],
+  "modules-right": [
+    "custom/check_rec",
+    "custom/check_cam",
+    "idle_inhibitor",
+    "network",
+    "cpu",
+    "memory",
+    "wireplumber",
+    "pulseaudio",
+    "battery",
+    "clock",
+    "tray"
+  ],
+
+  "hyprland/workspaces": {
+    "all-outputs": true
+  },
+  "hyprland/window": {
+    "format": "{title}",
+    "tooltip": false,
+    "max-length": 50
+  },
+
+  "tray": {
+    "icon-size": 14,
+    "spacing": 10
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "  ",
+      "deactivated": "  "
+    }
+  },
+  "clock": {
+    "format": "{:%I:%M %p}",
+    "format-alt": "{:%A, %B %d}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "cpu": {
+    "interval": 1,
+    "format": " {usage}%",
+    "on-click": "alacritty -e htop"
+  },
+
+  "memory": {
+    "interval": 1,
+    "format": " {used}G",
+    "on-click": "alacritty -e htop"
+  },
+
+  "network": {
+    "format-wifi": "  {essid}",
+    "format-ethernet": "  Ethernet",
+    "format-disconnected": "⚠ Disconnected",
+    "tooltip": true,
+    "tooltip-format": "{ifname} via {gwaddr}",
+    "tooltip-format-wifi": "{ipaddr} : {signalStrength}%",
+    "tooltip-format-ethernet": "{ipaddr} : {bandwidthTotalBytes}",
+    "on-click": "alacritty -e nmtui"
+  },
+  "wireplumber": {
+    "format": "{icon}  {volume}%",
+    "format-bluetooth": "{icon}  {volume}%",
+    "format-muted": "󰝟",
+    "format-icons": {
+      "headphones": "",
+      "handsfree": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", ""]
+    },
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "tooltip": false,
+    "scroll-step": 5.0
+  },
+  "pulseaudio": {
+    "format": "{format_source}",
+    "format-source": "󰍬 {volume}%",
+    "format-source-muted": "󰍭",
+    "tooltip": false,
+    "scroll-step": 5.0,
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+  },
+  "battery": {
+    "interval": 1,
+    "format": "{icon} {capacity}%",
+    "format-icons": ["", "", "", "", ""],
+    "format-charging": " {capacity}%",
+    "format-full": " {capacity}%",
+    "states": {
+      "warning": 30,
+      "critical": 20
+    },
+    "tooltip-format-discharging": "{time}",
+    "tooltip-format-charging": "{timeTo}"
+  },
+
+  "custom/music": {
+    "format": "{}",
+    "max-length": 60,
+    "interval": 1,
+    "exec": "$HOME/.local/bin/now-playing",
+    "tooltip": false,
+    "on-click": "playerctl play-pause",
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous"
+  },
+  "custom/check_rec": {
+    "exec": "~/.local/bin/record-screen -c",
+    "interval": 1,
+    "tooltip-format": "Click to stop recording",
+    "on-click": "~/.local/bin/record-screen"
+  },
+  "custom/check_cam": {
+    "exec": "~/.local/bin/check_cam",
+    "interval": 1,
+    "tooltip-format": "Camera ON!"
+  }
+}

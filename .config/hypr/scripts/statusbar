@@ -15,7 +15,7 @@ if [[ -z "$THEME" ]]; then
     exit 1
 fi
 
-CONFIG="$HOME/.config/waybar/themes/$THEME/config"
+CONFIG="$HOME/.config/waybar/themes/$THEME/config.json"
 STYLE="$HOME/.config/waybar/themes/$THEME/style.css"
 
 echo "Caminho do arquivo de configuração: $CONFIG"

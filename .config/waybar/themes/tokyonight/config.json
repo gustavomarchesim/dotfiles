@@ -1,0 +1,84 @@
+{
+  "position": "top",
+  "height": 30,
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "network",
+    "pulseaudio",
+    "hyprland/language",
+    "battery",
+    "cpu",
+    "memory"
+  ],
+  "hyprland/window": {
+    "format": "<b><i>{}</i></b>",
+    "max-length": 60,
+    "separate-outputs": true,
+    "offscreen-css": true,
+    "offscreen-css-text": "(inactive)"
+  },
+  "hyprland/language": {
+    "format": "🅰 {}",
+    "format-en": "eng",
+    "format-ru": "рус",
+    "keyboard-name": "at-translated-set-2-keyboard"
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": " ",
+      "2": " ",
+      "3": " ",
+      "4": " ",
+      "5": " "
+    }
+  },
+  "memory": {
+    "interval": 10,
+    "format": " {}%",
+    "max-length": 10
+  },
+  "cpu": {
+    "interval": 10,
+    "format": " {}%",
+    "max-length": 10
+  },
+  "clock": {
+    "format": "<b>󰅐 {:%H:%M}</b>",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%d.%m.%Y}"
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰂄{capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-full": "󱈑 {capacity}%",
+    "format-icons": ["󱊡", "󱊢", "󱊣"]
+  },
+  "network": {
+    "format-wifi": "  <b>{essid}</b> ❭ {signalStrength}%",
+    "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "󰤮 Disconnected",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+  },
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-muted": "󰖁 Muted",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    }
+  }
+}

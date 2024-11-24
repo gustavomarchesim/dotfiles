@@ -4,7 +4,7 @@ CURRENT_THEME_FILE="$HOME/.config/waybar/themes/active.txt"
 
 THEME=$(cat "$CURRENT_THEME_FILE")
 
-CONFIG="$HOME/.config/waybar/themes/${THEME}/config" 
+CONFIG="$HOME/.config/waybar/themes/${THEME}/config.json" 
 STYLE="$HOME/.config/waybar/themes/${THEME}/style.css"
 
 

@@ -7,7 +7,7 @@ if [[ -z "$@" ]]; then
 else
     THEME=$(basename "$@") 
 
-    CONFIG="$THEMES_DIR/$THEME/config"
+    CONFIG="$THEMES_DIR/$THEME/config.json"
     STYLE="$THEMES_DIR/$THEME/style.css"
 
     if [[ -d "$THEMES_DIR/$THEME" && -f "$CONFIG" && -f "$STYLE" ]]; then

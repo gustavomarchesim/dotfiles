@@ -1,16 +1,24 @@
+
 # Dotfiles
 
-## Configurações Pessoais do Hyprland
+## Personal Hyprland Configurations
 
-Este repositório contém minhas configurações pessoais do Hyprland, o gerenciador de janelas dinâmico, instalado no CachyOS. 
+This repository contains my personal configurations for Hyprland, the dynamic window manager, installed on CachyOS.
 
-Sinta-se à vontade para explorar e adaptar essas configurações conforme sua necessidade. Espero que, ao usar este repositório, você já tenha o Hyprland instalado e configurado em seu sistema. 
+Feel free to explore and adapt these settings to your needs. I assume you already have Hyprland installed and configured on your system before using this repository.
 
-## Aviso
+## Warning
 
-**Leia o script `install.sh` cuidadosamente antes de executá-lo.** Não me responsabilizo por quaisquer problemas que possam ocorrer em sua máquina. Não ofereço suporte técnico. Utilize por sua conta e risco.**
+**Carefully read the `install.sh` script before running it. I am not responsible for any issues that may arise on your machine. No technical support is provided. Use at your own risk.**
 
-## Instalação
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/gustavomarchesim/dotfiles.git
+   
+   ```
 
 1. Clone o repositório:
 
@@ -18,19 +26,27 @@ Sinta-se à vontade para explorar e adaptar essas configurações conforme sua n
    git clone https://github.com/gustavomarchesim/dotfiles.git
    
    ```
-2. Navegue até o diretório:
+2. Navigate to the directory:
 
 	```bash
 	cd ~/dotfiles
 	
 	```
-3. Execute o script de instalação:
+3. Run the Installation script:
 
 	```bash
-    chmod +x install.sh
+    chmod +x install.sh
    ./install.sh
 
 	```
 
 ## Showcase
-![alt text](/assets/imagem.png)
+
+![alt text](/assets/showcase1.jpeg)
+
+![alt text](/assets/showcase2.jpeg)
+
+![alt text](/assets/showcase3.jpeg)
+
+![alt text](/assets/showcase4.jpeg)
+

@@ -37,6 +37,8 @@ zinit light Aloxaf/fzf-tab
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
+zinit light MichaelAquilina/zsh-auto-notify
+zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -120,3 +122,5 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+
+export PATH=$PATH:/home/gdam/.spicetify
