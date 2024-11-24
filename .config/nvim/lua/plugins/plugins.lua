@@ -138,4 +138,7 @@ return {
       kitty_method = "normal",
     },
   },
+  {
+    "tpope/vim-obsession",
+  },
 }

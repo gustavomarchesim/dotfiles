@@ -1,7 +1,5 @@
 #!/bin/bash
 
-sleep 1
-
-clear
+figlet "Updates"
 
 paru

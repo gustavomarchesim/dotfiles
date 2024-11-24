@@ -62,7 +62,7 @@
     "tooltip-format": "{controller_alias}\t{controller_address}",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "on-click": "blueberry",
+    "on-click": "blueman-manager",
     "cursor": false
   },
   "pulseaudio": {
@@ -99,8 +99,7 @@
     },
     "exec-if": "which waybar-module-pacman-updates",
     "exec": "waybar-module-pacman-updates",
-    "on-click": "kitty ~/dotfiles/.config/hypr/scripts/updates",
-    "cursor": false
+    "on-click": "kitty --class dotfiles-floating ~/dotfiles/.config/hypr/scripts/updates"
   },
   "power-profiles-daemon": {
     "format": "{icon}",
