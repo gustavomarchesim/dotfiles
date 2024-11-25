@@ -1,27 +1,20 @@
-require "nvchad.mappings"
-
 local map = vim.keymap.set
-local opts = {
-  noremap = true, -- non-recursive
-  silent = true, -- do not show message
-}
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
-map("i", "jk", "<ESC>")
-map("n", "<C-h>", ":TmuxNavigateLeft<CR>", opts)
-map("n", "<C-j>", ":TmuxNavigateDown<CR>", opts)
-map("n", "<C-k>", ":TmuxNavigateUp<CR>", opts)
-map("n", "<C-l>", ":TmuxNavigateRight<CR>", opts)
-map("n", "<C-\\>", ":TmuxNavigatePrevious<CR>", opts)
 
-map("n", "<leader>lt", function()
-  require("live-server-nvim").toggle()
-end, { desc = "Toggle Live Server" })
+map("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
+map("i", "<C-e>", "<End>", { desc = "move end of line" })
+map("i", "<C-h>", "<Left>", { desc = "move left" })
+map("i", "<C-l>", "<Right>", { desc = "move right" })
+map("i", "<C-j>", "<Down>", { desc = "move down" })
+map("i", "<C-k>", "<Up>", { desc = "move up" })
 
-map("n", "<left>", '<cmd>echo "Use h para se mover!"<CR>')
-map("n", "<right>", '<cmd>echo "Use l para se mover!"<CR>')
-map("n", "<up>", '<cmd>echo "Use k  para se mover!!!"<CR>')
-map("n", "<down>", '<cmd>echo "Use j para se mover!!"<CR>')
+map("n", "<C-h>", "<C-w>h", { desc = "switch window left" })
+map("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
+map("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
+map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
 
-map("n", "<leader>gp", ":Gitsigns preview_hunk<CR>")
-map("n", "<leader>gc", ":Gitsigns toggle_current_line_blame<CR>")
+map("n", "<C-s>", "<cmd>w<CR>", { desc = "general save file" })
+
+map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
+map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
