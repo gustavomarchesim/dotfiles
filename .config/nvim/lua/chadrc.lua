@@ -21,7 +21,7 @@ local options = {
 			},
 		},
 
-		telescope = { style = "borderless" },
+		telescope = { style = "bordered" },
 
 		statusline = {
 			enabled = true,

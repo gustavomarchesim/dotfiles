@@ -4,7 +4,7 @@ return {
 		lazy = false,
 		config = function()
 			require("mason").setup({
-							ui = {
+				ui = {
 					icons = {
 						package_pending = " ",
 						package_installed = " ",
@@ -33,17 +33,18 @@ return {
 			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
 			})
+
 			lspconfig.html.setup({
 				capabilities = capabilities,
 			})
+
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
 
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
-			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+			lspconfig.cssls.setup({
+				capabilities = capabilities,
+			})
 		end,
 	},
 }
