@@ -19,6 +19,7 @@ return {
         "vimdoc",
         "html",
         "css",
+        "javascript",
       },
     },
   },

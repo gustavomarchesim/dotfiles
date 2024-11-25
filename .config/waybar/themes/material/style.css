@@ -76,7 +76,9 @@ tooltip {
 #bluetooth,
 #window,
 #network,
-#power-profiles-daemon {
+#power-profiles-daemon,
+#custom-wallpaper,
+#custom-waybar {
   background: rgba(255, 255, 255, 0.1);
   margin: 6px 0;
   padding: 0 6px;
