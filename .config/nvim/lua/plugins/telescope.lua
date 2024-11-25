@@ -28,6 +28,21 @@ return {
 						width = 0.87,
 						height = 0.80,
 					},
+				},
+				pickers = {
+					find_files = {
+						hidden = true,
+					},
+					live_grep = {
+						additional_args = function()
+							return { "--hidden", "--glob", "!**/.git/*" }
+						end,
+					},
+					grep_string = {
+						additional_args = function()
+							return { "--hidden", "--glob", "!**/.git/*" }
+						end,
+					},
 					mappings = {
 						n = { ["q"] = require("telescope.actions").close },
 					},

@@ -1,5 +1,8 @@
 local map = vim.keymap.set
-
+local opts = {
+	noremap = true, -- non-recursive
+	silent = true, -- do not show message
+}
 -- Modo normal: comandos gerais
 map("n", ";", ":", { desc = "CMD enter command mode" }) -- entrar no modo de comando
 
@@ -58,3 +61,10 @@ end, { desc = "terminal toggleable horizontal term" }) -- alternar terminal hori
 map({ "n", "t" }, "<A-i>", function()
 	require("nvchad.term").toggle({ pos = "float", id = "floatTerm" })
 end, { desc = "terminal toggle floating term" }) -- alternar terminal flutuante
+
+-- Navegação Tmux
+map("n", "<C-h>", ":TmuxNavigateLeft<CR>", opts)
+map("n", "<C-j>", ":TmuxNavigateDown<CR>", opts)
+map("n", "<C-k>", ":TmuxNavigateUp<CR>", opts)
+map("n", "<C-l>", ":TmuxNavigateRight<CR>", opts)
+map("n", "<C-\\>", ":TmuxNavigatePrevious<CR>", opts)
