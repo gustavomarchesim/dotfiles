@@ -1,5 +1,10 @@
 local map = vim.keymap.set
 
+-- Função auxiliar para as opções
+local function opts(desc)
+	return { desc = "LSP " .. desc }
+end
+
 -- Comandos gerais no modo normal
 map("n", ";", ":", { desc = "Enter command mode (CMD)" })
 map({ "n", "v" }, "H", "^", { desc = "Move to start of line" })
@@ -43,12 +48,8 @@ map("n", "<leader>x", function()
 end, { desc = "Close current buffer" })
 
 -- Abrir terminais novos
-map("n", "<leader>h", function()
-	require("nvchad.term").new({ pos = "sp" })
-end, { desc = "Open horizontal terminal" })
-map("n", "<leader>v", function()
-	require("nvchad.term").new({ pos = "vsp" })
-end, { desc = "Open vertical terminal" })
+map("n", "<leader>h", ":sp<CR>", { desc = "Split terminal horizontally" })
+map("n", "<leader>v", ":vsp<CR>", { desc = "Split terminal vertically" })
 
 -- Alternar entre terminais
 map({ "n", "t" }, "<A-v>", function()
@@ -83,26 +84,37 @@ map("n", "<c-up>", "<cmd>Yazi toggle<cr>", { desc = "Resume last Yazi session" }
 
 -- LSP: Mapeamentos
 map("n", "K", vim.lsp.buf.hover, { desc = "Show hover information" })
-map("n", "<leader>cd", vim.lsp.buf.definition, { desc = "Go to code definition" })
-map("n", "<leader>cr", vim.lsp.buf.references, { desc = "Go to code references" })
-map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Show code actions" })
+
+map("n", "gD", vim.lsp.buf.declaration, opts("Go to declaration"))
+map("n", "gd", vim.lsp.buf.definition, opts("Go to definition"))
+map("n", "gi", vim.lsp.buf.implementation, opts("Go to implementation"))
+map("n", "<leader>sh", vim.lsp.buf.signature_help, opts("Show signature help"))
+map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts("Add workspace folder"))
+map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts("Remove workspace folder"))
+map("n", "<leader>wl", function()
+	print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+end, opts("List workspace folders"))
+map("n", "<leader>D", vim.lsp.buf.type_definition, opts("Go to type definition"))
+map("n", "<leader>ra", vim.lsp.buf.rename, opts("Rename"))
+map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts("Code action"))
+map("n", "gr", vim.lsp.buf.references, opts("Show references"))
 
 -- LazyGit
 map("n", "<leader>gl", "<cmd>LazyGit<cr>", { desc = "Git: Open LazyGit" })
 
 -- Aviso ao usar teclas de seta no modo normal
-map("n", "<Up>", function()
+map({ "n", "i", "v" }, "<Up>", function()
 	vim.cmd("echo 'Use as teclas h, j, k, l para navegar!'")
 end, { desc = "Warn to use hjkl instead of Up arrow" })
 
-map("n", "<Down>", function()
+map({ "n", "i", "v" }, "<Down>", function()
 	vim.cmd("echo 'Use as teclas h, j, k, l para navegar!'")
 end, { desc = "Warn to use hjkl instead of Down arrow" })
 
-map("n", "<Left>", function()
+map({ "n", "i", "v" }, "<Left>", function()
 	vim.cmd("echo 'Use as teclas h, j, k, l para navegar!'")
 end, { desc = "Warn to use hjkl instead of Left arrow" })
 
-map("n", "<Right>", function()
+map({ "n", "i", "v" }, "<Right>", function()
 	vim.cmd("echo 'Use as teclas h, j, k, l para navegar!'")
 end, { desc = "Warn to use hjkl instead of Right arrow" })

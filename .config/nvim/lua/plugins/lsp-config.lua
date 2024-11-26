@@ -11,7 +11,6 @@ return {
 						package_uninstalled = " ",
 					},
 				},
-
 				max_concurrent_installers = 10,
 			})
 		end,
@@ -19,32 +18,44 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		lazy = false,
-		opts = {
-			auto_install = true,
-		},
+		config = function()
+			require("mason-lspconfig").setup({
+				ensure_installed = { "html", "cssls", "lua_ls", "ts_ls", "jsonls" },
+				automatic_installation = true,
+			})
+		end,
 	},
 	{
 		"neovim/nvim-lspconfig",
 		lazy = false,
 		config = function()
+			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			local lspconfig = require("lspconfig")
-			lspconfig.ts_ls.setup({
-				capabilities = capabilities,
-			})
+			-- Função para configuração padrão de on_attach, on_init e capabilities
+			local function setup_lsp(lsp)
+				lspconfig[lsp].setup({
+					on_attach = function(_, _)
+						-- A função on_attach não contém mais os mapeamentos de teclas.
+					end,
 
-			lspconfig.html.setup({
-				capabilities = capabilities,
-			})
+					on_init = function(client, _)
+						-- Desabilitar semanticTokens, se o servidor suportar
+						if client.supports_method("textDocument/semanticTokens") then
+							client.server_capabilities.semanticTokensProvider = nil
+						end
+					end,
 
-			lspconfig.lua_ls.setup({
-				capabilities = capabilities,
-			})
+					capabilities = capabilities,
+				})
+			end
 
-			lspconfig.cssls.setup({
-				capabilities = capabilities,
-			})
+			-- Configuração para todos os servidores listados
+			local servers = { "html", "cssls", "ts_ls", "jsonls", "lua_ls" }
+
+			for _, server in ipairs(servers) do
+				setup_lsp(server)
+			end
 		end,
 	},
 }
