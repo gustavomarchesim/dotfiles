@@ -3,7 +3,7 @@ local builtin = require("telescope.builtin")
 
 -- Função auxiliar para as opções
 local function opts(desc)
-	return { desc = "LSP " .. desc }
+  return { desc = "LSP " .. desc }
 end
 
 -- ========== 1. Comandos Gerais ==========
@@ -12,6 +12,7 @@ map({ "n", "v" }, "H", "^", { desc = "Move to start of line" })
 map({ "n", "v" }, "L", "$", { desc = "Move to end of line" })
 map({ "i", "v" }, "jk", "<ESC>", { desc = "Exit insert/visual mode" })
 map("n", "<C-a>", "ggVG", { desc = "Select entire file" })
+map("n", "<C-s>", "<cmd>w<CR>", { desc = "Save file" })
 
 -- ========== 2. Movimentos do Cursor ==========
 -- Modo de inserção
@@ -34,13 +35,13 @@ map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "Focus on NvimTree wind
 -- Criação de buffer e navegação
 map("n", "<leader>b", "<cmd>enew<CR>", { desc = "Create a new buffer" })
 map("n", "<tab>", function()
-	require("nvchad.tabufline").next()
+  require("nvchad.tabufline").next()
 end, { desc = "Switch to next buffer" })
 map("n", "<S-tab>", function()
-	require("nvchad.tabufline").prev()
+  require("nvchad.tabufline").prev()
 end, { desc = "Switch to previous buffer" })
 map("n", "<leader>x", function()
-	require("nvchad.tabufline").close_buffer()
+  require("nvchad.tabufline").close_buffer()
 end, { desc = "Close current buffer" })
 
 -- ========== 4. Terminais ==========
@@ -50,29 +51,28 @@ map("n", "<leader>v", ":vsp<CR>", { desc = "Split terminal vertically" })
 
 -- Alternar entre terminais
 map({ "n", "t" }, "<leader>tv", function()
-	require("nvchad.term").toggle({ pos = "vsp", id = "vtoggleTerm" })
+  require("nvchad.term").toggle({ pos = "vsp", id = "vtoggleTerm" })
 end, { desc = "Toggle vertical terminal" })
 map({ "n", "t" }, "<leader>th", function()
-	require("nvchad.term").toggle({ pos = "sp", id = "htoggleTerm" })
+  require("nvchad.term").toggle({ pos = "sp", id = "htoggleTerm" })
 end, { desc = "Toggle horizontal terminal" })
 map({ "n", "t" }, "<leader>tf", function()
-	require("nvchad.term").toggle({ pos = "float", id = "floatTerm" })
+  require("nvchad.term").toggle({ pos = "float", id = "floatTerm" })
 end, { desc = "Toggle floating terminal" })
 
 -- ========== 5. Git ==========
 -- Gitsigns
 map("n", "<leader>gp", function()
-	require("gitsigns").preview_hunk()
+  require("gitsigns").preview_hunk()
 end, { desc = "Git: Preview hunk" })
 map("n", "<leader>gb", function()
-	require("gitsigns").toggle_current_line_blame()
+  require("gitsigns").toggle_current_line_blame()
 end, { desc = "Git: Toggle inline blame" })
 
 -- LazyGit
 map("n", "<leader>gl", "<cmd>LazyGit<cr>", { desc = "Git: Open LazyGit" })
 
 -- ========== 6. LSP ==========
--- LSP: Ações de código
 map("n", "<leader>cK", vim.lsp.buf.hover, { desc = "Show hover information" })
 map("n", "<leader>cD", vim.lsp.buf.declaration, opts("Go to declaration"))
 map("n", "<leader>cd", vim.lsp.buf.definition, opts("Go to definition"))
@@ -81,7 +81,7 @@ map("n", "<leader>cs", vim.lsp.buf.signature_help, opts("Show signature help"))
 map("n", "<leader>ca", vim.lsp.buf.add_workspace_folder, opts("Add workspace folder"))
 map("n", "<leader>cr", vim.lsp.buf.remove_workspace_folder, opts("Remove workspace folder"))
 map("n", "<leader>cl", function()
-	print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 end, opts("List workspace folders"))
 map("n", "<leader>ct", vim.lsp.buf.type_definition, opts("Go to type definition"))
 map("n", "<leader>cn", vim.lsp.buf.rename, opts("Rename"))
@@ -98,17 +98,17 @@ map("n", "<leader>ff", ":Telescope file_browser<CR>", { desc = "Telescope file b
 -- ========== 8. Avisos e Navegação ==========
 -- Aviso ao usar teclas de seta
 map({ "n", "i", "v" }, "<Up>", function()
-	vim.cmd("echo 'Use as teclas h, j, k, l para navegar!'")
+  vim.cmd("echo 'Use as teclas h, j, k, l para navegar!'")
 end, { desc = "Warn to use hjkl instead of Up arrow" })
 
 map({ "n", "i", "v" }, "<Down>", function()
-	vim.cmd("echo 'Use as teclas h, j, k, l para navegar!'")
+  vim.cmd("echo 'Use as teclas h, j, k, l para navegar!'")
 end, { desc = "Warn to use hjkl instead of Down arrow" })
 
 map({ "n", "i", "v" }, "<Left>", function()
-	vim.cmd("echo 'Use as teclas h, j, k, l para navegar!'")
+  vim.cmd("echo 'Use as teclas h, j, k, l para navegar!'")
 end, { desc = "Warn to use hjkl instead of Left arrow" })
 
 map({ "n", "i", "v" }, "<Right>", function()
-	vim.cmd("echo 'Use as teclas h, j, k, l para navegar!'")
+  vim.cmd("echo 'Use as teclas h, j, k, l para navegar!'")
 end, { desc = "Warn to use hjkl instead of Right arrow" })
