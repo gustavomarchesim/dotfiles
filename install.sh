@@ -4,143 +4,118 @@ echo "Iniciando a instalação das dotfiles..."
 
 # Atualiza o sistema
 echo "Atualizando o sistema..."
-sudo pacman -Syu --noconfirm
+sudo pacman -Syu --noconfirm || { echo "Erro ao atualizar o sistema."; exit 1; }
+
+# Instala Stow se necessário
+if ! command -v stow &> /dev/null; then
+    echo "Stow não encontrado. Instalando..."
+    sudo pacman -S --noconfirm stow || { echo "Erro ao instalar Stow."; exit 1; }
+fi
 
 # Função para instalar o Paru
 install_paru() {
     if ! command -v paru &> /dev/null; then
         echo "Paru não encontrado. Instalando..."
-
-        # Verifica se o git e base-devel estão instalados
-        if ! command -v git &> /dev/null || ! pacman -Qq | grep -qw base-devel; then
-            echo "Instalando git e base-devel..."
-            sudo pacman -S --noconfirm git base-devel
-        fi
-
-        # Clona o repositório do Paru
+        sudo pacman -S --noconfirm git base-devel || { echo "Erro ao instalar dependências do Paru."; exit 1; }
         git clone https://aur.archlinux.org/paru.git
-        cd paru
+        cd paru || exit 1
         makepkg -si --noconfirm
         cd ..
         rm -rf paru
     fi
 }
 
-# Função para instalar o Stow
-install_stow() {
-    if ! command -v stow &> /dev/null; then
-        echo "Stow não encontrado. Instalando..."
-        sudo pacman -S --noconfirm stow
-    fi
-}
-
-# Instala Paru e Stow
 install_paru
-install_stow
+
+# Função para instalar as dependências
+dependencies=(
+    "kitty" "zsh" "fzf" "zoxide" "thunar" "waybar" "swww" "hyprshot"
+    "slurp" "hyprpicker" "hypridle" "hyprlock" "yad" "mako" "rofi-wayland"
+    "grim" "wlogout" "nwg-look" "tmux" "yazi"
+)
 
 install_dependencies() {
     echo "Verificando e instalando dependências..."
     for pkg in "${dependencies[@]}"; do
         if ! paru -Qi "$pkg" &> /dev/null; then
-            echo "$pkg não encontrado. Instalando..."
-            paru -S --noconfirm "$pkg"
+            echo "Instalando $pkg..."
+            paru -S --noconfirm "$pkg" || { echo "Erro ao instalar $pkg."; exit 1; }
         else
             echo "$pkg já está instalado."
         fi
     done
 }
 
-# Lista de dependências
-dependencies=(
-    "hyprland"      # Gerenciador de janelas essencial para a configuração do ambiente gráfico
-    "kitty"         # Terminal que você está utilizando
-    "zsh"           # Shell que você está utilizando
-    "fzf"           # Ferramenta de fuzzy finder, útil para navegação em terminal
-    "zoxide"        # Ferramenta de navegação de diretórios
-    "thunar"        # Gerenciador de arquivos
-    "waybar"        # Barra de status do Wayland
-    "hyprpaper"     # Controle de papéis de parede no Hyprland
-    "hyprshot"      # Captura de tela para o ambiente Hyprland
-    "slurp"         # Seleciona uma área ou janela para captura
-    "hyprpicker"    # Seletor de cores/ícones
-    "hypridle"      # Gerencia inatividade do usuário
-    "yad"           # Diálogo avançado e janela de entrada
-    "mako"          # Notificações para Wayland
-    "rofi-wayland"  # Launcher de aplicativos para Wayland
-    "rofi-emoji"    # Seletor de emoji para o Rofi
-    "grim"          # Captura de tela para Wayland
-    "seahorse"      # Gerenciador de senhas e chaves
-    "wlogout"       # Logout para Wayland
-    "nwg-look"      # Modificações visuais para o NWG (Noti e outras)
-    "tmux"          # Multiplexador de Terminal
-    "yazi"          # Gerenciador de arquivos com base em Rust
-)
-
-# Chama a função para instalar as dependências
 install_dependencies
 
 # Função para instalar o TPM
-install_tmux_plugin_manager(){
-  echo "Instalando o TPM"
-  diretorio="$HOME/.config/tmux/plugins/tpm"
-
-  if [ -d "$diretorio" ]; then
-    echo "A pasta existe, pulando instalação"
-  else
-    echo "O TPM não foi encontrado. Clonando o repositório..."
-    git clone https://github.com/tmux-plugins/tpm "$diretorio"
-    echo "TPM instalado com sucesso!"
-  fi
+install_tmux_plugin_manager() {
+    local tpm_dir="$HOME/.config/tmux/plugins/tpm"
+    if [ -d "$tpm_dir" ]; then
+        echo "TPM já está instalado. Pulando."
+    else
+        echo "Instalando o TPM..."
+        git clone https://github.com/tmux-plugins/tpm "$tpm_dir" || { echo "Erro ao instalar o TPM."; exit 1; }
+    fi
 }
-# Chama a função para instalar o TPM
+
 install_tmux_plugin_manager
 
 # Cria os diretórios de configuração, se não existirem
-mkdir -p ~/.config
-mkdir -p ~/.local/share
+mkdir -p ~/.config ~/.local/share
 
-# Usa o Stow para criar links simbólicos
-echo "Criando links simbólicos com o Stow..."
+# Função para resolver conflitos com interação
+resolve_conflicts_with_prompt() {
+    file="$1"
+    
+    if [ -f "$HOME/$file" ]; then
+        echo "O arquivo $file já existe no diretório $HOME."
+        echo "O que você deseja fazer?"
+        echo "1. Substituir pelo novo arquivo"
+        echo "2. Manter o arquivo atual"
+        echo "3. Fazer backup do arquivo atual e substituir"
+        read -rp "Escolha uma opção (1/2/3): " choice
 
-# Stow as configurações de .config
-if [ -d ".config" ]; then
-    stow -v --target=$HOME/.config .config
-else
-    echo "Diretório .config não encontrado."
-fi
+        case $choice in
+            1)
+                echo "Substituindo $file..."
+                rm "$HOME/$file"
+                ;;
+            2)
+                echo "Mantendo o arquivo atual. Pulando $file."
+                return 1
+                ;;
+            3)
+                echo "Fazendo backup de $file..."
+                backup_dir="$HOME/dotfiles_backup_$(date +%Y%m%d%H%M%S)"
+                mkdir -p "$backup_dir"
+                mv "$HOME/$file" "$backup_dir/" || { echo "Erro ao mover $file."; exit 1; }
+                echo "$file foi movido para $backup_dir."
+                ;;
+            *)
+                echo "Opção inválida. Pulando $file."
+                return 1
+                ;;
+        esac
+    fi
+    return 0
+}
 
-# Stow as configurações de .local
-if [ -d ".local" ]; then
-    stow -v --target=$HOME/.local .local
-else
-    echo "Diretório .local não encontrado."
-fi
+# Gerenciamento de arquivos pessoais
+personal_files=("zsh" "p10k")
 
-# Stow as outras configurações na raiz do usuário
-echo "Criando link simbólico para .zshrc..."
-if [ -f "zsh/.zshrc" ]; then
-    ln -sf "$(pwd)/zsh/.zshrc" "$HOME/.zshrc"
-    echo ".zshrc linkado com sucesso."
-else
-    echo ".zshrc não encontrado."
-fi
+for dir in "${personal_files[@]}"; do
+    if [ -d "$dir" ]; then
+        # Detecta conflitos antes de stow
+        for file in $(stow -nv --target="$HOME" "$dir" 2>&1 | grep "existing target" | awk '{print $NF}'); do
+            if resolve_conflicts_with_prompt "$file"; then
+                # Se o usuário escolheu substituir ou fazer backup, aplica o stow
+                stow -v --target="$HOME" "$dir" || { echo "Erro ao processar $dir."; exit 1; }
+            fi
+        done
+    else
+        echo "Diretório $dir não encontrado. Pulando."
+    fi
+done
 
-# Criar link simbólico para .p10k.zsh
-echo "Criando link simbólico para .p10k.zsh..."
-if [ -f "p10k/.p10k.zsh" ]; then
-    ln -sf "$(pwd)/p10k/.p10k.zsh" "$HOME/.p10k.zsh"
-    echo ".p10k.zsh linkado com sucesso."
-else
-    echo ".p10k.zsh não encontrado."
-fi
-
-# Criar link simbólico para .gitconfig
-echo "Criando link simbólico para .gitconfig..."
-if [ -f "git/.gitconfig" ]; then
-    ln -sf "$(pwd)/git/.gitconfig" "$HOME/.gitconfig"
-    echo ".gitconfig linkado com sucesso."
-else
-    echo ".gitconfig não encontrado."
-fi
-
-echo "Instalação concluída! As dotfiles foram configuradas."
+echo "Instalação concluída! As dotfiles foram configuradas com sucesso."
