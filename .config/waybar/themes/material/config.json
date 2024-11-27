@@ -10,9 +10,24 @@
   "gtk-layer-shell": true,
   "spacing": 6,
   "fixed-center": true,
-  "modules-left": ["hyprland/workspaces", "custom/wallpaper", "custom/waybar"],
-  "modules-center": ["power-profiles-daemon", "clock", "custom/updates"],
-  "modules-right": ["cpu", "memory", "pulseaudio", "bluetooth", "tray"],
+  "modules-left": [
+    "hyprland/workspaces",
+    "custom/wallpaper",
+    "custom/waybar",
+    "network#vpn"
+  ],
+  "modules-center": [
+    "power-profiles-daemon",
+    "clock",
+    "custom/updates"
+  ],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "pulseaudio",
+    "bluetooth",
+    "tray"
+  ],
   "cpu": {
     "interval": 10,
     "format": " {usage}%",
@@ -35,7 +50,11 @@
     },
     "cursor": false
   },
-  "tray": { "spacing": 6, "icon-size": 14, "cursor": false },
+  "tray": {
+    "spacing": 6,
+    "icon-size": 14,
+    "cursor": false
+  },
   "clock": {
     "format": "  {:L%H:%M |   %d/%m/%Y}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
@@ -71,7 +90,11 @@
       "phone": "󰏲 ",
       "portable": " ",
       "car": " ",
-      "default": ["󰕿 ", "󰖀 ", "󰕾 "]
+      "default": [
+        "󰕿 ",
+        "󰖀 ",
+        "󰕾 "
+      ]
     },
     "on-click": "pavucontrol",
     "on-click-right": "pactl set-sink-mute 0 toggle",
@@ -106,10 +129,20 @@
   },
   "custom/wallpaper": {
     "format": " ",
-    "on-click": "$HOME/.config/hypr/scripts/rofi_wallpaper"
+    "on-click": "$HOME/.config/hypr/scripts/rofi_wallpaper",
+    "tooltip-format": "Switch Wallpaper"
   },
   "custom/waybar": {
     "format": " ",
-    "on-click": "$HOME/.config/hypr/scripts/rofi_waybar"
+    "on-click": "$HOME/.config/hypr/scripts/rofi_waybar",
+    "tooltip-format": "Switch Waybar theme"
+  },
+  "network#vpn": {
+    "interval": 5,
+    "interface": "tun0",
+    "format": "󰱔 VPN Connected",
+    "format-disabled": "󰱟 VPN Disconnected",
+    "tooltip-format-connected": "VPN is Connected: IP Address {ipaddr}",
+    "on-click": "$HOME/.config/hypr/scripts/toggle_vpn"
   }
 }

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+VPN_CONNECTION="us-free-4.protonvpn.tcp"
+
+# Verificar o estado da conexão VPN
+if nmcli connection show --active | grep -q "$VPN_CONNECTION"; then
+     nmcli connection down "$VPN_CONNECTION"
+    echo "VPN desconectada"
+else
+       nmcli connection up "$VPN_CONNECTION"
+    echo "VPN conectada"
+fi
