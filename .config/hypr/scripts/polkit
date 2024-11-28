@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+# Definir o diretório correto para sistemas NixOS ou padrão
+if [ -d /run/current-system/sw/libexec ]; then
+    libDir="/run/current-system/sw/libexec"  # Diretório específico para NixOS
+else
+    libDir="/usr/lib"  # Diretório padrão para outros sistemas
+fi
+
+# Verificar se o executável existe antes de tentar executá-lo
+if [ -x "${libDir}/polkit-gnome/polkit-gnome-authentication-agent-1" ]; then
+    "${libDir}/polkit-gnome/polkit-gnome-authentication-agent-1" &
+else
+    echo "Erro: polkit-gnome-authentication-agent-1 não encontrado em ${libDir}" >&2
+fi

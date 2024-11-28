@@ -1,24 +1,39 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Kill existing portal processes
-killall -e xdg-desktop-portal-hyprland
-killall -e xdg-desktop-portal-gtk
-killall -e xdg-desktop-portal-wlr
-killall -e xdg-desktop-portal-gnome
-killall xdg-desktop-portal
-
-# Wait for processes to terminate
+# Aguardar para garantir que os processos sejam inicializados corretamente
 sleep 1
 
-# Define an array of portal services to restart
-declare -a portals=("xdg-desktop-portal-hyprland" "xdg-desktop-portal")
+# Finalizar instâncias existentes dos serviços de xdg-desktop-portal
+killall xdg-desktop-portal-hyprland
+killall xdg-desktop-portal-gnome
+killall xdg-desktop-portal-kde
+killall xdg-desktop-portal-lxqt
+killall xdg-desktop-portal-wlr
+killall xdg-desktop-portal
 
-# Restart each portal if the command is available
-for portal in "${portals[@]}"; do
-    if command -v "/usr/lib/$portal" &> /dev/null; then
-        "/usr/lib/$portal" &
-    elif command -v "/usr/libexec/$portal" &> /dev/null; then
-        "/usr/libexec/$portal" &
-    fi
-    sleep 2
-done
+# Pausa para garantir que os processos foram encerrados
+sleep 1
+
+# Determinar o diretório correto para os executáveis do xdg-desktop-portal
+if [[ -d /run/current-system/sw/libexec ]]; then
+    libDir="/run/current-system/sw/libexec"  # Diretório em sistemas NixOS
+else
+    libDir="/usr/lib"  # Diretório padrão em outros sistemas
+fi
+
+# Iniciar o portal específico do Hyprland
+if [[ -x "$libDir/xdg-desktop-portal-hyprland" ]]; then
+    "$libDir/xdg-desktop-portal-hyprland" &
+else
+    echo "Erro: xdg-desktop-portal-hyprland não encontrado em $libDir"
+fi
+
+# Pausa para garantir que o portal específico seja carregado antes do genérico
+sleep 2
+
+# Iniciar o xdg-desktop-portal genérico
+if [[ -x "$libDir/xdg-desktop-portal" ]]; then
+    "$libDir/xdg-desktop-portal" &
+else
+    echo "Erro: xdg-desktop-portal não encontrado em $libDir"
+fi
