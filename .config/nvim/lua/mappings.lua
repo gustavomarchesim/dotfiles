@@ -11,8 +11,10 @@ map("n", ";", ":", { desc = "Enter command mode (CMD)" })
 map({ "n", "v" }, "H", "^", { desc = "Move to start of line" })
 map({ "n", "v" }, "L", "$", { desc = "Move to end of line" })
 map({ "i", "v" }, "jk", "<ESC>", { desc = "Exit insert/visual mode" })
-map("n", "<C-a>", "ggVG", { desc = "Select entire file" })
-map("n", "<C-s>", "<cmd>w<CR>", { desc = "Save file" })
+map("n", "<C-s>", "<cmd>w<CR>", { desc = "general save file" })
+map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "general copy whole file" })
+map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
+map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
 
 -- ========== 2. Movimentos do Cursor ==========
 -- Modo de inserção

@@ -1,4 +1,3 @@
-
 #!/usr/bin/env bash
 
 CURRENT_THEME_FILE="$HOME/.config/waybar/themes/active.txt"
