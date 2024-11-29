@@ -1,5 +1,3 @@
-export PATH="$HOME/.tmuxifier/bin:$PATH"
-
 # ==========================
 # Powerlevel10k Configuration
 # ==========================
@@ -113,7 +111,6 @@ alias tks-all="tmux kill-server"
 
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-eval "$(tmuxifier init -)"
 
 # Yazi function
 function y() {
