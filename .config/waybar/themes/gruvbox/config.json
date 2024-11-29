@@ -1,148 +1,435 @@
 {
   "layer": "top",
-  "position": "top",
-  "heigth": 24,
-  "margin-top": 5,
-  "margin-left": 5,
-  "margin-right": 5,
-  "exclusive": true,
-  "passthrough": false,
-  "gtk-layer-shell": true,
-  "spacing": 6,
-  "fixed-center": true,
+  "height": 20,
+  "spacing": 0,
   "modules-left": [
+    "sway/workspaces",
+    "sway/window",
     "hyprland/workspaces",
-    "custom/wallpaper",
-    "custom/waybar",
-    "network#vpn"
-  ],
-  "modules-center": [
-    "power-profiles-daemon",
-    "clock",
-    "custom/updates"
+    "hyprland/window"
   ],
   "modules-right": [
+    "tray",
+    "disk",
     "cpu",
+    "temperature",
+    "backlight",
     "memory",
     "pulseaudio",
-    "bluetooth",
-    "tray"
+    "battery",
+    "clock"
   ],
+
+  // Modules configuration
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "active-only": false,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "󰎤",
+      "2": "󰎧",
+      "3": "󰎪",
+      "4": "󰎭",
+      "5": "󰎱",
+      "6": "󰎳",
+      "7": "󰎶",
+      "8": "󰎹"
+    }
+  },
+
+  "sway/window": {
+    "format": "<span color='#222222' bgcolor='#d3869b' > WIN </span> {app_id}",
+    "separate-outputs": true
+  },
+
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "active-only": false,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "󰎤",
+      "2": "󰎧",
+      "3": "󰎪",
+      "4": "󰎭",
+      "5": "󰎱",
+      "6": "󰎳",
+      "7": "󰎶",
+      "8": "󰎹"
+    }
+  },
+
+  "hyprland/window": {
+    "format": "<span color='#222222' bgcolor='#d3869b' > WIN </span> {class}",
+    "separate-outputs": true
+  },
+
+  "tray": {
+    "icon-size": 20,
+    "spacing": 8
+  },
+
+  "disk": {
+    "format": "<span color='#222222' bgcolor='#ea6962' > DSK </span> {free}",
+    "interval": 20
+  },
+
   "cpu": {
-    "interval": 10,
-    "format": " {usage}%",
-    "max-length": 10
+    "format": "<span color='#222222' bgcolor='#e78a4e'> CPU </span> {usage}%",
+    "tooltip": false,
+    "interval": 1
+  },
+
+  "temperature": {
+    "tooltip":false,
+    "thermal-zone": 2,
+    "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+    "critical-threshold": 70,
+    "format-critical": "<span color='#222222' bgcolor='#cc241d' > TEM </span> {temperatureC}°C",
+    "format": "<span color='#222222' bgcolor='#d8a657' > TMP </span> {temperatureC}°C "
+  },
+
+  "backlight": {
+    // "device": "acpi_video1",
+    "format": "<span color='#222222' bgcolor='#f6c657'> BRI </span> {percent}%",
+    "tooltip": false
   },
   "memory": {
-    "interval": 30,
-    "format": " {used:0.1f}G",
-    "max-length": 10,
-    "on-click": "kitty --class dotfiles-floating htop"
+    "format": "<span color='#222222' bgcolor='#458588'> MEM </span> {used}GiB",
+    "interval": 1,
+    "tooltip":false,
   },
-  "hyprland/workspaces": {
-    "disable-scroll": false,
-    "all-outputs": true,
-    "on-click": "activate",
-    "on-scroll-up": "hyprctl dispatch workspace e-1",
-    "on-scroll-down": "hyprctl dispatch workspace e+1",
-    "persistent-workspaces": {
-      "*": 2
-    },
-    "cursor": false
-  },
-  "tray": {
-    "spacing": 6,
-    "icon-size": 14,
-    "cursor": false
-  },
-  "clock": {
-    "format": "  {:L%H:%M |   %d/%m/%Y}",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>",
-    "cursor": false,
-    "timezone": "America/Sao_Paulo",
-    "calendar": {
-      "format": {
-        "today": "<span color='#ac4142'><b><u>{}</u></b></span>"
-      }
-    }
-  },
-  "bluetooth": {
-    "format": "󰂯 Enabled",
-    "format-disabled": "󰂲 Disabled",
-    "format-connected": " {device_alias} {device_battery_percentage}%",
-    "tooltip-format": "{controller_alias}\t{controller_address}",
-    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "on-click": "blueman-manager",
-    "cursor": false
-  },
+
   "pulseaudio": {
-    "format": "{icon}{volume}%",
-    "format-bluetooth": "󰗾 {volume}%",
-    "format-bluetooth-muted": "󰗿",
-    "format-muted": "󰝟",
-    "format-source": "󰍬",
-    "format-source-muted": "󰍭",
-    "format-icons": {
-      "headphone": "󰋋 ",
-      "hands-free": " ",
-      "headset": "󰋎 ",
-      "phone": "󰏲 ",
-      "portable": " ",
-      "car": " ",
-      "default": [
-        "󰕿 ",
-        "󰖀 ",
-        "󰕾 "
-      ]
-    },
-    "on-click": "pavucontrol",
-    "on-click-right": "pactl set-sink-mute 0 toggle",
-    "max-volume": "100",
-    "on-scroll-up": "pactl set-sink-mute 0 false ; pamixer -d 5",
-    "on-scroll-down": "pactl set-sink-mute 0 false ; pamixer -i 5",
-    "smooth-scrolling-threshold": "0",
-    "tooltip-format": "Volume: {volume}%",
-    "cursor": false
+    // "scroll-step": 1, // %, can be a float
+    "format": "<span color='#222222' bgcolor='#83a598'> VOL </span> {volume}%",
+    "format-muted": "<span color='#222222' bgcolor='#ea6962'> MUTE </span> {volume}%",
+    "format-bluetooth": "<span color='#222222' bgcolor='#83a598'> BLU </span> {volume}%",
+    "format-bluetooth-muted": "<span color='#222222' bgcolor='#ea6962'> MUTE </span> {volume}%",
+    "format-source": "{volume}% ",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "tooltip": false,
+    "max-volume": 130
   },
-  "custom/updates": {
-    "format": "{icon}",
-    "return-type": "json",
-    "format-icons": {
-      "has-updates": "󱑤 ",
-      "updated": " "
-    },
-    "exec-if": "which waybar-module-pacman-updates",
-    "exec": "waybar-module-pacman-updates",
-    "on-click": "kitty --class dotfiles-floating $HOME/.config/hypr/scripts/updates"
+
+  "battery#bat2": {
+    "bat": "BAT2"
   },
-  "power-profiles-daemon": {
+
+  "battery": {
+    "interval": 1,
+    "states": {
+      "good": 99,
+      "warning": 40,
+      "critical": 15
+    },
+    "format": "<span color='#222222' bgcolor='#689d6a'> BAT </span> {capacity}%",
+    "format-critical": "<span color='#222222' bgcolor='#cc241d'> BAT </span> {capacity}%!!",
+    "format-warning": "<span color='#222222' bgcolor='#e78a4e'> BAT </span> {capacity}%",
+    "format-full": "<span color='#222222' bgcolor='#689d6a'> FULL </span> {capacity}%",
+    "format-charging": "<span color='#222222' bgcolor='#689d6a'> POW </span> {capacity}%",
+    "format-plugged": "<span color='#222222' bgcolor='#689d6a'> POW </span> {capacity}%",
+    "format-alt": "<span color='#222222' bgcolor='#689d6a'> BAT </span> {time}",
+    "tooltip": false
+  },
+
+  "clock": {
+    // "timezone": "America/New_York",
+    "format": "<span color='#222222' bgcolor='#8ec07c'> DAY </span> {:%H:%M:%S %d-%m,%a}",
+    "tooltip": false,
+    "interval":1,
+  }
+}
+{
+  "layer": "top",
+  "height": 20,
+  "spacing": 0,
+  "modules-left": [
+    "sway/workspaces",
+    "sway/window",
+    "hyprland/workspaces",
+    "hyprland/window"
+  ],
+  "modules-right": [
+    "tray",
+    "disk",
+    "cpu",
+    "temperature",
+    "backlight",
+    "memory",
+    "pulseaudio",
+    "battery",
+    "clock"
+  ],
+
+  // Modules configuration
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "active-only": false,
+    "all-outputs": true,
+    "warp-on-scroll": false,
     "format": "{icon}",
-    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-    "tooltip": true,
     "format-icons": {
-      "default": "",
-      "performance": "",
-      "balanced": "",
-      "power-saver": ""
+      "1": "󰎤",
+      "2": "󰎧",
+      "3": "󰎪",
+      "4": "󰎭",
+      "5": "󰎱",
+      "6": "󰎳",
+      "7": "󰎶",
+      "8": "󰎹"
     }
   },
-  "custom/wallpaper": {
-    "format": " ",
-    "on-click": "$HOME/.config/hypr/scripts/rofi_wallpaper",
-    "tooltip-format": "Switch Wallpaper"
+
+  "sway/window": {
+    "format": "<span color='#222222' bgcolor='#d3869b' > WIN </span> {app_id}",
+    "separate-outputs": true
   },
-  "custom/waybar": {
-    "format": " ",
-    "on-click": "$HOME/.config/hypr/scripts/rofi_waybar",
-    "tooltip-format": "Switch Waybar theme"
+
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "active-only": false,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "󰎤",
+      "2": "󰎧",
+      "3": "󰎪",
+      "4": "󰎭",
+      "5": "󰎱",
+      "6": "󰎳",
+      "7": "󰎶",
+      "8": "󰎹"
+    }
   },
-  "network#vpn": {
-    "interval": 5,
-    "interface": "tun0",
-    "format": "󰱔 VPN Connected",
-    "format-disabled": "󰱟 VPN Disconnected",
-    "tooltip-format-connected": "VPN is Connected: IP Address {ipaddr}",
-    "on-click": "$HOME/.config/hypr/scripts/toggle_vpn"
+
+  "hyprland/window": {
+    "format": "<span color='#222222' bgcolor='#d3869b' > WIN </span> {class}",
+    "separate-outputs": true
+  },
+
+  "tray": {
+    "icon-size": 20,
+    "spacing": 8
+  },
+
+  "disk": {
+    "format": "<span color='#222222' bgcolor='#ea6962' > DSK </span> {free}",
+    "interval": 20
+  },
+
+  "cpu": {
+    "format": "<span color='#222222' bgcolor='#e78a4e'> CPU </span> {usage}%",
+    "tooltip": false,
+    "interval": 1
+  },
+
+  "temperature": {
+    "tooltip":false,
+    "thermal-zone": 2,
+    "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+    "critical-threshold": 70,
+    "format-critical": "<span color='#222222' bgcolor='#cc241d' > TEM </span> {temperatureC}°C",
+    "format": "<span color='#222222' bgcolor='#d8a657' > TMP </span> {temperatureC}°C "
+  },
+
+  "backlight": {
+    // "device": "acpi_video1",
+    "format": "<span color='#222222' bgcolor='#f6c657'> BRI </span> {percent}%",
+    "tooltip": false
+  },
+  "memory": {
+    "format": "<span color='#222222' bgcolor='#458588'> MEM </span> {used}GiB",
+    "interval": 1,
+    "tooltip":false,
+  },
+
+  "pulseaudio": {
+    // "scroll-step": 1, // %, can be a float
+    "format": "<span color='#222222' bgcolor='#83a598'> VOL </span> {volume}%",
+    "format-muted": "<span color='#222222' bgcolor='#ea6962'> MUTE </span> {volume}%",
+    "format-bluetooth": "<span color='#222222' bgcolor='#83a598'> BLU </span> {volume}%",
+    "format-bluetooth-muted": "<span color='#222222' bgcolor='#ea6962'> MUTE </span> {volume}%",
+    "format-source": "{volume}% ",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "tooltip": false,
+    "max-volume": 130
+  },
+
+  "battery#bat2": {
+    "bat": "BAT2"
+  },
+
+  "battery": {
+    "interval": 1,
+    "states": {
+      "good": 99,
+      "warning": 40,
+      "critical": 15
+    },
+    "format": "<span color='#222222' bgcolor='#689d6a'> BAT </span> {capacity}%",
+    "format-critical": "<span color='#222222' bgcolor='#cc241d'> BAT </span> {capacity}%!!",
+    "format-warning": "<span color='#222222' bgcolor='#e78a4e'> BAT </span> {capacity}%",
+    "format-full": "<span color='#222222' bgcolor='#689d6a'> FULL </span> {capacity}%",
+    "format-charging": "<span color='#222222' bgcolor='#689d6a'> POW </span> {capacity}%",
+    "format-plugged": "<span color='#222222' bgcolor='#689d6a'> POW </span> {capacity}%",
+    "format-alt": "<span color='#222222' bgcolor='#689d6a'> BAT </span> {time}",
+    "tooltip": false
+  },
+
+  "clock": {
+    // "timezone": "America/New_York",
+    "format": "<span color='#222222' bgcolor='#8ec07c'> DAY </span> {:%H:%M:%S %d-%m,%a}",
+    "tooltip": false,
+    "interval":1,
+  }
+}
+{
+  "layer": "top",
+  "height": 20,
+  "spacing": 0,
+  "modules-left": [
+    "sway/workspaces",
+    "sway/window",
+    "hyprland/workspaces",
+    "hyprland/window"
+  ],
+  "modules-right": [
+    "tray",
+    "disk",
+    "cpu",
+    "temperature",
+    "backlight",
+    "memory",
+    "pulseaudio",
+    "battery",
+    "clock"
+  ],
+
+  // Modules configuration
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "active-only": false,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "󰎤",
+      "2": "󰎧",
+      "3": "󰎪",
+      "4": "󰎭",
+      "5": "󰎱",
+      "6": "󰎳",
+      "7": "󰎶",
+      "8": "󰎹"
+    }
+  },
+
+  "sway/window": {
+    "format": "<span color='#222222' bgcolor='#d3869b' > WIN </span> {app_id}",
+    "separate-outputs": true
+  },
+
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "active-only": false,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "󰎤",
+      "2": "󰎧",
+      "3": "󰎪",
+      "4": "󰎭",
+      "5": "󰎱",
+      "6": "󰎳",
+      "7": "󰎶",
+      "8": "󰎹"
+    }
+  },
+
+  "hyprland/window": {
+    "format": "<span color='#222222' bgcolor='#d3869b' > WIN </span> {class}",
+    "separate-outputs": true
+  },
+
+  "tray": {
+    "icon-size": 20,
+    "spacing": 8
+  },
+
+  "disk": {
+    "format": "<span color='#222222' bgcolor='#ea6962' > DSK </span> {free}",
+    "interval": 20
+  },
+
+  "cpu": {
+    "format": "<span color='#222222' bgcolor='#e78a4e'> CPU </span> {usage}%",
+    "tooltip": false,
+    "interval": 1
+  },
+
+  "temperature": {
+    "tooltip":false,
+    "thermal-zone": 2,
+    "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+    "critical-threshold": 70,
+    "format-critical": "<span color='#222222' bgcolor='#cc241d' > TEM </span> {temperatureC}°C",
+    "format": "<span color='#222222' bgcolor='#d8a657' > TMP </span> {temperatureC}°C "
+  },
+
+  "backlight": {
+    // "device": "acpi_video1",
+    "format": "<span color='#222222' bgcolor='#f6c657'> BRI </span> {percent}%",
+    "tooltip": false
+  },
+  "memory": {
+    "format": "<span color='#222222' bgcolor='#458588'> MEM </span> {used}GiB",
+    "interval": 1,
+    "tooltip":false,
+  },
+
+  "pulseaudio": {
+    // "scroll-step": 1, // %, can be a float
+    "format": "<span color='#222222' bgcolor='#83a598'> VOL </span> {volume}%",
+    "format-muted": "<span color='#222222' bgcolor='#ea6962'> MUTE </span> {volume}%",
+    "format-bluetooth": "<span color='#222222' bgcolor='#83a598'> BLU </span> {volume}%",
+    "format-bluetooth-muted": "<span color='#222222' bgcolor='#ea6962'> MUTE </span> {volume}%",
+    "format-source": "{volume}% ",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "tooltip": false,
+    "max-volume": 130
+  },
+
+  "battery#bat2": {
+    "bat": "BAT2"
+  },
+
+  "battery": {
+    "interval": 1,
+    "states": {
+      "good": 99,
+      "warning": 40,
+      "critical": 15
+    },
+    "format": "<span color='#222222' bgcolor='#689d6a'> BAT </span> {capacity}%",
+    "format-critical": "<span color='#222222' bgcolor='#cc241d'> BAT </span> {capacity}%!!",
+    "format-warning": "<span color='#222222' bgcolor='#e78a4e'> BAT </span> {capacity}%",
+    "format-full": "<span color='#222222' bgcolor='#689d6a'> FULL </span> {capacity}%",
+    "format-charging": "<span color='#222222' bgcolor='#689d6a'> POW </span> {capacity}%",
+    "format-plugged": "<span color='#222222' bgcolor='#689d6a'> POW </span> {capacity}%",
+    "format-alt": "<span color='#222222' bgcolor='#689d6a'> BAT </span> {time}",
+    "tooltip": false
+  },
+
+  "clock": {
+    // "timezone": "America/New_York",
+    "format": "<span color='#222222' bgcolor='#8ec07c'> DAY </span> {:%H:%M:%S %d-%m,%a}",
+    "tooltip": false,
+    "interval":1,
   }
 }

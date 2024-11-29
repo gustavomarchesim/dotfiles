@@ -1,122 +1,246 @@
+/* ================================ */
+/*            Common CSS            */
+/* ================================ */
 * {
-  border: none;
-  border-radius: 0px;
-  font-family: "Courier Prime", monospace;
-  font-size: 16px;
+  /* `otf-font-awesome` is required to be installed for icons */
+  padding: 0;
+  border-radius: 0;
   min-height: 0;
-  color: #ebdbb2;
+  margin: 0;
+  border: none;
+  text-shadow: none;
+  transition: none;
+  box-shadow: none;
 }
 
+/* the whole window */
 window#waybar {
-  border-bottom-style: inset;
-  border-bottom: 4px solid #689d6a;
-  background: #1d2021;
+  background: #1d1d1d;
+  color: #fff4d2;
+  padding: 0;
+  margin: 0;
 }
 
-#workspaces,
-#clock,
-#custom-music,
-#custom-check_cam,
-#custom-check_rec,
-#window {
-  font-weight: 800;
+window#waybar.hidden {
+  opacity: 1;
 }
 
-/* Workspace Buttons */
+/* ================================ */
+/*       workspaces module          */
+/* ================================ */
 #workspaces {
-  margin: 0 10px;
+  margin: 0px;
 }
 
 #workspaces button {
-  padding: 0 5px;
+  color: #fff4d2;
+  padding: 0 4px;
+  margin-bottom: 4px;
+  font-family: IosevkaTerm Nerd Font Propo;
+  font-size: 22px;
+  font-weight: 800;
+  border-bottom: 2px solid transparent;
 }
 
 #workspaces button:hover {
-  background: #689d6a;
+  color: #d3869b;
+  background: none;
+}
+
+#workspaces button.visible {
+  color: #8ec07c;
+  font-family: IosevkaTerm Nerd Font Propo;
+  font-size: 22px;
+  font-weight: 800;
+  border-radius: 0;
+  padding: 0 4px;
+  border-bottom: 2px solid #8ec07c;
+}
+
+#workspaces button.visible:hover {
+  color: #8ec07c;
+  font-family: IosevkaTerm Nerd Font Propo;
+  font-size: 22px;
+  font-weight: 800;
+  border-radius: 0;
+  padding: 0 4px;
 }
 
 #workspaces button.active {
-  background: #689d6a;
+  color: #8ec07c;
+  font-family: IosevkaTerm Nerd Font Propo;
+  font-size: 22px;
+  font-weight: 800;
+  border-radius: 0;
+  padding: 0 4px;
+  border-bottom: 2px solid #8ec07c;
+}
+
+#workspaces button.active:hover {
+  color: #8ec07c;
+  font-family: IosevkaTerm Nerd Font Propo;
+  font-size: 22px;
+  font-weight: 800;
+  border-radius: 0;
+  padding: 0 4px;
 }
 
 #workspaces button.urgent {
-  background: #cc241d;
-  border-bottom: 4px solid #cc241d;
+  color: #ea6962;
+  border-bottom: 2px solid #ea6962;
 }
 
-#clock,
-#battery,
-#cpu,
-#memory,
-#network,
-#pulseaudio,
-#wireplumber,
+/* ================================ */
+/*            window                 */
+/* ================================ */
+
+#window {
+  color: #d3869b;
+  background: none;
+  margin: 4px 8px;
+  font-family: IosevkaTerm Nerd Font Mono;
+  font-size: 15px;
+  font-weight: 800;
+  border-bottom: 2px solid #d3869b;
+}
+
+/* ================================ */
+/*            tray                 */
+/* ================================ */
+
 #tray {
-  padding: 0 5px;
-  margin: 0 10px;
+  margin: 0 3px;
+  padding: 0 8px;
 }
 
-#custom-music {
-  color: #b8bb26;
-  margin: 0 10px;
-  padding: 0 10px;
+/* ================================ */
+/*            disk                 */
+/* ================================ */
+
+#disk {
+  font-family: IosevkaTerm Nerd Font Mono;
+  font-size: 15px;
+  font-weight: 800;
+  color: #ea6962;
+  margin: 5px 2px;
+  border-bottom: 2px solid #ea6962;
 }
 
-#custom-check_cam,
-#custom-check_rec {
-  background: #cc241d;
-  color: #ebdbb2;
-  border-bottom: 4px solid #ebdbb2;
-  padding-left: 5px;
+/* ================================ */
+/*            cpu                  */
+/* ================================ */
+#cpu {
+  font-family: IosevkaTerm Nerd Font Mono;
+  font-size: 15px;
+  font-weight: 800;
+  color: #e78a4e;
+  margin: 5px 2px;
+  border-bottom: 2px solid #e78a4e;
 }
 
-#custom-check_rec {
-  padding: 0 10px;
+/* ================================ */
+/*            temp                  */
+/* ================================ */
+#temperature {
+  font-family: IosevkaTerm Nerd Font Mono;
+  font-size: 15px;
+  font-weight: 800;
+  color: #d8a657;
+  margin: 5px 3px;
+  border-bottom: 2px solid #d8a657;
 }
 
-#clock {
-  margin: 0;
-  color: #fabd2f;
-  border-bottom: 4px solid #fabd2f;
-}
-
-#network.disconnected {
+#temperature.critical {
+  font-family: IosevkaTerm Nerd Font Mono;
+  font-size: 15px;
+  font-weight: 800;
   color: #cc241d;
-  border-bottom: 4px solid #cc241d;
+  margin: 5px 3px;
+  border-bottom: 2px solid #cc241d;
 }
 
-#pulseaudio.source-muted {
-  padding: 0 20px;
-  color: #cc241d;
-  border-bottom: 4px solid #cc241d;
+/* ================================ */
+/*            backlight             */
+/* ================================ */
+#backlight {
+  font-family: IosevkaTerm Nerd Font Mono;
+  font-size: 15px;
+  font-weight: 800;
+  color: #f6c657;
+  margin: 5px 3px;
+  border-bottom: 2px solid #f6c657;
 }
 
-#wireplumber.muted {
-  padding: 0 20px;
-  color: #cc241d;
-  border-bottom: 4px solid #cc241d;
+/* ================================ */
+/*            memory                */
+/* ================================ */
+#memory {
+  font-family: IosevkaTerm Nerd Font Mono;
+  font-size: 15px;
+  font-weight: 800;
+  color: #458588;
+  margin: 5px 3px;
+  border-bottom: 2px solid #458588;
 }
 
+/* ================================ */
+/*         pulseaudio               */
+/* ================================ */
+#pulseaudio {
+  font-family: IosevkaTerm Nerd Font Mono;
+  font-size: 15px;
+  font-weight: 800;
+  color: #83a598;
+  margin: 5px 3px;
+  border-bottom: 2px solid #83a598;
+}
+
+#pulseaudio.muted {
+  font-family: IosevkaTerm Nerd Font Mono;
+  font-size: 15px;
+  font-weight: 800;
+  color: #ea6962;
+  margin: 5px 3px;
+  border-bottom: 2px solid #ea6962;
+}
+
+/* ================================ */
+/*            battery               */
+/* ================================ */
 #battery {
-  padding: 0 10px;
-}
-
-#battery.warning {
-  background: #fabd2f;
-  color: #1d2021;
-  border-bottom: 4px solid #fabd2f;
+  font-family: IosevkaTerm Nerd Font Mono;
+  font-size: 15px;
+  font-weight: 800;
+  color: #689d6a;
+  margin: 5px 3px;
+  border-bottom: 2px solid #689d6a;
 }
 
 #battery.critical {
-  background: #cc241d;
-  border-bottom: 4px solid #cc241d;
+  font-family: IosevkaTerm Nerd Font Mono;
+  font-size: 15px;
+  font-weight: 800;
+  color: #cc241d;
+  margin: 5px 3px;
+  border-bottom: 2px solid #cc241d;
 }
 
-#idle_inhibitor {
-  padding-right: 5px;
+#battery.warning {
+  font-family: IosevkaTerm Nerd Font Mono;
+  font-size: 15px;
+  font-weight: 800;
+  color: #e78a4e;
+  margin: 5px 3px;
+  border-bottom: 2px solid #e78a4e;
 }
-
-#idle_inhibitor.activated {
-  background-color: #689d6a;
-  color: #ebdbb2;
+/* ================================ */
+/*            clock                 */
+/* ================================ */
+#clock {
+  font-family: IosevkaTerm Nerd Font Mono;
+  font-size: 15px;
+  font-weight: 800;
+  color: #8ec07c;
+  margin: 5px 3px;
+  border-bottom: 2px solid #8ec07c;
 }
