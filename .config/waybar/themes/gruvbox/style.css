@@ -244,3 +244,34 @@ window#waybar.hidden {
   margin: 5px 3px;
   border-bottom: 2px solid #8ec07c;
 }
+
+/* ================================ */
+/*           bluetooth              */
+/* ================================ */
+
+#bluetooth {
+  font-family: IosevkaTerm Nerd Font Mono;
+  font-size: 15px;
+  font-weight: 800;
+  color: #f6c657;
+  margin: 5px 3px;
+  border-bottom: 2px solid #f6c657;
+}
+
+#bluetooth.connected {
+  font-family: IosevkaTerm Nerd Font Mono;
+  font-size: 15px;
+  font-weight: 800;
+  color: #f6c657;
+  margin: 5px 3px;
+  border-bottom: 2px solid #f6c657;
+}
+
+#bluetooth.disabled {
+  font-family: IosevkaTerm Nerd Font Mono;
+  font-size: 15px;
+  font-weight: 800;
+  color: #ea6962;
+  margin: 5px 3px;
+  border-bottom: 2px solid #ea6962;
+}

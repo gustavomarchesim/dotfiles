@@ -17,6 +17,9 @@ vim.keymap.set("n", "gf", function()
 	end
 end, { desc = "Open or create file under cursor with missing directories", noremap = true, silent = true })
 
+-- Command mode
+map("n", ";", ":", { desc = "Enter command mode (CMD)", noremap = true, silent = true })
+
 -- Remapping gj gk for wrapped line
 map("n", "j", "gj", { desc = "Down In Wrap", noremap = true, silent = true })
 map("n", "k", "gk", { desc = "Up In Wrap", noremap = true, silent = true })
@@ -35,10 +38,6 @@ map({ "i", "v" }, "kj", "<Esc>", { desc = "Escape", noremap = true, silent = tru
 -- Indenting
 map("v", "<", "<gv", { desc = "Indent >", noremap = true, silent = false })
 map("v", ">", ">gv", { desc = "Indent <", noremap = true, silent = false })
-
--- Copy-Pasting
-map("v", "<C-c>", '"+y', { desc = "Copy To ClipB", noremap = true, silent = false })
-map("n", "<C-s>", '"+P', { desc = "Paste From ClipB", noremap = true, silent = false })
 
 -- Focus between windows
 map("n", "<C-h>", "<C-w>h", { desc = "Focus Left", noremap = true, silent = false })
@@ -89,9 +88,6 @@ map("n", "<leader>po", ":only<CR>", { desc = "Single Pane", noremap = true, sile
 -- plugin specific keymaps
 -- =========================
 
--- Tagbar
-map("n", "<leader>Tf", ":TagbarToggle<cr>", { desc = "Tagbar Toggle", noremap = true, silent = true })
-
 -- Toggle Term
 map(
 	"n",
@@ -115,7 +111,7 @@ map("n", "<leader>sr", ":SessionRestore<CR>", { desc = "Session Restore", norema
 map("n", "<leader>sd", ":SessionDelete<CR>", { desc = "Session Delete", noremap = true, silent = true })
 
 -- NvimTree
-map("n", "<leader>ee", ":NvimTreeToggle<cr>", { desc = "NvimTree Toggle", noremap = true, silent = true })
+map("n", "<C-n>", ":NvimTreeToggle<cr>", { desc = "NvimTree Toggle", noremap = true, silent = true })
 map("n", "<leader>ef", ":NvimTreeFocus<cr>", { desc = "NvimTree Focus", noremap = true, silent = true })
 map("n", "<leader>eF", ":NvimTreeFindFileToggle<cr>", { desc = "NvimTree Current", noremap = true, silent = true })
 map("n", "<leader>er", ":NvimTreeRefresh<cr>", { desc = "NvimTree Refresh", noremap = true, silent = true })
@@ -127,7 +123,7 @@ map("n", "<leader>uu", ":UndotreeToggle<cr>", { desc = "UndoTree Toggle", norema
 map("n", "<leader>uf", ":UndotreeFocus<cr>", { desc = "UndoTree Focus", noremap = true, silent = true })
 
 -- Telescope
-map("n", "<leader>ff", ":Telescope find_files<cr>", { desc = "Fuzzy Find", noremap = true, silent = true })
+map("n", "<C-p>", ":Telescope find_files<cr>", { desc = "Fuzzy Find", noremap = true, silent = true })
 map(
 	"n",
 	"<leader>fw",
