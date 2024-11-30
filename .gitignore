@@ -9,3 +9,4 @@ paru/
 .config/waybar/themes/active.txt
 .local/share/nwg-look
 Session.vim
+.local/share/icons/hicolor
