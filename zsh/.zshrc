@@ -1,3 +1,4 @@
+EDITOR=nvim
 # ==========================
 # Powerlevel10k Configuration
 # ==========================
