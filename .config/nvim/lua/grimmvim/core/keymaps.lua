@@ -115,7 +115,7 @@ map("n", "<leader>sr", ":SessionRestore<CR>", { desc = "Session Restore", norema
 map("n", "<leader>sd", ":SessionDelete<CR>", { desc = "Session Delete", noremap = true, silent = true })
 
 -- NvimTree
-map("n", "<leader>ee", ":NvimTreeToggle<cr>", { desc = "NvimTree Toggle", noremap = true, silent = true })
+map("n", "<C-n>", ":NvimTreeToggle<cr>", { desc = "NvimTree Toggle", noremap = true, silent = true })
 map("n", "<leader>ef", ":NvimTreeFocus<cr>", { desc = "NvimTree Focus", noremap = true, silent = true })
 map("n", "<leader>eF", ":NvimTreeFindFileToggle<cr>", { desc = "NvimTree Current", noremap = true, silent = true })
 map("n", "<leader>er", ":NvimTreeRefresh<cr>", { desc = "NvimTree Refresh", noremap = true, silent = true })
@@ -127,7 +127,7 @@ map("n", "<leader>uu", ":UndotreeToggle<cr>", { desc = "UndoTree Toggle", norema
 map("n", "<leader>uf", ":UndotreeFocus<cr>", { desc = "UndoTree Focus", noremap = true, silent = true })
 
 -- Telescope
-map("n", "<leader>ff", ":Telescope find_files<cr>", { desc = "Fuzzy Find", noremap = true, silent = true })
+map("n", "<C-p>", ":Telescope find_files<cr>", { desc = "Fuzzy Find", noremap = true, silent = true })
 map(
 	"n",
 	"<leader>fw",
