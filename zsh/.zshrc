@@ -95,6 +95,9 @@ alias vim='nvim'
 alias vi='nvim'
 alias c='clear'
 
+# Personal shortcuts
+alias dots='cd ~/dotfiles && nvim'
+
 # History shortcuts
 alias h='history | fzf'
 
