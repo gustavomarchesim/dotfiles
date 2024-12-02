@@ -11,3 +11,4 @@ paru/
 Session.vim
 .local/share/icons/hicolor
 .local/share/icons/hicolor
+.config/nvim/lazy-lock.json
