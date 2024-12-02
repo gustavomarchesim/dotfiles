@@ -1,4 +1,3 @@
-
 # Dotfiles
 
 ## Personal Hyprland Configurations
@@ -17,28 +16,27 @@ Feel free to explore and adapt these settings to your needs. I assume you alread
 
    ```bash
    git clone https://github.com/gustavomarchesim/dotfiles.git
-   
    ```
 
 1. Clone o repositório:
 
    ```bash
    git clone https://github.com/gustavomarchesim/dotfiles.git
-   
    ```
-2. Navigate to the directory:
 
-	```bash
-	cd ~/dotfiles
-	
-	```
-3. Run the Installation script:
+1. Navigate to the directory:
 
-	```bash
+   ```bash
+   cd ~/dotfiles
+   ```
+
+1. Run the Installation script:
+
+   ```bash
     chmod +x install.sh
    ./install.sh
 
-	```
+   ```
 
 ## Showcase
 
@@ -49,4 +47,3 @@ Feel free to explore and adapt these settings to your needs. I assume you alread
 ![alt text](/assets/showcase3.jpeg)
 
 ![alt text](/assets/showcase4.jpeg)
-
