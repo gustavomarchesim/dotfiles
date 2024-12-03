@@ -89,9 +89,6 @@ map("n", "<leader>po", ":only<CR>", { desc = "Single Pane", noremap = true, sile
 -- plugin specific keymaps
 -- =========================
 
--- Tagbar
-map("n", "<leader>Tf", ":TagbarToggle<cr>", { desc = "Tagbar Toggle", noremap = true, silent = true })
-
 -- Toggle Term
 map(
 	"n",
