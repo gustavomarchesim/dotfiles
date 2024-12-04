@@ -17,6 +17,9 @@ vim.keymap.set("n", "gf", function()
 	end
 end, { desc = "Open or create file under cursor with missing directories", noremap = true, silent = true })
 
+-- Command mode
+map("n", ";", ":", { desc = "CMD enter command mode" })
+
 -- Remapping gj gk for wrapped line
 map("n", "j", "gj", { desc = "Down In Wrap", noremap = true, silent = true })
 map("n", "k", "gk", { desc = "Up In Wrap", noremap = true, silent = true })
@@ -25,6 +28,10 @@ map("n", "k", "gk", { desc = "Up In Wrap", noremap = true, silent = true })
 map("n", "J", "<C-d>", { desc = "Scroll Down", noremap = true, silent = false })
 map("n", "K", "<C-u>", { desc = "Scroll Up", noremap = true, silent = false })
 
+-- Indenting
+map("v", ">", ">gv", { desc = "Indent <", noremap = true, silent = false })
+map("v", "<", "<gv", { desc = "Indent >", noremap = true, silent = false })
+
 -- Move around in visual mode
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Down In Visual", noremap = true, silent = true })
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Up In Visual", noremap = true, silent = true })
@@ -32,13 +39,9 @@ map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Up In Visual", noremap = true, silen
 -- remapping escape key
 map({ "i", "v" }, "kj", "<Esc>", { desc = "Escape", noremap = true, silent = true })
 
--- Indenting
-map("v", "<", "<gv", { desc = "Indent >", noremap = true, silent = false })
-map("v", ">", ">gv", { desc = "Indent <", noremap = true, silent = false })
-
--- Copy-Pasting
-map("v", "<C-c>", '"+y', { desc = "Copy To ClipB", noremap = true, silent = false })
-map("n", "<C-s>", '"+P', { desc = "Paste From ClipB", noremap = true, silent = false })
+-- Commenting
+map("n", "<leader>/", "gcc", { desc = "Toggle comment", remap = true })
+map("v", "<leader>/", "gc", { desc = "Toggle comment", remap = true })
 
 -- Focus between windows
 map("n", "<C-h>", "<C-w>h", { desc = "Focus Left", noremap = true, silent = false })
@@ -53,8 +56,8 @@ map("n", "<C-S-K>", "3<C-w>+", { desc = "Resize Up", noremap = true, silent = fa
 map("n", "<C-S-L>", "3<C-w><", { desc = "Resize Down", noremap = true, silent = false })
 
 -- Editing Keymaps
-map("n", "<leader>q", ":q<cr>", { desc = "QUIT FILE", noremap = true, silent = true })
 map("n", "<leader>Q", ":qa<cr>", { desc = "FORCE QUIT FILE", noremap = true, silent = true })
+map("n", "<leader>q", ":q<cr>", { desc = "QUIT FILE", noremap = true, silent = true })
 map("n", "<leader>w", ":w<cr>", { desc = "Write File", noremap = true, silent = true })
 map("n", "<leader>W", ":wa<cr>", { desc = "Force Write File", noremap = true, silent = true })
 map("n", "<leader>M", ":messages<cr>", { desc = "Show Messages", noremap = true, silent = true })
@@ -74,20 +77,27 @@ map("n", "<leader>op", ":pwd<cr>", { desc = "Current Working Directory", noremap
 map("n", "<Tab>", ":bnext<cr>", { desc = "Next Buffer", noremap = true, silent = true })
 map("n", "<S-Tab>", ":bprevious<cr>", { desc = "Previous Buffer", noremap = true, silent = true })
 map("n", "<leader>bn", ":enew<cr>", { desc = "New Empty Buffer", noremap = true, silent = true })
-map("n", "<leader>bl", ":blast<cr>", { desc = "Last Buffer", noremap = true, silent = true })
-map("n", "<leader>bx", ":bdelete<cr>", { desc = "Last Buffer", noremap = true, silent = true })
 map("n", "<leader>bs", ":source %<cr>", { desc = "Source Buffer", noremap = true, silent = true })
 
 -- Splits and Panes
-map("n", "<leader>pv", "<C-w>v", { desc = "Split Vertically", noremap = true, silent = false })
-map("n", "<leader>ph", "<C-w>s", { desc = "Split Horizontally", noremap = true, silent = false })
-map("n", "<leader>pe", "<C-w>=", { desc = "Equal Split", noremap = true, silent = false })
-map("n", "<leader>px", ":close<CR>", { desc = "Close split", noremap = true, silent = false })
+map("n", "<leader>tv", "<C-w>v", { desc = "Split Vertically", noremap = true, silent = false })
+map("n", "<leader>th", "<C-w>s", { desc = "Split Horizontally", noremap = true, silent = false })
+map("n", "<leader>te", "<C-w>=", { desc = "Equal Split", noremap = true, silent = false })
+map("n", "<leader>tc", ":close<CR>", { desc = "Close split", noremap = true, silent = false })
 map("n", "<leader>po", ":only<CR>", { desc = "Single Pane", noremap = true, silent = false })
 
 -- =========================
 -- plugin specific keymaps
 -- =========================
+-- Buf Delete
+map("n", "<leader>bx", function()
+	local current_buf = vim.api.nvim_get_current_buf()
+	local next_buf = vim.fn.bufnr("#")
+	if vim.bo[next_buf].filetype == "NvimTree" or not vim.api.nvim_buf_is_loaded(next_buf) then
+		vim.cmd("bnext")
+	end
+	require("bufdelete").bufdelete(current_buf, true)
+end, { desc = "Close Current Buffer", noremap = true, silent = true })
 
 -- Toggle Term
 map(
@@ -114,9 +124,6 @@ map("n", "<leader>sd", ":SessionDelete<CR>", { desc = "Session Delete", noremap 
 -- NvimTree
 map("n", "<C-n>", ":NvimTreeToggle<cr>", { desc = "NvimTree Toggle", noremap = true, silent = true })
 map("n", "<leader>ef", ":NvimTreeFocus<cr>", { desc = "NvimTree Focus", noremap = true, silent = true })
-map("n", "<leader>eF", ":NvimTreeFindFileToggle<cr>", { desc = "NvimTree Current", noremap = true, silent = true })
-map("n", "<leader>er", ":NvimTreeRefresh<cr>", { desc = "NvimTree Refresh", noremap = true, silent = true })
-map("n", "<leader>ec", ":e ~/.config/nvim/lua/grimmvim/<cr>", { desc = "Config Dir", noremap = true, silent = true })
 map("n", "<leader>eo", ":Oil<cr>", { desc = "Oil Nvim", noremap = true, silent = false })
 
 -- UndoTree
