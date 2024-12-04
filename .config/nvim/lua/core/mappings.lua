@@ -36,6 +36,14 @@ map("v", "<", "<gv", { desc = "Indent >", noremap = true, silent = false })
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Down In Visual", noremap = true, silent = true })
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Up In Visual", noremap = true, silent = true })
 
+-- Move around in insert mode
+map("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
+map("i", "<C-e>", "<End>", { desc = "move end of line" })
+map("i", "<C-h>", "<Left>", { desc = "move left" })
+map("i", "<C-l>", "<Right>", { desc = "move right" })
+map("i", "<C-j>", "<Down>", { desc = "move down" })
+map("i", "<C-k>", "<Up>", { desc = "move up" })
+
 -- remapping escape key
 map({ "i", "v" }, "kj", "<Esc>", { desc = "Escape", noremap = true, silent = true })
 
@@ -111,15 +119,9 @@ map(
 	{ desc = "Toggle Markdown Preview", noremap = true, silent = true }
 )
 
--- Auto-Session Manager
-map("n", "<leader>ss", ":SessionSave<CR>", { desc = "Session Save", noremap = true, silent = true })
-map("n", "<leader>sr", ":SessionRestore<CR>", { desc = "Session Restore", noremap = true, silent = true })
-map("n", "<leader>sd", ":SessionDelete<CR>", { desc = "Session Delete", noremap = true, silent = true })
-
 -- NvimTree
 map("n", "<C-n>", ":NvimTreeToggle<cr>", { desc = "NvimTree Toggle", noremap = true, silent = true })
 map("n", "<leader>ef", ":NvimTreeFocus<cr>", { desc = "NvimTree Focus", noremap = true, silent = true })
-map("n", "<leader>eo", ":Oil<cr>", { desc = "Oil Nvim", noremap = true, silent = false })
 
 -- UndoTree
 map("n", "<leader>uu", ":UndotreeToggle<cr>", { desc = "UndoTree Toggle", noremap = true, silent = true })
