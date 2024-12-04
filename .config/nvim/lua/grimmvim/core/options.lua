@@ -5,6 +5,7 @@ cmd("let g:netrw_liststyle = 3")
 cmd("filetype plugin indent on")
 cmd([[highlight WinSeparator guibg = None]])
 vim.g.tmux_navigator_disable_when_zoomed = 1
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- Appearance
 opt.termguicolors = true
