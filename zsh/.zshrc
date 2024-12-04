@@ -1,4 +1,4 @@
-EDITOR=nvim
+export EDITOR=nvim
 # ==========================
 # Powerlevel10k Configuration
 # ==========================
