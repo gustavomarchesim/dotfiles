@@ -83,6 +83,7 @@ map("n", "<leader>po", ":only<CR>", { desc = "Single Pane", noremap = true, sile
 -- =========================
 -- plugin specific keymaps
 -- =========================
+
 -- Buf Delete
 map("n", "<leader>bx", function()
 	local current_buf = vim.api.nvim_get_current_buf()
@@ -141,12 +142,6 @@ map("n", "<leader>fb", ":Telescope buffers<cr>", { desc = "Fuzzy Find Buffers", 
 
 -- Gitsigns
 map("n", "<leader>gg", ":Gitsigns<cr>", { desc = "Gitsigns Options", noremap = true, silent = true })
-map(
-	"n",
-	"<leader>gl",
-	":Gitsigns toggle_linehl<cr>",
-	{ desc = "Gitsigns Line Highlight", noremap = true, silent = true }
-)
 map(
 	"n",
 	"<leader>gw",
