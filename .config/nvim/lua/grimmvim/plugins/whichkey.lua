@@ -22,6 +22,7 @@ return {
 			},
 			wk.add({
 				{ "<leader>f", group = "Telescope" },
+				{ "<leader>s", group = "Sessions" },
 				{ "<leader>e", group = "File Tree" },
 				{ "<leader>u", group = "Undotree" },
 				{ "<leader>l", group = "LSP" },
@@ -30,7 +31,6 @@ return {
 				{ "<leader>p", group = "Pane" },
 				{ "<leader>t", group = "Terminal" },
 				{ "<leader>g", group = "Gitsigns" },
-				{ "<leader>y", group = "Yazi" },
 			}),
 		})
 	end,

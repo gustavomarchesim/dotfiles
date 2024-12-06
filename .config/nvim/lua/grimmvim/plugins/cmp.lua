@@ -38,14 +38,12 @@ return {
 			},
 
 			mapping = cmp.mapping.preset.insert({
-				["<Tab>"] = cmp.mapping.select_next_item(), -- Navega para o próximo item
-				["<S-Tab>"] = cmp.mapping.select_prev_item(), -- Navega para o item anterior
-				["<C-b>"] = cmp.mapping.scroll_docs(-4), -- Rola os docs para cima
-				["<C-f>"] = cmp.mapping.scroll_docs(4), -- Rola os docs para baixo
-				["<C-Space>"] = cmp.mapping.complete(), -- Abre o menu de completamento
-				["<C-e>"] = cmp.mapping.abort(), -- Cancela o completamento
-				["<CR>"] = cmp.mapping.confirm({ select = true }), -- Confirma o item selecionado
-			}),
+				["<C-b>"] = cmp.mapping.scroll_docs(-4),
+				["<C-f>"] = cmp.mapping.scroll_docs(4),
+				["<C-Space>"] = cmp.mapping.complete(),
+				["<C-e>"] = cmp.mapping.abort(),
+				["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+			}), -- end of mapping section
 
 			-- Managing Sources for completions
 			sources = cmp.config.sources({

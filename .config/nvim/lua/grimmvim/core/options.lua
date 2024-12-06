@@ -4,8 +4,6 @@ local opt = vim.opt
 cmd("let g:netrw_liststyle = 3")
 cmd("filetype plugin indent on")
 cmd([[highlight WinSeparator guibg = None]])
-vim.g.tmux_navigator_disable_when_zoomed = 1
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- Appearance
 opt.termguicolors = true
@@ -16,7 +14,6 @@ opt.laststatus = 3
 opt.showtabline = 0
 
 -- Files and Others
-opt.fileencoding = "utf-8" -- File Encoding
 opt.autochdir = true
 opt.hidden = true
 opt.whichwrap = "b,s,<,>,[,],h,l"
@@ -61,7 +58,6 @@ opt.backup = false
 opt.writebackup = false
 opt.updatetime = 300
 opt.timeoutlen = 500
-vim.o.swapfile = false
 
 -- keep cursor unchanged after quiting
 vim.api.nvim_create_autocmd("ExitPre", {

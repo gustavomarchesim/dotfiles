@@ -1,1 +1,1 @@
-require("core")
+require("grimmvim.core")
