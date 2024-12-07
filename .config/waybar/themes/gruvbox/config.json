@@ -29,8 +29,7 @@
 
   "custom/rofi": {
     "format": "<span size='large'></span>",
-    "on-click": "rofi -show drun -disable-history -show-icons",
-    "on-click-right": "~/.config/custom_scripts/power.sh",
+    "on-click": "~/.config/hypr/scripts/rofi_launcher",
     "escape": true,
     "tooltip": false
   },
@@ -159,7 +158,7 @@
   },
 
   "clock": {
-    "format": "<span color='#222222' bgcolor='#8ec07c' size='large'>  </span> {:%H:%M %A %d/%m/%y}",
+    "format": "<span color='#222222' bgcolor='#8ec07c' size='large'>  </span> {:L%H:%M %A %d/%m/%y}",
     "tooltip": false,
     "interval": 1
   }
