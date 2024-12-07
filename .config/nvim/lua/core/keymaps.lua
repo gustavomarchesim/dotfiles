@@ -18,6 +18,13 @@ end, { desc = "Open or create file under cursor", noremap = true, silent = true 
 -- Enter command mode
 map("n", ";", ":", { desc = "CMD enter command mode" })
 
+-- Clean search
+map("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
+-- End and Start of line
+map("n", "H", "^")
+map("n", "L", "g_")
+
 -- Remapping gj gk for wrapped line
 map("n", "j", "gj", { desc = "Down In Wrap", noremap = true, silent = true })
 map("n", "k", "gk", { desc = "Up In Wrap", noremap = true, silent = true })
