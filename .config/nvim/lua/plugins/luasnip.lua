@@ -35,14 +35,21 @@ return {
 			ls.expand()
 		end, { silent = true })
 
-		vim.keymap.set({ "i", "s" }, "<c-j>", function()
-			ls.jump(1)
+		vim.keymap.set({ "i", "s" }, "<Tab>", function()
+			if ls.choice_active() then
+				ls.change_choice(1)
+			else
+				ls.jump(1) -- Move para o próximo item de snippet
+			end
 		end, { silent = true })
 
-		vim.keymap.set({ "i", "s" }, "<c-k>", function()
-			ls.jump(-1)
+		vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
+			if ls.choice_active() then
+				ls.change_choice(-1)
+			else
+				ls.jump(-1) -- Volta para o item anterior do snippet
+			end
 		end, { silent = true })
-
 		vim.keymap.set({ "i", "s" }, "<c-c>", function()
 			if ls.choice_active() then
 				ls.change_choice(1)

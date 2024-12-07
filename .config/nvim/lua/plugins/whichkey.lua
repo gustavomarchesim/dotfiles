@@ -22,9 +22,7 @@ return {
 			},
 			wk.add({
 				{ "<leader>f", group = "Telescope" },
-				{ "<leader>s", group = "Sessions" },
 				{ "<leader>e", group = "File Tree" },
-				{ "<leader>u", group = "Undotree" },
 				{ "<leader>l", group = "LSP" },
 				{ "<leader>o", group = "Options Commands" },
 				{ "<leader>b", group = "Buffer" },

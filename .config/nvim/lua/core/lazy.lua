@@ -19,8 +19,8 @@ end
 lazy.setup({
 	-- importing directories
 	spec = {
-		{ import = "grimmvim.plugins" },
-		{ import = "grimmvim.plugins.lsp" },
+		{ import = "plugins" },
+		{ import = "plugins.lsp" },
 	},
 
 	-- ui config
