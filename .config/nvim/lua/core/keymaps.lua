@@ -15,6 +15,9 @@ vim.keymap.set("n", "gf", function()
 	end
 end, { desc = "Open or create file under cursor", noremap = true, silent = true })
 
+-- Enter command mode
+map("n", ";", ":", { desc = "CMD enter command mode" })
+
 -- Remapping gj gk for wrapped line
 map("n", "j", "gj", { desc = "Down In Wrap", noremap = true, silent = true })
 map("n", "k", "gk", { desc = "Up In Wrap", noremap = true, silent = true })
@@ -34,21 +37,11 @@ map({ "i", "v" }, "kj", "<Esc>", { desc = "Escape", noremap = true, silent = tru
 map("v", "<", "<gv", { desc = "Indent >", noremap = true, silent = false })
 map("v", ">", ">gv", { desc = "Indent <", noremap = true, silent = false })
 
--- Copy-Pasting
-map("v", "<C-c>", '"+y', { desc = "Copy To ClipB", noremap = true, silent = false })
-map("n", "<C-s>", '"+P', { desc = "Paste From ClipB", noremap = true, silent = false })
-
 -- Focus between windows
 map("n", "<C-h>", "<C-w>h", { desc = "Focus Left", noremap = true, silent = false })
 map("n", "<C-j>", "<C-w>j", { desc = "Focus Right", noremap = true, silent = false })
 map("n", "<C-k>", "<C-w>k", { desc = "Focus Up", noremap = true, silent = false })
 map("n", "<C-l>", "<C-w>l", { desc = "Focus Down", noremap = true, silent = false })
-
--- Resize windows or panes
-map("n", "<C-S-H>", "3<C-w>>", { desc = "Resize Left", noremap = true, silent = false })
-map("n", "<C-S-J>", "3<C-w>-", { desc = "Resize Right", noremap = true, silent = false })
-map("n", "<C-S-K>", "3<C-w>+", { desc = "Resize Up", noremap = true, silent = false })
-map("n", "<C-S-L>", "3<C-w><", { desc = "Resize Down", noremap = true, silent = false })
 
 -- Editing Keymaps
 map("n", "<leader>q", ":q<cr>", { desc = "QUIT FILE", noremap = true, silent = true })
@@ -72,8 +65,6 @@ map("n", "<leader>op", ":pwd<cr>", { desc = "Current Working Directory", noremap
 map("n", "<Tab>", ":bnext<cr>", { desc = "Next Buffer", noremap = true, silent = true })
 map("n", "<S-Tab>", ":bprevious<cr>", { desc = "Previous Buffer", noremap = true, silent = true })
 map("n", "<leader>bn", ":enew<cr>", { desc = "New Empty Buffer", noremap = true, silent = true })
-map("n", "<leader>bl", ":blast<cr>", { desc = "Last Buffer", noremap = true, silent = true })
-map("n", "<leader>bx", ":bdelete<cr>", { desc = "Last Buffer", noremap = true, silent = true })
 map("n", "<leader>bs", ":source %<cr>", { desc = "Source Buffer", noremap = true, silent = true })
 
 -- Splits and Panes
@@ -103,11 +94,6 @@ map(
 	":MarkdownPreviewToggle<cr>",
 	{ desc = "Toggle Markdown Preview", noremap = true, silent = true }
 )
-
--- Auto-Session Manager
-map("n", "<leader>ss", ":SessionSave<CR>", { desc = "Session Save", noremap = true, silent = true })
-map("n", "<leader>sr", ":SessionRestore<CR>", { desc = "Session Restore", noremap = true, silent = true })
-map("n", "<leader>sd", ":SessionDelete<CR>", { desc = "Session Delete", noremap = true, silent = true })
 
 -- NvimTree
 map("n", "<C-n>", ":NvimTreeToggle<cr>", { desc = "NvimTree Toggle", noremap = true, silent = true })
