@@ -20,27 +20,27 @@ return {
 			normal = {
 				a = { bg = colors.dark, fg = colors.cream, gui = "bold" },
 				b = { bg = colors.grey, fg = colors.cream, gui = "bold" },
-				c = { bg = colors.blue, fg = colors.black, gui = "bold" },
+				c = { bg = colors.dark, fg = colors.black, gui = "bold" },
 			},
 			insert = {
 				a = { bg = colors.blue, fg = colors.black, gui = "bold" },
-				c = { bg = colors.violet, fg = colors.black, gui = "bold" },
+				c = { bg = colors.blue, fg = colors.black, gui = "bold" },
 			},
 			visual = {
 				a = { bg = colors.violet, fg = colors.black, gui = "bold" },
-				c = { bg = colors.dark, fg = colors.cream, gui = "bold" },
+				c = { bg = colors.violet, fg = colors.cream, gui = "bold" },
 			},
 			command = {
 				a = { bg = colors.green, fg = colors.black, gui = "bold" },
-				c = { bg = colors.black, fg = colors.cream, gui = "bold" },
+				c = { bg = colors.green, fg = colors.cream, gui = "bold" },
 			},
 			replace = {
 				a = { bg = colors.blue, fg = colors.black, gui = "bold" },
-				c = { bg = colors.violet, fg = colors.black, gui = "bold" },
+				c = { bg = colors.blue, fg = colors.black, gui = "bold" },
 			},
 			inactive = {
 				a = { bg = colors.green, fg = colors.black, gui = "bold" },
-				c = { bg = colors.black, fg = colors.cream, gui = "bold" },
+				c = { bg = colors.green, fg = colors.cream, gui = "bold" },
 			},
 		}
 
@@ -59,28 +59,8 @@ return {
 					"branch",
 					"diff",
 					"diagnostics",
-					{
-						"buffers",
-						buffers_color = {
-							active = { bg = colors.yellow, fg = colors.black, gui = "bold" },
-							inactive = { bg = colors.grey, fg = colors.cream, gui = "italic" },
-						},
-						symbols = {
-							modified = " ●",
-							alternate_file = "",
-							directory = "",
-						},
-						mode = 2,
-					},
 				},
-				lualine_c = {
-					{
-						"filename",
-						file_status = true,
-						path = 3,
-						shorting_target = 0,
-					},
-				},
+				lualine_c = {},
 				lualine_x = {},
 				lualine_y = {
 					"searchcount",

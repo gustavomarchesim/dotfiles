@@ -5,89 +5,34 @@ return {
 	config = function()
 		local nvimtree = require("nvim-tree")
 		nvimtree.setup({
-			auto_reload_on_write = true,
-			view = {
-				width = 35,
-				side = "left",
+			filters = { dotfiles = false },
+			disable_netrw = true,
+			hijack_cursor = true,
+			sync_root_with_cwd = true,
+			update_focused_file = {
+				enable = true,
+				update_root = false,
 			},
-
+			view = {
+				width = 40,
+				preserve_window_proportions = true,
+			},
 			renderer = {
-				add_trailing = false,
-				group_empty = false,
-				highlight_git = false,
-				full_name = false,
-				highlight_opened_files = "none",
-				highlight_modified = "none",
-				root_folder_label = ":~:s?$?/..?",
-				indent_width = 2,
-
-				indent_markers = {
-					enable = true, -- enables the tree like line
-					inline_arrows = true,
-					icons = {
-						corner = "└",
-						edge = "│",
-						item = "│",
-						bottom = "─",
-						none = " ",
-					},
-				},
-
+				root_folder_label = false,
+				highlight_git = true,
+				indent_markers = { enable = true },
 				icons = {
-					webdev_colors = true,
-					git_placement = "before",
-					modified_placement = "after",
-					padding = " ",
-					symlink_arrow = " ➛ ",
-					show = {
-						file = true,
-						folder = true,
-						folder_arrow = true,
-						git = true,
-						modified = true,
-					},
-
 					glyphs = {
-						default = "",
-						symlink = "",
-						bookmark = "",
-						modified = "●",
+						default = "󰈚",
 						folder = {
-							arrow_closed = "",
-							arrow_open = "",
-							default = "",
-							open = "",
-							empty = "",
-							empty_open = "",
-							symlink = "",
-							symlink_open = "",
+							default = "",
+							empty = "",
+							empty_open = "",
+							open = "",
+							symlink = "",
 						},
-
-						git = {
-							unstaged = "✗",
-							staged = "✓",
-							unmerged = "",
-							renamed = "➜",
-							untracked = "★",
-							deleted = "",
-							ignored = "◌",
-						},
+						git = { unmerged = "" },
 					},
-				}, -- end of icons rendering
-
-				special_files = {
-					"Cargo.toml",
-					"Makefile",
-					"README.md",
-					"readme.md",
-				},
-				symlink_destination = true,
-			}, -- end of rendering
-
-			ui = {
-				confirm = {
-					remove = true,
-					trash = true,
 				},
 			},
 		})
