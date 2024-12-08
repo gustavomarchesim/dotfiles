@@ -1,89 +1,57 @@
-local cmd = vim.cmd
 local opt = vim.opt
+local o = vim.o
+local g = vim.g
 
-cmd("let g:netrw_liststyle = 3")
-cmd("filetype plugin indent on")
-cmd([[highlight WinSeparator guibg = None]])
+-------------------------------------- options ------------------------------------------
+o.laststatus = 3
+o.showmode = false
 
--- Appearance
-opt.termguicolors = true
-opt.pumheight = 10
-opt.cmdheight = 0
-opt.conceallevel = 0
-opt.laststatus = 3
-opt.showtabline = 0
+o.clipboard = "unnamedplus"
+o.cursorline = true
+o.cursorlineopt = "number"
 
--- Files and Others
-opt.autochdir = true
-opt.hidden = true
-opt.whichwrap = "b,s,<,>,[,],h,l"
-opt.iskeyword:append("-,_")
-opt.virtualedit = "block"
-
-opt.wrap = false
-opt.number = true
-opt.relativenumber = true
-opt.cursorline = false
-opt.cursorcolumn = false
-opt.signcolumn = "yes"
-
-opt.tabstop = 2
-opt.softtabstop = 2
-opt.shiftwidth = 2
-opt.smartindent = true
-opt.autoindent = true
-opt.expandtab = true
+-- Indenting
+o.expandtab = true
+o.shiftwidth = 2
+o.smartindent = true
+o.tabstop = 2
+o.softtabstop = 2
 
 opt.fillchars = { eob = " " }
+o.ignorecase = true
+o.smartcase = true
+o.mouse = "a"
 
-opt.clipboard = "unnamedplus"
-opt.backspace = "indent,eol,start"
+-- Numbers
+o.number = true
+o.relativenumber = true
+o.numberwidth = 2
+o.ruler = false
 
-opt.hlsearch = true
-opt.ignorecase = true
-opt.smartcase = true
+-- disable nvim intro
+opt.shortmess:append("sI")
 
-opt.scrolloff = 5
-opt.sidescrolloff = 5
-opt.mouse = "n"
+o.signcolumn = "yes"
+o.splitbelow = true
+o.splitright = true
+o.timeoutlen = 400
+o.undofile = true
 
--- Split Windows
-opt.splitbelow = true
-opt.splitright = true
-opt.inccommand = "split"
+-- interval for writing swap file to disk, also used by gitsigns
+o.updatetime = 250
 
--- Update and backups
-opt.showmode = false
-opt.backup = false
-opt.writebackup = false
-opt.updatetime = 300
-opt.timeoutlen = 500
+-- go to previous/next line with h,l,left arrow and right arrow
+-- when cursor reaches end/beginning of line
+opt.whichwrap:append("<>[]hl")
 
--- keep cursor unchanged after quiting
-vim.api.nvim_create_autocmd("ExitPre", {
-	group = vim.api.nvim_create_augroup("Exit", { clear = true }),
-	command = "set guicursor=a:ver90",
-	desc = "Set cursor back to beam when leaving Neovim.",
-})
+-- disable some default providers
+g.loaded_node_provider = 0
+g.loaded_python3_provider = 0
+g.loaded_perl_provider = 0
+g.loaded_ruby_provider = 0
 
--- Options based on filetypes
--- markdown
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "markdown",
-	callback = function()
-		vim.opt.wrap = true
-		vim.opt.linebreak = true
-		vim.opt.tabstop = 2
-		vim.opt.shiftwidth = 2
-		vim.bo.softtabstop = 2
-		vim.opt.expandtab = true
-	end,
-})
-
--- disalbe commenting next line
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "*",
-	callback = function()
-		vim.opt_local.formatoptions:remove({ "r", "o" })
-	end,
-})
+-- add binaries installed by mason.nvim to path
+local is_windows = vim.fn.has("win32") ~= 0
+local sep = is_windows and "\\" or "/"
+local delim = is_windows and ";" or ":"
+vim.env.PATH = table.concat({ vim.fn.stdpath("data"), "mason", "bin" }, sep) .. delim .. vim.env.PATH
