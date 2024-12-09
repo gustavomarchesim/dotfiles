@@ -1,6 +1,7 @@
 return {
-	"lukas-reineke/indent-blankline.nvim",
+	"nvimdev/indentmini.nvim",
+	event = "BufEnter",
 	config = function()
-		require("ibl").setup({})
+		require("indentmini").setup()
 	end,
 }
