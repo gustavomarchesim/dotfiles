@@ -94,6 +94,10 @@ map(
 )
 map("n", "<leader>tf", ":ToggleTerm direction=float<cr>", { desc = "Terminal Floating", noremap = true, silent = true })
 
+-- UndoTree
+map("n", "<leader>uu", ":UndotreeToggle<cr>", { desc = "UndoTree Toggle", noremap = true, silent = true })
+map("n", "<leader>uf", ":UndotreeFocus<cr>", { desc = "UndoTree Focus", noremap = true, silent = true })
+
 -- Markdown Preview
 map(
 	"n",
@@ -164,3 +168,27 @@ map(
 )
 map("n", "<leader>ld", ":Telescope lsp_definitions<cr>", { desc = "Go To Definition", noremap = true, silent = true })
 map("n", "<leader>lr", ":Telescope lsp_references<cr>", { desc = "References", noremap = true, silent = true })
+
+-- LSP_Saga
+map("n", "<leader>lk", ":Lspsaga hover_doc<cr>", { desc = "Hover Docs", noremap = true, silent = true })
+map("n", "<leader>lR", ":Lspsaga rename<cr>", { desc = "Rename", noremap = true, silent = true })
+map("n", "<leader>la", ":Lspsaga code_action<cr>", { desc = "Code Action", noremap = true, silent = true })
+map(
+	"n",
+	"<leader>le",
+	":Lspsaga show_line_diagnostics<cr>",
+	{ desc = "Show Line Diagnostics", noremap = true, silent = true }
+)
+map(
+	"n",
+	"<leader>ln",
+	":Lspsaga diagnostic_jump_next<cr>",
+	{ desc = "Go To Next Diagnostic", noremap = true, silent = true }
+)
+map(
+	"n",
+	"<leader>lN",
+	":Lspsaga diagnostic_jump_prev<cr>",
+	{ desc = "Go To Previous Diagnostic", noremap = true, silent = true }
+)
+map("n", "<leader>lo", ":Lspsaga outline<cr>", { desc = "LSP Saga outline", noremap = true, silent = true })
