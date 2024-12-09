@@ -2,6 +2,7 @@ local opt = vim.opt
 local o = vim.o
 local g = vim.g
 
+vim.g.tmux_navigator_disable_when_zoomed = 1
 -------------------------------------- options ------------------------------------------
 o.laststatus = 3
 o.showmode = false

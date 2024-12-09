@@ -25,6 +25,7 @@ return {
 				{ "<leader>e", group = "File Tree" },
 				{ "<leader>l", group = "LSP" },
 				{ "<leader>o", group = "Options Commands" },
+				{ "<leader>x", group = "Trouble Commands" },
 				{ "<leader>u", group = "Settings" },
 				{ "<leader>b", group = "Buffer" },
 				{ "<leader>p", group = "Pane" },
