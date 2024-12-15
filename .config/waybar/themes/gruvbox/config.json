@@ -69,7 +69,7 @@
       "1": "<span size='large'>󰧨</span>",
       "2": "<span size='large'>󰈹</span>",
       "3": "<span size='large'></span>",
-      "4": "<span size='large'></span>",
+      "4": "<span size='large'>󰓇</span>",
       "5": "<span size='large'></span>",
       "6": "<span size='large'>󰭛</span>",
       "7": "<span size='large'>󱓷</span>",
@@ -129,6 +129,7 @@
     "format-bluetooth-muted": "<span color='#222222' bgcolor='#ea6962' size='large'> 󰂲 </span> {volume}%",
     "format-source": "{volume}% ",
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pavucontrol",
     "tooltip": false,
     "max-volume": 130
   },
