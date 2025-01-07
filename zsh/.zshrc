@@ -1,4 +1,5 @@
 export EDITOR=nvim
+export PATH=$PATH:~/.local/share/nvim/mason/bin
 # ==========================
 # Powerlevel10k Configuration
 # ==========================
