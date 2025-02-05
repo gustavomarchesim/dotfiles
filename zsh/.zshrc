@@ -37,6 +37,8 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light MichaelAquilina/zsh-auto-notify
 zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
+zinit snippet OMZ::plugins/tmux
+zinit snippet OMZ::plugins/git
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -76,14 +78,6 @@ setopt hist_find_no_dups
 
 # File and directory shortcuts
 alias ls='eza --long --all --no-permissions --no-filesize --no-user --no-time --git --color=always'
-alias ll='ls -lh'
-alias la='ls -la'
-alias ~='cd ~'
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ......="cd ../../../../.."
 
 # Text and command preview
 alias cat='bat --paging never --theme DarkNeon --style plain'
@@ -100,29 +94,9 @@ alias dots='cd ~/dotfiles && nvim'
 # History shortcuts
 alias h='history | fzf'
 
-# Tmux shortcuts
-alias tx='tmux'
-alias tks='tmux kill-session -t'
-alias tls='tmux list-sessions'
-alias tas='tmux attach-session -t'
-alias tns='tmux new-session -s'
-alias tks-all="tmux kill-server"
-
-# ==========================
+#==========================
 # Shell Integrations
 # ==========================
 
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-
-# Yazi function
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
-}
-
-export PATH=$PATH:/home/gdam/.spicetify
