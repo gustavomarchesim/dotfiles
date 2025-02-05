@@ -3,6 +3,8 @@
 # Caminho do Tema Atual
 DIR="$HOME/.config"
 RASI="$DIR/rofi/wallpaper_switcher.rasi"
+WALL="$HOME/dotfiles/.config/hypr/wallpapers/active"
 
 rofi -show wallpaper -theme "${RASI}"
+wal -i "$WALL"
 

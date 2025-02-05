@@ -8,9 +8,17 @@ if [[ -z "$@" ]]; then
 else
     SELECTED="$WALLPAPER_DIR/$@"
     if [[ -f "$SELECTED" ]]; then
+        # Define o wallpaper
         swww img -t wipe --resize crop "$SELECTED"
+
+        # Notificação
         notify-send "Wallpaper Updated" "Desktop wallpaper changed to <i>$@</i>" -i "$SELECTED" -u normal
+
+        # Atualiza o arquivo "active"
         cp "$SELECTED" "$WALLPAPER_DIR/active"
+
+        # Gera e aplica cores com o Wallust (em background)
+       wallust run "$SELECTED" > /dev/null 2>&1 & disown
     fi
 fi
 
