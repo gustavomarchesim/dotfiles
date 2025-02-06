@@ -36,6 +36,7 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light MichaelAquilina/zsh-auto-notify
+zinit light MichaelAquilina/zsh-you-should-use
 zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
 zinit snippet OMZ::plugins/tmux
 zinit snippet OMZ::plugins/git
@@ -76,23 +77,22 @@ setopt hist_find_no_dups
 # Aliases
 # ==========================
 
-# File and directory shortcuts
-alias ls='eza --long --all --no-permissions --no-filesize --no-user --no-time --git --color=always'
-
-# Text and command preview
-alias cat='bat --paging never --theme DarkNeon --style plain'
-alias fzfp='fzf --preview "bat --style numbers --color always {}"'
-
-# System shortcuts
+alias ls='lsd'
+alias la='lsd -la'
+alias tree='lsd --tree'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias ~='cd ~'
+alias h='history'
+alias fd='find . -type d -name'
+alias ff='find . -type f -name'
+alias grep='grep --color'
+alias dl='cd ~/Downloads'
+alias dc='cd ~/Documentos'
 alias vim='nvim'
-alias vi='nvim'
 alias c='clear'
-
-# Personal shortcuts
 alias dots='cd ~/dotfiles && nvim'
-
-# History shortcuts
-alias h='history | fzf'
 
 #==========================
 # Shell Integrations
