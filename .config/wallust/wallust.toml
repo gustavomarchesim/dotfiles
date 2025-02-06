@@ -9,3 +9,6 @@ hypr.target = '~/.config/hypr/wallust.conf'
 
 kitty.template = 'colors-kitty.conf'
 kitty.target = '~/.config/kitty/colors.conf'
+
+nvim.template = 'colors_neopywal.nvim'
+nvim.target = '~/.cache/wallust/colors_neopywal.nvim'
