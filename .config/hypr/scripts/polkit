@@ -8,8 +8,8 @@ else
 fi
 
 # Verificar se o executável existe antes de tentar executá-lo
-if [ -x "${libDir}/polkit-gnome/polkit-gnome-authentication-agent-1" ]; then
-    "${libDir}/polkit-gnome/polkit-gnome-authentication-agent-1" &
+if [ -x "${libDir}/polkit-kde-authentication-agent-1" ]; then
+    "${libDir}/polkit-kde-authentication-agent-1" &
 else
     echo "Erro: polkit-gnome-authentication-agent-1 não encontrado em ${libDir}" >&2
 fi

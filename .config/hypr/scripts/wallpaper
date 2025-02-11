@@ -18,7 +18,7 @@ else
         cp "$SELECTED" "$WALLPAPER_DIR/active"
 
         # Gera e aplica cores com o Wallust (em background)
-       wallust run "$SELECTED" > /dev/null 2>&1 & disown
+        wallust run "$SELECTED" > /dev/null 2>&1 & disown
 
     fi
 fi

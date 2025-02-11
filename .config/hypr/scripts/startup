@@ -40,11 +40,6 @@ if command -v nm-applet &>/dev/null; then
     nm-applet --indicator &
 fi
 
-# Start Hypridle
-if command -v hypridle &>/dev/null; then
-    hypridle &
-fi
-
 # Start Swww daemon
 if command -v swww-daemon &>/dev/null; then
     swww-daemon &
