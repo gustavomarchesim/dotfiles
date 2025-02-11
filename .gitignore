@@ -13,3 +13,6 @@ Session.vim
 .local/share/icons/hicolor
 .config/nvim/lazy-lock.json
 .local/share/icons/*
+.config/rofi/shared/colors.rasi
+.config/waybar/colors-waybar.css
+.config/kitty/colors.conf
