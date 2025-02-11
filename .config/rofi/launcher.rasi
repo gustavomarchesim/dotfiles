@@ -19,7 +19,7 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       800px;
+    width:                       500px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -82,7 +82,7 @@ entry {
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
-    columns:                     2;
+    columns:                     1;
     lines:                       7;
     cycle:                       true;
     dynamic:                     true;
@@ -153,7 +153,7 @@ element-text {
 
 /*****----- Mode Switcher -----*****/
 mode-switcher{
-    enabled:                     true;
+    enabled:                     false;
     spacing:                     10px;
     margin:                      0px;
     padding:                     0px 250px;
