@@ -32,4 +32,3 @@ else
 
     pkill -x rofi
 fi
-

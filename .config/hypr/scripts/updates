@@ -1,5 +1,0 @@
-#!/bin/bash
-
-figlet "Updates"
-
-paru
