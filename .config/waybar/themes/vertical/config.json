@@ -1,140 +1,124 @@
 {
-     
-    "layer": "top",
-    "position": "left",
-    "mod": "dock",
-    "height": 28,
-    "exclusive": true,
-    "passthrough": false,
-    "gtk-layer-shell": true,
+  "layer": "top",
+  "position": "left",
+  "mod": "dock",
+  "height": 28,
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
 
+  "modules-left": [
+    "group/launcher",
+    "cpu",
+    "memory",
+    "temperature",
+    "group/playerctl",
+    "custom/dots"
+  ],
 
-    "modules-left": [
-        "group/launcher",
-        "cpu",
-        "memory",
-        "temperature",
-        "group/playerctl",
-        "custom/weather",
-        "custom/dots",
-        "custom/updates"
-      ],
+  "modules-center": ["hyprland/workspaces"],
 
-      "modules-center": [
-        "hyprland/workspaces"
-      ],
-
-      "modules-right": [
-        "pulseaudio/slider",
-        "pulseaudio#audio",
-        "clock#calender",
-        "clock",
-        "group/power"
-      ],
-    
+  "modules-right": [
+    "pulseaudio/slider",
+    "pulseaudio#audio",
+    "clock#calender",
+    "clock",
+    "group/power"
+  ],
 
   //  Group Launchers
 
-"group/launcher": {
-  "orientation": "vertical",
-  "drawer": {
-    "transition-duration": 500,
-    "children-class": "not-power,",
-    "transition-left-to-right": true,
-    "click-to-reveal": true
+  "group/launcher": {
+    "orientation": "vertical",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-power,",
+      "transition-left-to-right": true,
+      "click-to-reveal": true
+    },
+    "modules": ["custom/launcher", "tray"]
   },
-  "modules": [
-    "custom/launcher",
-    "tray"
-  ]
-},
 
-"custom/launcher": {
-  "format": "",
-  "tooltip": false
-},
+  "custom/launcher": {
+    "format": "",
+    "tooltip": false
+  },
 
-"tray": {
-  "icon-size": 15,
-  "spacing": 7
-},
+  "tray": {
+    "icon-size": 15,
+    "spacing": 7
+  },
 
+  "cpu": {
+    "interval": 1,
+    "format": "{usage:02}%"
+  },
 
-"cpu": {
-  "interval": 1,
-  "format": "{usage:02}%",
-},
-
-
-"memory": {
-  "states": {
+  "memory": {
+    "states": {
       "c": 90, // high
       "h": 75, // medium
-      "m": 30, // low
+      "m": 30 // low
+    },
+    "interval": 30,
+    "format": "󰾆",
+    "format-m": "󰾅",
+    "format-h": "󰓅",
+    "format-c": "",
+    "max-length": 10,
+    "tooltip": true,
+    "tooltip-format": "{percentage}%\n{used:0.1f}GB/{total:0.1f}GB"
   },
-  "interval": 30,
-  "format": "󰾆",
-  "format-m": "󰾅",
-  "format-h": "󰓅",
-  "format-c": "",
-  "max-length": 10,
-  "tooltip": true,
-  "tooltip-format": "{percentage}%\n{used:0.1f}GB/{total:0.1f}GB"
-},
 
-
-"temperature": {
- "tooltip": false,
+  "temperature": {
+    "tooltip": false,
     "thermal-zone": 2,
     "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
     "critical-threshold": 70,
-  "format": "{temperatureC}°C"
-},
+    "format": "{temperatureC}°C"
+  },
 
-"custom/dots": {
-  "format": "",
-  "tooltip": false,
-  "rotate": 90,
-},
+  "custom/dots": {
+    "format": "",
+    "tooltip": false,
+    "rotate": 90
+  },
 
-"group/playerctl": {
-  "orientation": "vertical",
-  "modules": [
-    "custom/playerctl-backward",
-    "custom/playerctl-play",
-    "custom/playerctl-forward"
+  "group/playerctl": {
+    "orientation": "vertical",
+    "modules": [
+      "custom/playerctl-backward",
+      "custom/playerctl-play",
+      "custom/playerctl-forward"
     ]
-},
-    "custom/playerctl-backward": {
-        "format": "\uF04A",
-        "tooltip": false,
-        "on-click": "playerctl previous",
-        "rotate": 90,
+  },
+  "custom/playerctl-backward": {
+    "format": "\uF04A",
+    "tooltip": false,
+    "on-click": "playerctl previous",
+    "rotate": 90
+  },
+  "custom/playerctl-play": {
+    "format": "{icon}",
+    "tooltip": true,
+    "rotate": 90,
+    "return-type": "json",
+    "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "on-click": "playerctl play-pause",
+    "format-icons": {
+      "Playing": "<span>\uF04C</span>",
+      "Paused": "<span>\uF04B</span>",
+      "Not-Playing": ""
+    }
+  },
+  "custom/playerctl-forward": {
+    "format": "\uF04E",
+    "tooltip": false,
+    "on-click": "playerctl next",
+    "rotate": 90
+  },
 
-    },
-    "custom/playerctl-play": {
-        "format": "{icon}",
-        "tooltip": true,
-        "rotate": 90,
-        "return-type": "json",
-        "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
-        "on-click": "playerctl play-pause",
-        "format-icons": {
-            "Playing": "<span>\uF04C</span>",
-            "Paused": "<span>\uF04B</span>",
-            "Not-Playing": "",
-        }
-    },
-    "custom/playerctl-forward": {
-        "format": "\uF04E",
-        "tooltip": false,
-        "on-click": "playerctl next",
-        "rotate": 90,
-    },
-
-
-
-  // Hyprland Workspaces 
+  // Hyprland Workspaces
 
   "hyprland/workspaces": {
     "format": "{icon}",
@@ -147,68 +131,57 @@
       "6": "",
       "7": "",
       "active": "",
-      "default": "",
+      "default": ""
     }
-    
   },
 
+  // Slider configuration
 
-// Slider configuration
-  
   "pulseaudio/slider": {
     "min": 0,
     "max": 100,
     "orientation": "vertical"
   },
 
+  // Calender config
 
-// Calender config
+  "clock#calender": {
+    "format": "{:%d\n%m\n%y}",
+    "tooltip": false
+  },
 
-"clock#calender": {
-  "format": "{:%d\n%m\n%y}",
-  "tooltip": false,
-},
+  // Clock config
 
-// Clock config
-
- "clock": {
+  "clock": {
     "interval": 1,
     "format": "\n{:%I\n%M}",
-    "tooltip": false,
- },
-
-
-
-// Power config
-
-"group/power": {
-  "orientation": "vertical",
-  "drawer": {
-    "transition-duration": 500,
-    "children-class": "not-power",
-    "transition-left-to-right": false,
-    "click-to-reveal": true,
+    "tooltip": false
   },
-  "modules": [
-    "custom/power",
-    "custom/quit",
-    "custom/reboot",
-  ]
-},
-"custom/power": {
-   "format": "⏻",
-   "tooltip": false,
-},
-"custom/reboot": {
+
+  // Power config
+
+  "group/power": {
+    "orientation": "vertical",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-power",
+      "transition-left-to-right": false,
+      "click-to-reveal": true
+    },
+    "modules": ["custom/power", "custom/quit", "custom/reboot"]
+  },
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": false
+  },
+  "custom/reboot": {
     "format": "",
     "tooltip": false,
     "on-click": "reboot"
-},
-"custom/quit": {
+  },
+  "custom/quit": {
     "format": "󰿅",
     "tooltip": false,
     "on-click": "hyprctl dispatch exit"
-},
-
-
+  }
 }

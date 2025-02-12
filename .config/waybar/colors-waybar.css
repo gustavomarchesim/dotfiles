@@ -1,0 +1,29 @@
+/* CSS variables for Waybar
+ * You can add it to wallust.toml with:
+
+waybar = { src = "waybar-colors.css", dst = "~/.config/waybar/colors.css" }
+
+ * And then in you waybar 'style.css' file, import it with:
+
+@import url("colors.css");
+ */
+
+@define-color cursor #EFEAF0;
+@define-color background #29282A;
+@define-color foreground #EFEAF0;
+@define-color color0  #4E4E50;
+@define-color color1  #221C28;
+@define-color color2  #331160;
+@define-color color3  #351064;
+@define-color color4  #494564;
+@define-color color5  #3B5F91;
+@define-color color6  #9C93A0;
+@define-color color7  #DFD9E2;
+@define-color color8  #9C989E;
+@define-color color9  #2D2635;
+@define-color color10 #441780;
+@define-color color11 #461685;
+@define-color color12 #615C85;
+@define-color color13 #4E7FC1;
+@define-color color14 #D0C4D5;
+@define-color color15 #DFD9E2;

@@ -1,1 +1,0 @@
-/home/gdam/dotfiles/.config/hypr/wallpapers/tetris.png

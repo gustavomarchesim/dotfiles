@@ -2,32 +2,14 @@
   "layer": "top",
   "position": "top",
   "heigth": 24,
-  "margin-top": 5,
-  "margin-left": 5,
-  "margin-right": 5,
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
   "spacing": 6,
   "fixed-center": true,
-  "modules-left": [
-    "hyprland/workspaces",
-    "custom/wallpaper",
-    "custom/waybar",
-    "network#vpn"
-  ],
-  "modules-center": [
-    "power-profiles-daemon",
-    "clock",
-    "custom/updates"
-  ],
-  "modules-right": [
-    "cpu",
-    "memory",
-    "pulseaudio",
-    "bluetooth",
-    "tray"
-  ],
+  "modules-left": ["clock"],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": ["cpu", "memory", "pulseaudio"],
   "cpu": {
     "interval": 10,
     "format": " {usage}%",
@@ -56,7 +38,7 @@
     "cursor": false
   },
   "clock": {
-    "format": "  {:L%H:%M |   %d/%m/%Y}",
+    "format": "{:%I:%M %p 󰇙 %A, %b %d}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "cursor": false,
     "timezone": "America/Sao_Paulo",
@@ -90,11 +72,7 @@
       "phone": "󰏲 ",
       "portable": " ",
       "car": " ",
-      "default": [
-        "󰕿 ",
-        "󰖀 ",
-        "󰕾 "
-      ]
+      "default": ["󰕿 ", "󰖀 ", "󰕾 "]
     },
     "on-click": "pavucontrol",
     "on-click-right": "pactl set-sink-mute 0 toggle",
