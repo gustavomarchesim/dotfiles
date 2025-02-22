@@ -38,7 +38,6 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light MichaelAquilina/zsh-auto-notify
 zinit light MichaelAquilina/zsh-you-should-use
 zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
-zinit snippet OMZ::plugins/tmux
 zinit snippet OMZ::plugins/git
 
 # Load completions
@@ -93,6 +92,12 @@ alias dc='cd ~/Documentos'
 alias vim='nvim'
 alias c='clear'
 alias dots='cd ~/dotfiles && nvim'
+alias ta='tmux attach -t'
+alias tad='tmux attach -d -t'
+alias tkss='tmux kill-session -t'
+alias tksv='tmux kill-server'
+alias ts='tmux new-session -s'
+alias tl='tmux list-sessions'
 
 #==========================
 # Shell Integrations
