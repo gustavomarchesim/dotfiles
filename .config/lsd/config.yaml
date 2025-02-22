@@ -12,7 +12,7 @@ color:
   when: auto
   theme: custom
 
-date: '+%A, %d %B %Y, %R'
+date: "+%A, %d %B %Y, %R"
 
 # == Dereference ==
 # Whether to dereference symbolic links.
@@ -27,7 +27,7 @@ icons:
   theme: fancy
   # Separator between icon and the name
   # Default to 1 space
-  separator: ' '
+  separator: " "
 
 # == Ignore Globs ==
 # A list of globs to ignore when listing.
