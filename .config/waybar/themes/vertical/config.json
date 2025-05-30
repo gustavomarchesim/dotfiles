@@ -4,6 +4,7 @@
   "mod": "dock",
   "height": 28,
   "exclusive": true,
+  "output": "HDMI-A-1",
   "passthrough": false,
   "gtk-layer-shell": true,
 

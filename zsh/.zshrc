@@ -39,6 +39,8 @@ zinit light MichaelAquilina/zsh-auto-notify
 zinit light MichaelAquilina/zsh-you-should-use
 zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
 zinit snippet OMZ::plugins/git
+zinit snippet OMZP::command-not-found
+zinit snippet OMZP::sudo
 
 # Load completions
 autoload -Uz compinit && compinit

@@ -1,3 +1,4 @@
+
 #!/usr/bin/env bash
 
 # Rofi configuration
@@ -102,4 +103,5 @@ while true; do
         notify-send "Wi-Fi" "$connected_notif"
     fi
   fi
-done
+doneone
+one
