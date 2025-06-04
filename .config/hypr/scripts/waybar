@@ -1,34 +1,34 @@
 #!/usr/bin/env bash
 
 THEMES_DIR="$HOME/.config/waybar/themes"
-CURRENT_THEME_FILE="$THEMES_DIR/active.txt"  
+CURRENT_THEME_FILE="$THEMES_DIR/active.txt"
 if [[ -z "$@" ]]; then
-    find "$THEMES_DIR" -maxdepth 1 -mindepth 1 -type d | sed "s|$THEMES_DIR/||"
+  find "$THEMES_DIR" -maxdepth 1 -mindepth 1 -type d | sed "s|$THEMES_DIR/||"
 else
-    THEME=$(basename "$@") 
+  THEME=$(basename "$@")
 
-    CONFIG="$THEMES_DIR/$THEME/config.json"
-    STYLE="$THEMES_DIR/$THEME/style.css"
+  CONFIG="$THEMES_DIR/$THEME/config.json"
+  STYLE="$THEMES_DIR/$THEME/style.css"
 
-    if [[ -d "$THEMES_DIR/$THEME" && -f "$CONFIG" && -f "$STYLE" ]]; then
-        echo "$THEME" > "$CURRENT_THEME_FILE"
-        
-        if [[ -f "$CURRENT_THEME_FILE" ]]; then
-            notify-send "Waybar Theme Saved" "The theme '$THEME' has been saved to $CURRENT_THEME_FILE."
-        else
-            notify-send "Error" "Failed to save the theme to $CURRENT_THEME_FILE." -u critical
-        fi
+  if [[ -d "$THEMES_DIR/$THEME" && -f "$CONFIG" && -f "$STYLE" ]]; then
+    echo "$THEME" >"$CURRENT_THEME_FILE"
 
-        if pgrep -x "waybar" > /dev/null; then
-            killall -q waybar
-        fi
-
-        waybar --bar main-bar --log-level error --config "$CONFIG" --style "$STYLE" &
-        notify-send "Waybar Theme Updated" "Theme changed to <i>$THEME</i>" -u normal
+    if [[ -f "$CURRENT_THEME_FILE" ]]; then
+      notify-send "Waybar Theme Saved" "The theme '$THEME' has been saved to $CURRENT_THEME_FILE."
     else
-        notify-send "Waybar Theme Error" "The theme '$THEME' is invalid or incomplete." -u critical
-        exit 1
+      notify-send "Error" "Failed to save the theme to $CURRENT_THEME_FILE." -u critical
     fi
 
-    pkill -x rofi
+    if pgrep -x "waybar" >/dev/null; then
+      killall -q waybar
+    fi
+
+    waybar --bar main-bar --log-level error --config "$CONFIG" --style "$STYLE" &
+    notify-send "Waybar Theme Updated" "Theme changed to <i>$THEME</i>" -u normal
+  else
+    notify-send "Waybar Theme Error" "The theme '$THEME' is invalid or incomplete." -u critical
+    exit 1
+  fi
+
+  pkill -x rofi
 fi
