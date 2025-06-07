@@ -51,7 +51,7 @@ window#waybar.hidden {
 #memory,
 #submap {
   font-family: JetBrainsMono Nerd Font;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 800;
   color: #282828;
   /* background: #282828; */
