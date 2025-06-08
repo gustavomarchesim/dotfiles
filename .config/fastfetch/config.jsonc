@@ -84,11 +84,11 @@
         //     "key": "├───────────┤",
         //     "type": "custom"
         // },
-        // {
-        //     "key": "│           │\u001b[11D{#39} colors",
-        //     "type": "colors",
-        //     "symbol": "circle"
-        // },
+        {
+            "key": "│           │\u001b[11D{#39} colors",
+            "type": "colors",
+            "symbol": "circle"
+        },
         {
             "key": "╰───────────╯",
             "type": "custom"
