@@ -1,3 +1,6 @@
+if [[ -z "$TMUX" ]]; then
+  fastfetch
+fi
 # ==========================
 # Powerlevel10k Configuration
 # ==========================
