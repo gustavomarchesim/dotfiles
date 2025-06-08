@@ -16,3 +16,4 @@ Session.vim
 .config/kitty/colors.conf
 .config/rofi/shared/colors.rasi
 .config/waybar/colors-waybar.css
+.config/hypr/wallust.conf
