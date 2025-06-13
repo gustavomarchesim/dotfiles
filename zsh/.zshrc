@@ -38,17 +38,14 @@ zinit light Aloxaf/fzf-tab
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-zinit light MichaelAquilina/zsh-auto-notify
-zinit light MichaelAquilina/zsh-you-should-use
-zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
 zinit snippet OMZ::plugins/git
-zinit snippet OMZP::command-not-found
 zinit snippet OMZP::sudo
 
 # Load completions
 autoload -Uz compinit && compinit
 
 # Enable cd replay quietly
+
 zinit cdreplay -q
 
 # ==========================
@@ -78,31 +75,87 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # ==========================
-# Aliases
+# Navegação de Diretórios
 # ==========================
-
-alias ls='lsd'
-alias la='lsd -la'
-alias tree='lsd --tree'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias ~='cd ~'
-alias h='history'
+alias dl='cd ~/Downloads'
+alias dc='cd ~/Documentos'
+alias dots='cd ~/dotfiles && nvim'
+
+# ==========================
+# Listagem de Arquivos
+# ==========================
+alias ls='eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions'
+alias tree='ls --tree --level=2'
+
+show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+
+export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo \${}'"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
+  esac
+}
+
+# ==========================
+# Busca e Ferramentas de Terminal
+# ==========================
 alias fd='find . -type d -name'
 alias ff='find . -type f -name'
 alias grep='grep --color'
-alias dl='cd ~/Downloads'
-alias dc='cd ~/Documentos'
-alias vim='nvim'
 alias c='clear'
-alias dots='cd ~/dotfiles && nvim'
-alias ta='tmux attach -t'
-alias tad='tmux attach -d -t'
-alias tkss='tmux kill-session -t'
-alias tksv='tmux kill-server'
-alias ts='tmux new-session -s'
+alias h='history'
+
+# ==========================
+# Editor de Texto
+# ==========================
+alias vim='nvim'
+
+# ==========================
+# Tmux
+# ==========================
+alias ta='tmux attach'
 alias tl='tmux list-sessions'
+alias tn='tmux new-session -s'
+
+# ==========================
+# Git
+# ==========================
+alias ga='git add'
+alias gap='ga --patch'
+alias gb='git branch'
+alias gba='gb --all'
+alias gc='git commit'
+alias gca='gc --amend --no-edit'
+alias gce='gc --amend'
+alias gco='git checkout'
+alias gcl='git clone --recursive'
+alias gd='git diff --output-indicator-new=" " --output-indicator-old=" "'
+alias gds='gd --staged'
+alias gi='git init'
+alias gl='git log --graph --all --pretty=format:"%C(magenta)%h %C(white) %an  %ar%C(blue)  %D%n%s%n"'
+alias gm='git merge'
+alias gn='git checkout -b'
+alias gp='git push'
+alias gu='git pull'
+alias gr='git reset'
+alias gs='git status --short'
+
+# Commit com mensagem inline
+gcm() { git commit --message "$*"; }
 
 #==========================
 # Shell Integrations
