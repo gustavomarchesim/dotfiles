@@ -7,19 +7,9 @@
   "gtk-layer-shell": true,
   "height": 0,
   "name": "horBar",
-  "modules-left": [
-    "clock",
-    "hyprland/workspaces",
-    "tray"
-  ],
+  "modules-left": ["clock", "hyprland/workspaces", "tray"],
   "modules-center": [],
-  "modules-right": [
-    "cpu",
-    "memory",
-    "pulseaudio",
-    "custom/updates",
-    "network"
-  ],
+  "modules-right": ["cpu", "memory", "pulseaudio", "custom/updates", "network"],
   "idle_inhibitor": {
     "format": "[ {icon} ]",
     "tooltip-format-activated": "IDLE_STATUS: [ ACTIVE ]",
@@ -137,7 +127,7 @@
   },
   "network": {
     "format-wifi": "[ <span color='#86e371'>ONLINE</span> ]",
-    "format-ethernet": "[ <span> color='#867e371'ONLINE</span> ]",
+    "format-ethernet": "[ <span color='#86e371'>ONLINE</span>  ]",
     "tooltip-format-wifi": "ESSID\t: {essid}\nSTRNGTH\t: {signaldBm}\n\nADDRESS\t: {ipaddr}\nGATE\t: {gwaddr}\nMASK\t: {netmask} | {cidr}",
     "tooltip-format-ethernet": "IFNAME: {ifname}\nADDRESS: {ipaddr}",
     "format-disconnected": "[ <span color='#B7416E'>XXXXXX</span> ]",

@@ -1,148 +1,189 @@
 {
   "layer": "top",
-  "position": "top",
-  "heigth": 24,
-  "margin-top": 5,
-  "margin-left": 5,
-  "margin-right": 5,
-  "exclusive": true,
-  "passthrough": false,
-  "gtk-layer-shell": true,
-  "spacing": 6,
-  "fixed-center": true,
-  "modules-left": [
-    "hyprland/workspaces",
-    "custom/wallpaper",
-    "custom/waybar",
-    "network#vpn"
-  ],
-  "modules-center": [
-    "power-profiles-daemon",
-    "clock",
-    "custom/updates"
-  ],
+  "margin-left": 3,
+  "margin-right": 3,
+  "margin-top": 2,
+  "margin-bottom": 0,
+  "modules-left": ["hyprland/workspaces", "cpu", "memory", "network#speed"],
+  "modules-center": ["clock"],
   "modules-right": [
-    "cpu",
-    "memory",
-    "pulseaudio",
-    "bluetooth",
-    "tray"
+    "hyprland/window",
+    "temperature#gpu",
+    "wireplumber",
+    "network",
+    "bluetooth"
   ],
+  "hyprland/window": {
+    "format": "{initialClass}",
+    "icon": true,
+    "icon-size": 19,
+    "seperate-outputs": true,
+    "rewrite": {
+      "": "  Arch",
+      "Mozilla Firefox": "Firefox",
+      "(.*) Thunar": "Thunar",
+      "(.*)obs(.*)": "OBS",
+      "Spotify (.*)": "Spotify",
+      "discord(.*)": " Discord",
+      "Code": "VS Code",
+      "Docker Desktop": " Docker",
+      "kitty": "Kitty",
+      "app.zen_browser.zen": "Zen"
+    },
+    "on-click-middle": "pkill waybar && hyprctl dispatch exec waybar"
+  },
+  "temperature#gpu": {
+    "thermal-zone": 5,
+    "critical-threshold": 80,
+    "format-critical": "{temperatureC}°C ",
+    "format": "{temperatureC}°C ",
+    "tooltip": false
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "scroll-step": 5,
+    "format": "{icon}",
+    "format-icons": ["󰃞 ", "󰃟 ", "󰃝 ", "󰃠 "],
+    "tooltip": true,
+    "tooltip-format": "{percent}%"
+  },
+  "network#speed": {
+    "interval": 1,
+    "format": "{ifname}%%",
+    "format-wifi": " {bandwidthDownBytes}  {bandwidthUpBytes}",
+    "format-ethernet": " {bandwidthDownBytes}  {bandwidthUpBytes} ",
+    "format-disconnected": "󰌙",
+    "tooltip-format": "{ipaddr}",
+    "format-linked": "󰈁 {ifname} (No IP)",
+    "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
+    "tooltip-format-ethernet": "{ifname} 󰌘",
+    "tooltip-format-disconnected": "󰌙 Disconnected",
+    "max-length": 22,
+    "min-length": 20,
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
+  },
   "cpu": {
-    "interval": 10,
-    "format": " {usage}%",
-    "max-length": 10
+    "interval": 1,
+    "format": "{usage}% <span font='Font Awesome 6 Free-Solid'>\uf2db</span>",
+    "on-click": "kitty btop"
   },
   "memory": {
-    "interval": 30,
-    "format": " {used:0.1f}G",
-    "max-length": 10,
-    "on-click": "kitty --class dotfiles-floating htop"
+    "interval": 1,
+    "format": "{percentage}% <span font='Font Awesome 5 Free'>\uf538</span>",
+    "on-click": "kitty btop",
+    "tooltip-format": "{used}/{total} GiB"
   },
   "hyprland/workspaces": {
-    "disable-scroll": false,
     "all-outputs": true,
+    "active-only": false,
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "format": "{icon}",
+    "format-icons": {
+      "active": "󰮯",
+      "default": "󰊠",
+      "special": "S"
+    },
+    "persistent-workspaces": {
+      "*": 4
+    },
     "on-click": "activate",
     "on-scroll-up": "hyprctl dispatch workspace e-1",
-    "on-scroll-down": "hyprctl dispatch workspace e+1",
-    "persistent-workspaces": {
-      "*": 2
-    },
-    "cursor": false
+    "on-scroll-down": "hyprctl dispatch workspace e+1"
   },
-  "tray": {
-    "spacing": 6,
-    "icon-size": 14,
-    "cursor": false
+  "custom/weather": {
+    "format": "{}°C",
+    "tooltip": false,
+    "interval": 3600,
+    "exec": "wttrbar --location 'Ahmedabad'",
+    "return-type": "json"
   },
   "clock": {
-    "format": "  {:L%H:%M |   %d/%m/%Y}",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>",
-    "cursor": false,
-    "timezone": "America/Sao_Paulo",
-    "calendar": {
-      "format": {
-        "today": "<span color='#ac4142'><b><u>{}</u></b></span>"
-      }
-    }
-  },
-  "bluetooth": {
-    "format": "󰂯 Enabled",
-    "format-disabled": "󰂲 Disabled",
-    "format-connected": " {device_alias} {device_battery_percentage}%",
-    "tooltip-format": "{controller_alias}\t{controller_address}",
-    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "on-click": "blueman-manager",
-    "cursor": false
-  },
-  "pulseaudio": {
-    "format": "{icon}{volume}%",
-    "format-bluetooth": "󰗾 {volume}%",
-    "format-bluetooth-muted": "󰗿",
-    "format-muted": "󰝟",
-    "format-source": "󰍬",
-    "format-source-muted": "󰍭",
-    "format-icons": {
-      "headphone": "󰋋 ",
-      "hands-free": " ",
-      "headset": "󰋎 ",
-      "phone": "󰏲 ",
-      "portable": " ",
-      "car": " ",
-      "default": [
-        "󰕿 ",
-        "󰖀 ",
-        "󰕾 "
-      ]
-    },
-    "on-click": "pavucontrol",
-    "on-click-right": "pactl set-sink-mute 0 toggle",
-    "max-volume": "100",
-    "on-scroll-up": "pactl set-sink-mute 0 false ; pamixer -d 5",
-    "on-scroll-down": "pactl set-sink-mute 0 false ; pamixer -i 5",
-    "smooth-scrolling-threshold": "0",
-    "tooltip-format": "Volume: {volume}%",
-    "cursor": false
-  },
-  "custom/updates": {
-    "format": "{icon}",
-    "return-type": "json",
-    "format-icons": {
-      "has-updates": "󱑤 ",
-      "updated": " "
-    },
-    "exec-if": "which waybar-module-pacman-updates",
-    "exec": "waybar-module-pacman-updates",
-    "on-click": "kitty --class dotfiles-floating $HOME/.config/hypr/scripts/updates"
-  },
-  "power-profiles-daemon": {
-    "format": "{icon}",
-    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "format": "{:%I:%M %p ☲ %a %d/%m}",
     "tooltip": true,
-    "format-icons": {
-      "default": "",
-      "performance": "",
-      "balanced": "",
-      "power-saver": ""
-    }
+    "tooltip-format": "<tt>{calendar}</tt>"
   },
   "custom/wallpaper": {
-    "format": " ",
-    "on-click": "$HOME/.config/hypr/scripts/rofi_wallpaper",
-    "tooltip-format": "Switch Wallpaper"
+    "format": "\uf03e",
+    "on-click": "~/.config/waybar/scripts/change-wallpaper.sh && hyprpaper",
+    "tooltip": false,
+    "on-click-right": "kitty -e ~/.config/waybar/scripts/select-wallpaper.sh"
   },
-  "custom/waybar": {
-    "format": " ",
-    "on-click": "$HOME/.config/hypr/scripts/rofi_waybar",
-    "tooltip-format": "Switch Waybar theme"
-  },
-  "network#vpn": {
+  "network": {
+    "format-wifi": " {icon}",
+    "format-ethernet": "󰈀",
+    "format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤢 ", "󰤨 "],
+    "format-disconnected": "󰪎",
     "interval": 5,
-    "interface": "tun0",
-    "format": "󰱔 VPN Connected",
-    "format-disabled": "󰱟 VPN Disconnected",
-    "tooltip-format-connected": "VPN is Connected: IP Address {ipaddr}",
-    "on-click": "$HOME/.config/hypr/scripts/toggle_vpn"
+    "tooltip-format-wifi": " {bandwidthDownBytes} |  {bandwidthUpBytes} | {essid}",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "exec ~/.config/rofi/wifi/wifi.sh",
+    "on-click-right": "kitty -e nmtui"
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": " {capacity}% {icon} ",
+    "format-full": "{icon}",
+    "format-plugged": " {capacity}% <span font='Font Awesome 5 Free'>\uf0e7</span> ",
+    "format-alt": "{icon}",
+    "tooltip-format": "{capacity}%, about {time} left",
+    "format-icons": [" ", " ", " ", " "]
+  },
+  // "pulseaudio": {
+  //   "format": "<span font='Font Awesome 5 Free'>{icon}</span>",
+  //   "format-muted": "<span font='Font Awesome 5 Free'>\uf6a9</span>",
+  //   "format-icons": {
+  //     "headphone": "\uf025",
+  //     "default": ["\uf028"]
+  //     // "default": [
+  //     //   "▁", // 0–16%
+  //     //   "▂▁", // 17–33%
+  //     //   "▃▂▁", // 34–50%
+  //     //   "▄▃▂▁", // 51–66%
+  //     //   "▅▄▃▂▁", // 67–83%
+  //     //   "▆▅▄▃▂▁" // 84–100%
+  //     // ]
+  //     // "default": [
+  //     //   "░░░░░░░░░░",
+  //     //   "▓░░░░░░░░░",
+  //     //   "▓▓░░░░░░░░",
+  //     //   "▓▓▓░░░░░░░",
+  //     //   "▓▓▓▓░░░░░░",
+  //     //   "▓▓▓▓▓░░░░░",
+  //     //   "▓▓▓▓▓▓░░░░",
+  //     //   "▓▓▓▓▓▓▓░░░",
+  //     //   "▓▓▓▓▓▓▓▓░░",
+  //     //   "▓▓▓▓▓▓▓▓▓░",
+  //     //   "▓▓▓▓▓▓▓▓▓▓"
+  //     // ]
+  //   },
+  //   "tooltip-format": "{volume}% {desc}",
+  //   "on-click": "pamixer -t"
+  // },
+  "wireplumber": {
+    "max-volume": 200,
+    "scroll-step": 5,
+    "format": "{icon}",
+    "format-bluetooth": "{icon}",
+    "format-icons": [" ", " ", " "],
+    "format-muted": " ",
+    "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click": "pamixer -t",
+    "tooltip-format": "{volume}% | {desc}"
+  },
+  "bluetooth": {
+    "format": "{icon}",
+    "format-icons": ["", "󰤾", "󰥀", "󰥄", "󰥈"],
+    "tooltip-format-off": "Bluetooth is off",
+    "tooltip-format-on": "Bluetooth is on",
+    "format-connected": "{icon} {num_connections}",
+    "format-connected-battery": "{icon} {device_battery_percentage}%",
+    "tooltip-format-connected": "{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_battery_percentage}%",
+    "on-click": "blueman-manager"
   }
 }
