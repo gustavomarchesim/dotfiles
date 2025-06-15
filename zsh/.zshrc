@@ -1,6 +1,7 @@
 if [[ -z "$TMUX" ]]; then
   fastfetch
 fi
+
 # ==========================
 # Powerlevel10k Configuration
 # ==========================
@@ -89,7 +90,10 @@ alias dots='cd ~/dotfiles && nvim'
 # Listagem de Arquivos
 # ==========================
 alias ls='eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions'
+
 alias tree='ls --tree --level=2'
+
+alias la='eza --color=always --long --all --git --icons=always --no-filesize --no-user --no-time --no-permissions'
 
 show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
 
@@ -113,9 +117,12 @@ _fzf_comprun() {
 # ==========================
 # Busca e Ferramentas de Terminal
 # ==========================
+
+alias grep='rg --smart-case --colors match:fg:green'
+
 alias fd='find . -type d -name'
 alias ff='find . -type f -name'
-alias grep='grep --color'
+
 alias c='clear'
 alias h='history'
 
@@ -137,3 +144,7 @@ alias tn='tmux new-session -s'
 
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
