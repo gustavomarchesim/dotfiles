@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 
 WALLPAPER_DIR="$HOME/dotfiles/.config/hypr/wallpapers"
+DEST_CURRENT="$WALLPAPER_DIR/current_wallpaper.png"
 
 if [[ -z "$@" ]]; then
-  find "$WALLPAPER_DIR" -type f -not -name "README.md" -not -name "active" |
+  find "$WALLPAPER_DIR" -type f \
+    -not -name "README.md" \
+    -not -name "active" \
+    -not -name "current_wallpaper.png" |
     sed "s|$WALLPAPER_DIR/||"
 else
   SELECTED="$WALLPAPER_DIR/$@"
@@ -12,14 +16,19 @@ else
     swww img -t wipe --resize crop "$SELECTED"
 
     # Notificação
-    notify-send "Wallpaper Updated" "Desktop wallpaper changed to <i>$@</i>" -i "$SELECTED" -u normal
+    notify-send "Wallpaper Atualizado" "Wallpaper alterado para <i>$@</i>" -i "$SELECTED" -u normal
 
     # Atualiza o arquivo "active"
     cp "$SELECTED" "$WALLPAPER_DIR/active"
 
-    # Gera e aplica cores com o Wallust (em background)
+    # Remove o current_wallpaper.png antigo (se houver)
+    rm -f "$DEST_CURRENT"
+
+    # Converte o novo wallpaper pra PNG e salva como current_wallpaper.png
+    convert "$SELECTED" "$DEST_CURRENT"
+
+    # Aplica as cores com Wallust (em background)
     wallust run "$SELECTED" >/dev/null 2>&1 &
     disown
-
   fi
 fi

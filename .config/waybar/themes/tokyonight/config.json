@@ -1,0 +1,158 @@
+{
+  "position": "top",
+  "height": 30,
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "tray",
+    "custom/separator",
+    "memory",
+    "custom/gpu",
+    "cpu",
+    "custom/separator",
+    "custom/network",
+    "pulseaudio",
+    "custom/brightness",
+    "custom/separator",
+    "custom/power"
+  ],
+
+  "hyprland/window": {
+    "format": "\uf303 {0}",
+    "rotate": 0,
+    "separate-outputs": true,
+    "rewrite": {
+      "(.*)@archlinux:(.*)": "$1 \uf489",
+      "(.*) \u2014 Mozilla Firefox": "$1 \udb80\ude39",
+      "(.*)Mozilla Firefox": "Firefox \udb80\ude39",
+      "(.*) - Visual Studio Code": "$1 \udb82\ude1e",
+      "(.*)Visual Studio Code": "Code \udb82\ude1e",
+      "(.*) - Code - OSS": "$1 \udb82\ude1e",
+      "(.*)Code - OSS": "Code \udb82\ude1e",
+      "(.*) \u2014 Dolphin": "$1 \udb80\ude4b",
+      "(.*)Spotify": "Spotify \udb81\udcc7",
+      "(.*)Steam": "Steam \udb81\udcd3",
+      "(.*) - Discord": "$1 \uf1ff ",
+      "(.*)Netflix": "Netflix \udb81\udf46 ",
+      "(.*) \u2014 Google chrome": "$1 \ue743 ",
+      "(.*)Google chrome": "Google chrome \ue743 ",
+      "(.*) \u2014 Github": "$1 \ue709 ",
+      "(.*)Github": "Github \ue709",
+      "(.*)Spotify Free": "Spotify \udb81\udcc7",
+      "(.*)Spotify Premiun": "Spotify \udb81\udcc7"
+    },
+    "max-length": 70
+  },
+
+  "wlr/taskbar": {
+    "all-outputs": true,
+    "active-first": false,
+    "markup": true,
+    "format": "{icon} ",
+    "rotate": 0,
+    "spacing": 20,
+    "tooltip-format": "{app_id}",
+    "on-click": "activate",
+    "on-click-right": "fullscreen",
+    "on-click-middle": "close",
+    "class": "no-margin-padding",
+    "sort": true,
+    "group-by-workspace": true,
+    "ignore-list": [""],
+    "app_ids-mapping": {
+      "firefoxdeveloperedition": "firefox-developer-edition",
+      "firefoxnightly": "Firefox-nightly",
+      "Spotify Free": "Spotify",
+      "Docker Desktop": "Docker"
+    },
+    "rewrite": {
+      "Firefox Web Browser": "Firefox",
+      "Foot Server": "Terminal",
+      "Spotify Free": "Spotify",
+      "org.kde.dolphin": "nautilus",
+      "libreoffice-writer": "writer",
+      "docker": ""
+    }
+  },
+
+  "custom/separator": {
+    "format": "|",
+    "tooltip": false
+  },
+
+  "clock": {
+    "format": " {:%b %d %I:%M%p}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "tooltip": true
+  },
+
+  "tray": {
+    "spacing": 10
+  },
+
+  "custom/gpu": {
+    "exec": "~/dotfiles/.config/waybar/scripts/gpuinfo.sh --use nvidia",
+    "return-type": "json",
+    "format": "{text}",
+    "tooltip": true,
+    "interval": 5,
+    "rotate": 0,
+    "max-length": 1000
+  },
+
+  "cpu": {
+    "format": "<span size='10000' foreground='#bb9af7'> {usage}%</span>",
+    "tooltip": false
+  },
+
+  "memory": {
+    "format": "<span size='9500' foreground='#fab387'> {used:0.1f}G</span>",
+    "tooltip": false
+  },
+
+  "custom/network": {
+    "exec": "~/.config/waybar/scripts/network_speed.sh",
+    "return-type": "json",
+    "interval": 1,
+    "format": "{}",
+    "tooltip": true
+  },
+
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-muted": "<span size='9000'></span>",
+    "format-icons": {
+      "default": [
+        "<span size='9000'></span>",
+        "<span size='9000'></span>",
+        "<span size='9000'> </span>"
+      ]
+    },
+    "on-click": "pavucontrol",
+    "on-scroll-up": "/home/kruger/.config/dunst/scripts/notify_volume.sh up",
+    "on-scroll-down": "/home/kruger/.config/dunst/scripts/notify_volume.sh down"
+  },
+
+  "custom/brightness": {
+    "exec": "~/.config/waybar/scripts/brightness_label.sh",
+    "return-type": "json",
+    "format": "{text}",
+    "interval": 5,
+    "tooltip": true,
+    "on-click": "~/.config/waybar/scripts/toggle_brightness.sh"
+  },
+
+  "custom/clipboard": {
+    "format": "<span size='9000'></span>",
+    "tooltip": "Click to view clipboard history",
+    "on-click": "~/.config/waybar/scripts/clipboard_menu.sh",
+    "interval": 0
+  },
+
+  "custom/power": {
+    "format": "<span size='9000' foreground='#ff5370'>⏻</span>",
+    "tooltip": "Power Options",
+    "on-click": "~/.config/waybar/scripts/rofi_power_menu.sh",
+    "interval": 3600
+  }
+}

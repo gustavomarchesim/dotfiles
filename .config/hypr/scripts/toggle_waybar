@@ -1,0 +1,16 @@
+#!/bin/bash 
+
+CURRENT_THEME_FILE="$HOME/.config/waybar/themes/active.txt"
+
+THEME=$(cat "$CURRENT_THEME_FILE")
+
+CONFIG="$HOME/.config/waybar/themes/${THEME}/config.json" 
+STYLE="$HOME/.config/waybar/themes/${THEME}/style.css"
+
+
+if pgrep -x "waybar" > /dev/null
+then
+    killall -q waybar
+else
+   waybar --bar main-bar --log-level error --config "$CONFIG" --style "$STYLE" &
+fi

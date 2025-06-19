@@ -5,21 +5,12 @@
   "margin-right": 13,
   "margin-top": 13,
   "margin-bottom": 0,
-  "modules-left": [
-    "custom/menu",
-    "hyprland/workspaces",
-    "hyprland/mode",
-    "hyprland/scratchpad",
-    "custom/media",
-    "pulseaudio"
-  ],
-  "modules-center": ["hyprland/window"],
+  "modules-left": ["custom/menu", "hyprland/workspaces", "pulseaudio"],
+  "modules-center": ["clock"],
   "modules-right": [
     "cpu",
     "memory",
-    "battery",
-    "battery#bat2",
-    "clock",
+    "power-profiles-daemon",
     "tray",
     "custom/power"
   ],
@@ -156,20 +147,9 @@
     },
     "on-click": "pavucontrol"
   },
-  "custom/media": {
-    "format": "{icon} {text}",
-    "return-type": "json",
-    "max-length": 40,
-    "format-icons": {
-      "spotify": "",
-      "default": "🎜"
-    },
-    "escape": true,
-    "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-  },
   "custom/menu": {
     "format": "  ",
-    "on-click": "rofi --show run"
+    "on-click": "~/.config/hypr/scripts/rofi_launcher"
   },
   "custom/power": {
     "format": "(*)  ",

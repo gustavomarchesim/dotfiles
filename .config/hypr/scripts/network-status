@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+status="$(nmcli -t -f STATE general | head -n1)"
+
+if [ "$status" = "disconnected" ]; then
+  printf "󰤮 "
+elif [ "$status" = "connecting" ]; then
+  printf "󱍸 "
+elif [ "$status" = "connected" ]; then
+  strength="$(python "$HOME/.config/Scripts/wifi-conn-strength")"
+  if [ "$?" -eq 0 ]; then
+    if [ "$strength" -eq 0 ]; then
+      printf "󰤯 "
+    elif [ "$strength" -le 25 ]; then
+      printf "󰤟 "  
+    elif [ "$strength" -le 50 ]; then
+      printf "󰤢 "
+    elif [ "$strength" -le 75 ]; then
+      printf "󰤥 "
+    else
+      printf "󰤨 "
+    fi
+  else
+    printf "󰈀 "
+  fi
+else
+  printf "󰈀 "
+fi
+

@@ -17,3 +17,4 @@ Session.vim
 .config/rofi/shared/colors.rasi
 .config/waybar/colors-waybar.css
 .config/hypr/wallust.conf
+.config/nvim/lazy-lock.json

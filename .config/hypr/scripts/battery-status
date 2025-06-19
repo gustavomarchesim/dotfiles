@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+status="$(cat /sys/class/power_supply/BAT0/status)"
+level="$(cat /sys/class/power_supply/BAT0/capacity)"
+
+if [ "$status" = "Not charging" ] || [ "$status" = "Full" ]; then
+  if [ "$level" -eq 0 ]; then
+    printf " "
+  elif [ "$level" -le 25 ]; then
+    printf " "
+  elif [ "$level" -le 50 ]; then
+    printf " "
+  elif [ "$level" -le 75 ]; then
+    printf " "
+  else
+    printf " "
+  fi
+elif [ "$status" = "Charging" ]; then
+  printf " "
+fi
+
