@@ -18,7 +18,6 @@ fi
 # ==========================
 # Zinit and Plugins
 # ==========================
-
 # Set the directory to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -39,6 +38,7 @@ zinit light Aloxaf/fzf-tab
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
+zinit light hlissner/zsh-autopair
 zinit snippet OMZ::plugins/git
 zinit snippet OMZP::sudo
 
@@ -52,7 +52,6 @@ zinit cdreplay -q
 # ==========================
 #  Zstyle Configuration
 # ==========================
-
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
@@ -62,7 +61,6 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # ==========================
 # History Configuration
 # ==========================
-
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
@@ -90,13 +88,10 @@ alias dots='cd ~/dotfiles && nvim'
 # Listagem de Arquivos
 # ==========================
 alias ls='eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions'
-
 alias tree='ls --tree --level=2'
-
 alias la='eza --color=always --long --all --git --icons=always --no-filesize --no-user --no-time --no-permissions'
 
 show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
-
 export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 
@@ -117,14 +112,20 @@ _fzf_comprun() {
 # ==========================
 # Busca e Ferramentas de Terminal
 # ==========================
-
 alias grep='rg --smart-case --colors match:fg:green'
-
 alias fd='find . -type d -name'
 alias ff='find . -type f -name'
-
 alias c='clear'
-alias h='history'
+
+# ==========================
+# Arquivos e Utilitários
+# ==========================
+alias cat='bat --style=numbers,changes,header'
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -iv'
+alias mkd='mkdir -p'
+alias take='mkdir -p $1 && cd $1'
 
 # ==========================
 # Editor de Texto
@@ -138,13 +139,15 @@ alias ta='tmux attach'
 alias tl='tmux list-sessions'
 alias tn='tmux new-session -s'
 
+# ==========================
+#  NPM
+# ==========================
+alias localhost='live-server --port=8081'
+
 #==========================
 # Shell Integrations
 # ==========================
-
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-
 . "$HOME/.atuin/bin/env"
-
 eval "$(atuin init zsh)"
