@@ -1,6 +1,5 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.coding.mini-surround",
     "lazyvim.plugins.extras.editor.mini-files",
     "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.ui.mini-starter",

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+VIDEO_DIR="$HOME/Videos"
+mkdir -p "$VIDEO_DIR"
+FILENAME="$(date +'%Y-%m-%d_%H-%M-%S').mp4"
+FULL_PATH="$VIDEO_DIR/$FILENAME"
+
+if pgrep -x wf-recorder >/dev/null; then
+  pkill -INT wf-recorder
+  notify-send "🎥 Gravação finalizada"
+  echo "[✔] Gravação parada."
+else
+  wf-recorder -g "$(slurp)" -f "$FULL_PATH" &
+  disown
+  notify-send "🔴 Gravando tela..." "Salvando em: $FULL_PATH"
+  echo "[●] Gravação iniciada: $FULL_PATH"
+fi

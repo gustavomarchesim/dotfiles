@@ -12,23 +12,16 @@ if [[ -z "$@" ]]; then
 else
   SELECTED="$WALLPAPER_DIR/$@"
   if [[ -f "$SELECTED" ]]; then
-    # Define o wallpaper
     swww img -t wipe --resize crop "$SELECTED"
 
-    # Notificação
     notify-send "Wallpaper Atualizado" "Wallpaper alterado para <i>$@</i>" -i "$SELECTED" -u normal
 
-    # Atualiza o arquivo "active"
     cp "$SELECTED" "$WALLPAPER_DIR/active"
-
-    # Remove o current_wallpaper.png antigo (se houver)
     rm -f "$DEST_CURRENT"
-
-    # Converte o novo wallpaper pra PNG e salva como current_wallpaper.png
     convert "$SELECTED" "$DEST_CURRENT"
-
-    # Aplica as cores com Wallust (em background)
     wallust run "$SELECTED" >/dev/null 2>&1 &
     disown
+
+    pkill -x rofi
   fi
 fi
